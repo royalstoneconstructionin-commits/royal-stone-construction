@@ -1,5 +1,9 @@
 node_modules
 .next
+.next-dev
+.next-dev.lock
+tsconfig.tsbuildinfo
+.qa
 .env.local
 .env
 npm-debug.log*

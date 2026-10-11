@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import PublicShell from "@/components/PublicShell";
 
 export const metadata: Metadata = {
-  title: "Royal Stone Construction | Architecture, Construction & Interiors",
+  title: { default: "Royal Stone Construction | Architecture & Construction", template: "%s | Royal Stone Construction" },
   description:
     "Royal Stone Construction provides architecture, construction with material, and interior design services.",
 };
@@ -12,7 +13,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        {children}
+        <PublicShell>{children}</PublicShell>
         <Footer />
       </body>
     </html>

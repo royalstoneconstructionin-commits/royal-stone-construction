@@ -1,4 +1,8 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+/* Watch application sources, never generated build output or temporary files. */
+@source "../app";
+@source "../components";
+@source "../lib";
 
 * {
   box-sizing: border-box;
@@ -22,4 +26,20 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+.site-container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 640px) { .site-container { padding-inline: 1.5rem; } }
+@media (min-width: 1024px) { .site-container { padding-inline: 2rem; } }
+@keyframes page-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.page-enter { animation: page-enter 450ms ease-out both; }
+:focus-visible { outline: 3px solid #dc2626; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
