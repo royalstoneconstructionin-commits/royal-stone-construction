@@ -15,6 +15,10 @@ export default function AdminLoginPage() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
+    if (!supabase) {
+      setError("Admin login is currently unavailable. Please try again later.");
+      return;
+    }
     setLoading(true);
 
     const { data, error: loginError } = await supabase.auth.signInWithPassword({ email, password });

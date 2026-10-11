@@ -40,6 +40,11 @@ export default function LeadForm() {
       return;
     }
 
+    if (!supabase) {
+      setMessage("Online enquiries are currently unavailable. Please contact us using the details below.");
+      return;
+    }
+
     setLoading(true);
     const { error } = await supabase.from("leads").insert({
       name: form.name.trim(),
@@ -51,7 +56,7 @@ export default function LeadForm() {
 
     if (error) {
       console.error(error);
-      setMessage("Unable to submit enquiry. Please check Supabase setup and try again.");
+      setMessage("Unable to submit enquiry. Please try again or contact us using the details below.");
       return;
     }
 

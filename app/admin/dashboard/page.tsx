@@ -25,6 +25,10 @@ export default function AdminDashboard() {
   const [search, setSearch] = useState("");
 
   async function loadLeads() {
+    if (!supabase) {
+      router.replace("/admin/login");
+      return;
+    }
     setLoading(true);
     const { data: userData } = await supabase.auth.getUser();
     if (!userData.user) {
@@ -50,18 +54,20 @@ export default function AdminDashboard() {
   }, []);
 
   async function updateStatus(id: string, status: Lead["status"]) {
+    if (!supabase) return;
     const { error } = await supabase.from("leads").update({ status }).eq("id", id);
     if (!error) setLeads((current) => current.map((lead) => (lead.id === id ? { ...lead, status } : lead)));
   }
 
   async function deleteLead(id: string) {
+    if (!supabase) return;
     if (!window.confirm("Delete this lead permanently?")) return;
     const { error } = await supabase.from("leads").delete().eq("id", id);
     if (!error) setLeads((current) => current.filter((lead) => lead.id !== id));
   }
 
   async function logout() {
-    await supabase.auth.signOut();
+    if (supabase) await supabase.auth.signOut();
     router.push("/admin/login");
   }
 

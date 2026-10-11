@@ -60,10 +60,20 @@ Copy `.env.example` and rename the copy to `.env.local`.
 Set:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_ID.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=YOUR_SUPABASE_PUBLISHABLE_KEY
 ```
 
-You can find these values in Supabase Project Settings / API (or Connect / API Keys depending on the current Supabase UI).
+You can find these values in Supabase Project Settings / API (or Connect / API Keys depending on the current Supabase UI). The legacy `NEXT_PUBLIC_SUPABASE_ANON_KEY` is also supported.
+
+## Deploy the frontend on Vercel
+
+Deploy this project using the Next.js framework preset and `npm run build` as the build command. No separate backend server is required; the browser connects directly to Supabase.
+
+Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in Vercel's environment variables for Production and Preview to enable admin login and enquiry submission. Redeploy after changing these values because they are included in the frontend at build time. Do not add a Supabase secret or service role key.
+
+The frontend also builds without Supabase variables. In that case the public website remains available, enquiry submission and login display an unavailable message, and the dashboard redirects to login.
+
+Upload or push the latest source changes before deploying. The local `.env.local` file does not configure Vercel's environment variables.
 
 ## 7. Run project
 ```powershell
