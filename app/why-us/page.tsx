@@ -598,8 +598,8 @@ export default function WhyUsPage() {
                 </h3>
 
                 <p className="mt-2 text-sm leading-7 text-slate-400">
-                  Let's start with your ideas, requirements
-                  and project expectations.
+                  Let&apos;s start with your ideas, requirements
+and project expectations.
                 </p>
 
               </div>
