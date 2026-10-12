@@ -24,7 +24,7 @@ export default function ProcessTimeline({
     : processSteps;
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full overflow-hidden">
 
       {/* Background Decorations */}
       <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-red-500/5 blur-[100px]" />

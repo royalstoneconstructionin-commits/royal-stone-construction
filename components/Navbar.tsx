@@ -32,6 +32,7 @@ export default function Navbar() {
               src="/royal-stone-logo.png"
               alt="Royal Stone Construction"
               fill
+              sizes="48px"
               className="object-contain p-1"
               priority
             />
