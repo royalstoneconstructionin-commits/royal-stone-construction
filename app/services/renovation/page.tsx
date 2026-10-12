@@ -319,7 +319,7 @@ export default function RenovationPage() {
               Explore potential improvements for
               residential and commercial spaces.
               Actual renovation options depend on the
-              property's condition, technical requirements
+              property&apos;s condition, technical requirements
               and agreed project scope.
             </p>
           </div>
@@ -405,7 +405,7 @@ export default function RenovationPage() {
                   A renovation can help refresh the appearance,
                   functionality and comfort of your space.
                   We begin by understanding what can be
-                  improved within your project's practical
+                  improved within your project&apos;s practical
                   and technical constraints.
                 </p>
               </div>
@@ -441,9 +441,9 @@ export default function RenovationPage() {
                   </h2>
 
                   <p className="mt-4 leading-8 text-slate-600">
-                    Tell us about your property's current
+                    Tell us about your property&apos;s current
                     condition, renovation goals and budget.
-                    Let's discuss a suitable plan for your space.
+                    Let&apos;s discuss a suitable plan for your space.
                   </p>
                 </div>
               </div>

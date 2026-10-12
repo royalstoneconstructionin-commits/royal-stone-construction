@@ -452,7 +452,7 @@ export default function ConstructionPage() {
                 <p className="mt-4 leading-8 text-slate-300">
                   Share your plot details, proposed construction
                   area, location and material requirements.
-                  Let's discuss your project scope and quotation.
+                  Let&apos;s discuss your project scope and quotation.
                 </p>
               </div>
             </div>

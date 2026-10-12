@@ -372,7 +372,7 @@ export default function ArchitecturePage() {
               <p className="mt-6 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
                 Architectural design is about more than
                 attractive drawings. It connects the
-                property's conditions with practical spaces
+                property&apos;s conditions with practical spaces
                 and your vision for the building.
               </p>
 
@@ -566,7 +566,7 @@ export default function ArchitecturePage() {
                 <p className="mt-4 leading-8 text-slate-300">
                   Share your plot size, location, building
                   requirements and preferred architectural
-                  style. Let's discuss your planning
+                  style. Let&apos;s discuss your planning
                   requirements and quotation.
                 </p>
               </div>
