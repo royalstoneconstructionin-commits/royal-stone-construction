@@ -1,124 +1,74 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
 
-const packageData = {
-  Patna: [
-    {
-      name: "Silver Package",
-      price: "₹6/sqft",
-      popular: false,
-      features: [
-        "Floor Plan",
-        "Plumbing Design",
-        "Electric Design",
-        "3D Front Elevation",
-      ],
-    },
-    {
-      name: "Gold Package",
-      price: "₹8/sqft",
-      popular: true,
-      features: [
-        "Floor Plan",
-        "Plumbing Design",
-        "Electric Design",
-        "3D Front Elevation",
-        "Column Layout Design",
-        "Pile/Footing Layout Design",
-        "Tie Beam Detail Design",
-        "Slab Beam Detail Design",
-        "Slab Reinforcement Details Design",
-        "Staircase Section Details",
-        "Septic Tank & Borewell Position",
-      ],
-    },
-    {
-      name: "Platinum Package",
-      price: "₹30/sqft",
-      popular: false,
-      features: [
-        "Floor Plan",
-        "Plumbing Design",
-        "Electric Design",
-        "3D Front Elevation",
-        "Column Layout Design",
-        "Pile/Footing Layout Design",
-        "Tie Beam Detail Design",
-        "Slab Beam Detail Design",
-        "Slab Reinforcement Details Design",
-        "Staircase Section Details",
-        "Septic Tank & Borewell Position",
-        "3D Interior Design",
-      ],
-    },
-  ],
-
-  Noida: [
-    {
-      name: "Silver Package",
-      price: "₹10/sqft",
-      popular: false,
-      features: [
-        "Floor Plan",
-        "Plumbing Design",
-        "Electric Design",
-        "3D Front Elevation",
-      ],
-    },
-    {
-      name: "Gold Package",
-      price: "₹15/sqft",
-      popular: true,
-      features: [
-        "Floor Plan",
-        "Plumbing Design",
-        "Electric Design",
-        "3D Front Elevation",
-        "Column Layout Design",
-        "Pile/Footing Layout Design",
-        "Tie Beam Detail Design",
-        "Slab Beam Detail Design",
-        "Slab Reinforcement Details Design",
-        "Staircase Section Details",
-        "Septic Tank & Borewell Position",
-      ],
-    },
-    {
-      name: "Platinum Package",
-      price: "₹40/sqft",
-      popular: false,
-      features: [
-        "Floor Plan",
-        "Plumbing Design",
-        "Electric Design",
-        "3D Front Elevation",
-        "Column Layout Design",
-        "Pile/Footing Layout Design",
-        "Tie Beam Detail Design",
-        "Slab Beam Detail Design",
-        "Slab Reinforcement Details Design",
-        "Staircase Section Details",
-        "Septic Tank & Borewell Position",
-        "3D Interior Design",
-      ],
-    },
-  ],
-};
-
-export default function PricingPackages() {
+import Link from "next/link";
+import { ArrowRight, Gem, House, ClipboardList } from "lucide-react";
+import { packageData, packageEnquiryHref } from "@/lib/design-packages";
+export default function PricingPackages({ reference = false }: { reference?: boolean }) {
   const [selectedCity, setSelectedCity] = useState<"Patna" | "Noida">("Patna");
+
+  useEffect(() => {
+    const city = new URLSearchParams(window.location.search).get("city");
+    if (city === "Patna" || city === "Noida") setSelectedCity(city);
+  }, []);
 
   const packages = packageData[selectedCity];
 
-  const scrollToForm = () => {
+  const scrollToForm = (name: string) => {
+    window.dispatchEvent(new CustomEvent("royal-stone-package", {
+      detail: { city: selectedCity, name },
+    }));
     document
       .getElementById("lead-form")
       ?.scrollIntoView({
         behavior: "smooth",
       });
   };
+
+  if (reference) {
+    const icons = [ClipboardList, House, Gem];
+    return (
+      <section id="packages" className="scroll-mt-24 bg-white py-12 sm:py-16">
+        <div className="site-container">
+          <div className="mb-7 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="text-xs font-bold tracking-[0.18em] text-red-600">DESIGN PACKAGES</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Choose the right starting point.</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">Explore our existing architecture packages for Patna and Noida, with scope and pricing details on the architecture page.</p>
+              <p className="mt-2 text-sm text-slate-500">Select your city to view package pricing and services.</p>
+            </div>
+            <div className="flex gap-2" role="group" aria-label="Package city">
+              {(["Patna", "Noida"] as const).map(city => (
+                <button key={city} type="button" aria-pressed={city === selectedCity} onClick={() => setSelectedCity(city)} className={`min-h-11 rounded-full px-7 text-sm font-semibold transition-colors ${city === selectedCity ? "bg-red-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-red-50"}`}>{city}</button>
+              ))}
+            </div>
+          </div>
+          <p className="mb-4 text-sm text-slate-500" aria-live="polite">Showing packages for <strong className="text-slate-900">{selectedCity}</strong></p>
+          <div className="grid gap-5 lg:grid-cols-3">
+            {packages.map((item, index) => {
+              const Icon = icons[index];
+              return <article key={item.name} className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                <div className="flex items-start gap-4 border-b border-slate-100 bg-[#fdf5f5] p-5">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600"><Icon className="h-6 w-6" /></span>
+                  <div><h3 className="text-xl font-bold text-slate-950">{item.name}</h3><p className="mt-1 text-xl font-bold text-red-600">{item.price}</p><p className="mt-1 text-xs text-slate-500">{selectedCity}{item.popular ? " · Most Popular" : ""}</p></div>
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="mb-3 text-sm font-bold text-slate-950">Inclusions:</p>
+                  <ul className="flex-1 space-y-2.5">{item.features.map(feature => <li key={feature} className="flex items-start gap-2 text-sm leading-5 text-slate-600"><Check className="mt-0.5 h-4 w-4 shrink-0 text-red-600" /><span>{feature}</span></li>)}</ul>
+                  <Link href={`/services/architecture?${new URLSearchParams({ city: selectedCity })}#packages`} aria-label={`View Details: ${item.name} in ${selectedCity}`} className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-red-600 hover:underline">View Details <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                  <Link href={packageEnquiryHref(selectedCity, item.name)} aria-label={`Enquire Now: ${item.name} in ${selectedCity}`} className="mt-2 flex min-h-11 items-center justify-center gap-3 rounded-md bg-red-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700">Enquire Now <ArrowRight className="h-4 w-4" /></Link>
+                </div>
+              </article>;
+            })}
+          </div>
+          <Link href="/services/architecture" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-red-600 hover:underline">View Design Packages <ArrowRight className="h-4 w-4" /></Link>
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-slate-500">Final pricing may vary depending on project size, location, scope and design requirements. Contact our team for a detailed quotation.</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
@@ -233,7 +183,7 @@ export default function PricingPackages() {
               {/* CHOOSE BUTTON */}
               <button
                 type="button"
-                onClick={scrollToForm}
+                onClick={() => scrollToForm(item.name)}
                 className={`mt-8 min-h-14 w-full rounded-xl border-2 px-5 text-base font-extrabold transition ${
                   item.popular
                     ? "border-[#111111] bg-[#111111] text-white hover:border-[#b88a32] hover:bg-[#b88a32]"

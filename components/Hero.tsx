@@ -1,82 +1,252 @@
-import { Sparkles } from "lucide-react";
+"use client";
+
+import { useEffect, useState } from "react";
+import {
+  ArrowDownRight,
+  ChevronLeft,
+  ChevronRight,
+  Pause,
+  Play,
+} from "lucide-react";
 import LeadForm from "@/components/LeadForm";
-import HeroBackground from "@/components/HeroBackground";
+
+const slides = [
+  {
+    image: "/hero-background.jpeg",
+    label: "Architecture & Planning",
+  },
+  {
+    image: "/background1.png",
+    label: "Interior Design",
+  },
+  {
+    image: "/background2.png",
+    label: "Construction with Material",
+  },
+];
 
 export default function Hero() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const update = () => setReducedMotion(media.matches);
+    update();
+
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (paused || reducedMotion) return;
+
+    const timer = window.setInterval(() => {
+      if (document.hidden) return;
+      setActive((current) => (current + 1) % slides.length);
+    }, 5000);
+
+    return () => window.clearInterval(timer);
+  }, [paused, reducedMotion, active]);
+
+  const moveSlide = (direction: number) => {
+    setActive(
+      (current) => (current + direction + slides.length) % slides.length
+    );
+  };
+
   return (
     <section
       id="home"
-      className="relative isolate scroll-mt-20 overflow-hidden bg-[#101b22]"
+      aria-label="Royal Stone Construction"
+      className="relative isolate scroll-mt-20 overflow-hidden bg-[#111815]"
     >
-      <HeroBackground src="/hero-background.jpeg" />
-
-      {/* Main Content */}
-      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 py-10 sm:px-6 lg:min-h-[560px] lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12 lg:px-8 lg:py-12">
-
-        {/* LEFT CONTENT */}
-        <div className="relative z-10">
-
-          {/* Top Badge */}
-          <div className="group/badge inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-red-200 bg-white/90 px-4 py-2.5 shadow-[0_5px_25px_rgba(220,38,38,0.07)] backdrop-blur-md transition-all duration-300 hover:border-red-400 hover:shadow-[0_8px_30px_rgba(220,38,38,0.15)]">
-
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-60 motion-reduce:animate-none" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-600" />
-            </span>
-
-            <Sparkles className="h-4 w-4 text-red-600" />
-
-            <span className="text-xs font-extrabold tracking-wide text-red-600 sm:text-sm">
-              Built with planning. Finished with pride.
-            </span>
-
-          </div>
-
-          {/* Small Heading */}
-          <div className="mt-8 flex items-center gap-3">
-            <span className="h-[2px] w-10 rounded-full bg-red-600" />
-
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:text-sm">
-              Royal Stone Construction
-            </span>
-          </div>
-
-          {/* Main Title */}
-          <h1 className="mt-5 max-w-3xl font-serif text-[clamp(3.15rem,6vw,6rem)] font-black leading-[1.04] tracking-[-0.045em] text-white drop-shadow-[0_3px_8px_rgba(0,0,0,0.8)]">
-
-            <span className="block">
-              From Vision
-            </span>
-
-            <span className="block">
-              to
-            </span>
-
-            <span className="group/title relative inline-block cursor-default bg-gradient-to-r from-red-400 via-orange-400 to-amber-300 bg-clip-text pb-2 text-transparent transition-all duration-500 hover:scale-[1.02] hover:drop-shadow-[0_0_15px_rgba(220,38,38,0.35)]">
-
-              Structure.
-
-              {/* Animated Underline */}
-              <span className="absolute bottom-0 left-0 h-1 w-16 rounded-full bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover/title:w-full group-hover/title:shadow-[0_0_20px_rgba(239,68,68,0.6)]" />
-
-            </span>
-
-          </h1>
-
-        </div>
-
-        {/* RIGHT SIDE - LEAD FORM */}
-        <div className="relative z-10 flex w-full justify-center lg:self-start lg:justify-end lg:pt-4">
-          <div className="w-full max-w-[360px]">
-            <LeadForm compact />
-          </div>
-        </div>
+      {/* Background slider */}
+      <div className="absolute inset-0" aria-hidden="true">
+        {slides.map((slide, index) => (
+          <img
+            key={slide.image}
+            src={slide.image}
+            alt=""
+            fetchPriority={index === 0 ? "high" : "auto"}
+            decoding="async"
+            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1200ms] motion-reduce:transition-none ${
+              active === index ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
 
       </div>
 
-      {/* Bottom Gradient Border */}
-      <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-red-500/40 to-transparent" />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <div className="grid items-center gap-10 py-10 sm:py-14 lg:min-h-[560px] lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-16 lg:py-12">
+          {/* Main content */}
+          <div className="hero-left-copy max-w-2xl">
+            <div className="flex items-center gap-4">
+              <span className="h-px w-10 bg-red-500" />
 
+              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white sm:text-xs">
+                Royal Stone Construction
+              </span>
+            </div>
+
+            <h1 className="mt-6 text-[clamp(2.75rem,4.8vw,4.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-white">
+              From vision
+              <br />
+              to{" "}
+              <span className="text-white">
+                structure.
+              </span>
+            </h1>
+
+            <p className="mt-6 max-w-md text-sm leading-7 text-white sm:text-base sm:leading-8">
+              Thoughtful architecture. Refined interiors. Complete
+              construction with material—planned around your space,
+              your needs, and your vision.
+            </p>
+
+            <a
+              href="#hero-enquiry"
+              className="mt-7 inline-flex min-h-12 items-center gap-5 rounded-md bg-red-600 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500"
+            >
+              Discuss your project
+              <ArrowDownRight className="h-4 w-4" />
+            </a>
+
+            {/* Services */}
+            <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/30 pt-4 text-xs font-medium text-white sm:text-sm">
+              {["Architecture", "Construction", "Interiors"].map(
+                (service) => (
+                  <span key={service} className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-red-500" />
+                    {service}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+
+          {/* Enquiry form */}
+          <div
+            id="hero-enquiry"
+            className="mx-auto w-full max-w-[380px] scroll-mt-24 lg:mx-0"
+          >
+            <div className="overflow-hidden rounded-xl border border-white/20 bg-white shadow-[0_24px_80px_rgba(0,0,0,0.25)]">
+              <div className="border-b border-slate-100 px-6 py-5">
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red-600" />
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    Let’s build together
+                  </p>
+                </div>
+
+                <h2 className="mt-2 text-xl font-semibold tracking-tight text-[#17221c]">
+                  Tell us about your project
+                </h2>
+              </div>
+
+              <LeadForm compact />
+            </div>
+
+            <p className="mt-3 text-center text-xs leading-5 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.9)]">
+              Share your requirements with our team.
+            </p>
+          </div>
+        </div>
+
+        {/* Slider controls */}
+        <div
+          role="group"
+          aria-label="Background slideshow controls"
+          className="flex flex-wrap items-center justify-between gap-5 border-t border-white/15 py-5"
+        >
+          <div className="flex items-center gap-4">
+            <span className="text-xs font-medium tabular-nums text-white">
+              {String(active + 1).padStart(2, "0")}
+              <span className="mx-2 text-white/30">/</span>
+              {String(slides.length).padStart(2, "0")}
+            </span>
+
+            <span className="h-4 w-px bg-white/20" />
+
+            <span className="text-xs tracking-wide text-white/75 sm:text-sm">
+              {slides[active].label}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.image}
+                type="button"
+                onClick={() => setActive(index)}
+                aria-label={`Show ${slide.label} background`}
+                aria-pressed={active === index}
+                className="flex h-11 w-7 items-center justify-center rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c8ad7f]"
+              >
+                <span
+                  className={`h-1 w-full rounded-full ${
+                    active === index ? "bg-red-500" : "bg-white/60"
+                  }`}
+                />
+              </button>
+            ))}
+
+            {!reducedMotion && (
+              <button
+                type="button"
+                onClick={() => setPaused((current) => !current)}
+                aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+                className="ml-2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c8ad7f]"
+              >
+                {paused ? (
+                  <Play className="h-4 w-4" />
+                ) : (
+                  <Pause className="h-4 w-4" />
+                )}
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={() => moveSlide(-1)}
+              aria-label="Previous background"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c8ad7f]"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => moveSlide(1)}
+              aria-label="Next background"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c8ad7f]"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <style jsx>{`
+        .hero-left-copy > * {
+          animation: hero-copy-enter 700ms ease-out both;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+        }
+        .hero-left-copy > a { text-shadow: none; }
+        .hero-left-copy > :nth-child(2) { animation-delay: 100ms; }
+        .hero-left-copy > :nth-child(3) { animation-delay: 200ms; }
+        .hero-left-copy > :nth-child(4) { animation-delay: 300ms; }
+        .hero-left-copy > :nth-child(5) { animation-delay: 400ms; }
+        @keyframes hero-copy-enter {
+          from { opacity: 0; transform: translateY(16px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-left-copy > * { animation: none; }
+        }
+      `}</style>
     </section>
   );
 }

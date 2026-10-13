@@ -13,10 +13,12 @@ import type { Project } from "@/lib/content";
 
 type ProjectCardProps = {
   project: Project;
+  reference?: boolean;
 };
 
 export default function ProjectCard({
   project,
+  reference = false,
 }: ProjectCardProps) {
   const isConcept = project.status === "Concept";
 
@@ -32,6 +34,14 @@ export default function ProjectCard({
   const projectUrl = `/projects/${encodeURIComponent(
     project.slug
   )}`;
+
+  if (reference) return <article className="group flex min-w-0 flex-col overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <Link href={projectUrl} aria-label={`View ${project.title}`} className="relative block aspect-[1.65/1] overflow-hidden bg-slate-100">
+      <Image unoptimized={!project.image.startsWith("/")} src={project.image} alt={isConcept ? `${project.title} — illustrative design concept` : project.title} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none" />
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-5 pb-4 pt-10 text-white"><p className="text-xs">{isConcept ? "Design Concept" : statusLabel}</p><h3 className="mt-1 text-lg font-bold">{project.title}</h3></div>
+    </Link>
+    <div className="flex flex-1 flex-col p-5"><p className="text-xs font-semibold text-red-600">{project.type} · {categoryLabel}</p><p className="mt-2 flex items-center gap-2 text-xs text-slate-500"><MapPin className="h-3.5 w-3.5" />{project.city}</p><p className="mt-3 flex-1 text-sm leading-6 text-slate-500">{project.details}</p><Link href={projectUrl} className="mt-3 flex min-h-11 items-center justify-between text-sm font-semibold text-red-600 hover:underline">View Project<span className="sr-only">: {project.title}</span><ArrowRight className="h-4 w-4" /></Link></div>
+  </article>;
 
   return (
     <article

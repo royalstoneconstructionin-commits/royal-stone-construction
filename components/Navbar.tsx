@@ -11,6 +11,7 @@ const links = [
   ["Home", "/"],
   ["About", "/about"],
   ["Services", "/services"],
+  ["Packages", "/packages"],
   ["Projects", "/projects"],
   ["Why Us", "/why-us"],
   ["Contact", "/contact"],
@@ -23,7 +24,7 @@ export default function Navbar() {
   const active = (href: string) => pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/60 bg-white/85 backdrop-blur-xl shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
+    <header className="sticky top-0 z-50 border-b border-slate-300/40 bg-[#dce1e9]/90 backdrop-blur-xl shadow-[0_2px_12px_rgba(15,23,42,0.04)]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" onClick={() => setOpen(false)} className="group flex items-center gap-3">
@@ -50,7 +51,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav aria-label="Main navigation" className="hidden items-center gap-5 lg:flex xl:gap-8">
+        <nav aria-label="Main navigation" className="hidden items-center gap-4 lg:flex xl:gap-6">
           {links.map(([label, href]) => (
             label === "Services" ? <div key={label} className="relative flex items-center" onMouseEnter={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setDropdown(false); }} onKeyDown={(event) => { if (event.key === "Escape") setDropdown(false); }}>
               <Link href={href} aria-current={pathname === href ? "page" : undefined} className={`py-2 text-sm font-bold transition hover:text-red-600 ${active(href) ? "text-red-600" : "text-slate-700"}`}>Services</Link>
@@ -65,7 +66,7 @@ export default function Navbar() {
             >
               {label}
 
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 rounded-full bg-red-600 transition-all duration-300 group-hover:w-full" />
+              <span className={`absolute bottom-0 left-0 h-[2px] rounded-full bg-red-600 transition-all duration-300 group-hover:w-full ${active(href) ? "w-full" : "w-0"}`} />
             </Link>
           ))}
 

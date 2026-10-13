@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -11,12 +12,40 @@ import { services } from "@/lib/site-data";
 
 type ServiceCardProps = {
   service: (typeof services)[number];
+  reference?: boolean;
 };
 
 export default function ServiceCard({
   service,
+  reference = false,
 }: ServiceCardProps) {
   const Icon = service.icon;
+
+  if (reference) {
+    const images: Record<string, string> = {
+      architecture: "/architecture.png",
+      construction: "/projects/home.png",
+      "interior-design": "/projects/living.png",
+      "turnkey-projects": "/projects/space.png",
+      "floor-planning": "/Floor.png",
+      elevation: "/2d3d.png",
+      "structural-planning": "/st.png",
+      renovation: "/renovation.png",
+    };
+    return <article className="group flex min-w-0 flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+      <Link href={`/services/${service.slug}`} aria-label={`Explore ${service.title}`} className="relative block aspect-[1.9/1] overflow-hidden bg-slate-100">
+        <Image src={images[service.slug] ?? "/projects/home.png"} alt={`${service.title} design illustration`} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none" />
+        <span className="absolute bottom-2 left-3 rounded bg-white/90 px-2 py-1 text-[10px] text-slate-600">Design Concept</span>
+      </Link>
+      <div className="flex flex-1 flex-col p-5">
+        <p className="mb-2 flex items-center gap-2 text-[10px] font-bold tracking-[0.14em] text-red-600"><Icon className="h-4 w-4" />OUR EXPERTISE</p>
+        <h3 className="text-lg font-bold text-slate-950">{service.title}</h3>
+        <p className="mt-2 flex-1 text-sm leading-6 text-slate-500">{service.text}</p>
+        <p className="mt-3 text-xs text-slate-500">Explore service details</p>
+        <Link href={`/services/${service.slug}`} className="mt-2 flex min-h-11 items-center justify-between gap-3 text-sm font-semibold text-red-600 hover:underline">Learn More<span className="sr-only"> about {service.title}</span><ArrowRight className="h-4 w-4" /></Link>
+      </div>
+    </article>;
+  }
 
   return (
     <article

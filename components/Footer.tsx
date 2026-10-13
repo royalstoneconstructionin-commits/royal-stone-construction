@@ -218,12 +218,23 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="mt-7 flex flex-wrap gap-3">
-              {[Facebook, Instagram, Youtube, Linkedin].map((Icon, index) => (
+              {[
+                { Icon: Facebook, label: "Facebook", href: "#" },
+                { Icon: Instagram, label: "Instagram", href: "#" },
+                { Icon: Youtube, label: "YouTube", href: "#" },
+                {
+                  Icon: Linkedin,
+                  label: "LinkedIn",
+                  href: "https://www.linkedin.com/company/royalstone-construction/about/?viewAsMember=true",
+                },
+              ].map(({ Icon, label, href }) => (
                 <Link
-                  key={index}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target={href !== "#" ? "_blank" : undefined}
+                  rel={href !== "#" ? "noopener noreferrer" : undefined}
                   scroll={false}
-                  aria-label="Social link"
+                  aria-label={label}
                   className="
                     group/social flex h-11 w-11 items-center justify-center
                     rounded-full border border-white/10

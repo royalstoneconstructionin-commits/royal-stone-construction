@@ -2,31 +2,75 @@ import StructuredData from "@/components/StructuredData";
 import { metadataForRoute } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Building2, ShieldCheck } from "lucide-react";
+import { Building2, ShieldCheck, FileText, Box, ChartNoAxesColumnIncreasing, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
-import CTASection, { buttonClass } from "@/components/CTASection";
+import CTASection from "@/components/CTASection";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import ProjectCard from "@/components/ProjectCard";
 import Testimonials from "@/components/Testimonials";
+import PricingPackages from "@/components/PricingPackages";
+import HomeFAQ from "@/components/HomeFAQ";
 import { services } from "@/lib/site-data";
 import { getSiteContent } from "@/lib/site-content-server";
 
 export const revalidate = 30;
 export const metadata: Metadata = metadataForRoute("/");
 
+const homeButton = "inline-flex min-h-11 items-center justify-center gap-3 rounded-md bg-red-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700";
+const reasons = [
+  { Icon: ShieldCheck, title: "Transparent Process", text: "Clear communication, planning and progress visibility." },
+  { Icon: Building2, title: "One Team", text: "Architecture, construction and interiors under one workflow." },
+  { Icon: FileText, title: "Clear Scope", text: "Confirm drawings, specifications and a detailed quotation before execution." },
+  { Icon: Box, title: "Material Specifications", text: "Agree material specifications and inspection checkpoints before construction." },
+  { Icon: ChartNoAxesColumnIncreasing, title: "Progress Updates", text: "Site coordination and progress reviews throughout your build." },
+];
+
 export default async function HomePage() {
   const content = await getSiteContent();
   return <main className="bg-white">
     <StructuredData />
     <Hero />
-    <section className="py-20"><div className="site-container grid items-center gap-10 lg:grid-cols-2"><SectionHeading eyebrow="ABOUT ROYAL STONE" title="One team for your next chapter." text="From your first floor plan to the final finish, Royal Stone Construction brings design and execution together. We help you make considered decisions for your home or commercial space." /><div><p className="text-lg leading-8 text-slate-600">Based in Patna, Bihar, our approach combines practical planning, clear scope and coordinated project delivery. Your priorities shape the work at every stage.</p><Link href="/about" className={`mt-7 ${buttonClass}`}>Learn More About Us</Link></div></div></section>
-    <section id="services" className="bg-white py-20"><div className="site-container"><SectionHeading eyebrow="OUR SERVICES" title="Everything you need to build better." text="One team for planning, execution and interiors." /><div className="mt-10 grid gap-6 md:grid-cols-3">{services.slice(0, 3).map(service => <ServiceCard key={service.slug} service={service} />)}</div><Link href="/services" className={`mt-8 ${buttonClass}`}>View Services</Link></div></section>
-    <section className="bg-slate-50 py-16"><div className="site-container grid items-center gap-8 md:grid-cols-[1fr_auto]"><SectionHeading eyebrow="DESIGN PACKAGES" title="Choose the right starting point." text="Explore our existing architecture packages for Patna and Noida, with scope and pricing details on the architecture page." /><Link href="/services/architecture" className={buttonClass}>View Design Packages</Link></div></section>
-    <section id="why-us" className="bg-[#0d1728] py-20 text-white"><div className="site-container grid gap-10 lg:grid-cols-2"><div><span className="text-sm font-black tracking-[0.18em] text-red-400">WHY ROYAL STONE</span><h2 className="mt-3 text-4xl font-black sm:text-5xl">Professional execution from concept to completion.</h2><Link href="/why-us" className={`mt-7 ${buttonClass}`}>Why Choose Us</Link></div><div className="grid gap-5 sm:grid-cols-2"><div className="rounded-2xl border border-white/10 bg-white/5 p-6"><ShieldCheck className="text-red-400" /><h3 className="mt-4 text-xl font-bold">Transparent Process</h3><p className="mt-2 leading-7 text-slate-300">Clear communication, planning and progress visibility.</p></div><div className="rounded-2xl border border-white/10 bg-white/5 p-6"><Building2 className="text-red-400" /><h3 className="mt-4 text-xl font-bold">One Team</h3><p className="mt-2 leading-7 text-slate-300">Architecture, construction and interiors under one workflow.</p></div></div></div></section>
-    <section className="py-20"><div className="site-container"><SectionHeading eyebrow="OUR PROCESS" title="From your first idea to final handover." text="A coordinated workflow with clear decisions at each stage." /><ProcessTimeline preview /><Link href="/process" className={`mt-8 ${buttonClass}`}>Explore Our Process</Link></div></section>
-    <section className="py-20"><div className="site-container"><SectionHeading eyebrow="PROJECTS PREVIEW" title="Explore what your space could become." text="Our gallery is ready for approved project documentation. Clearly labeled concepts show how upcoming work will be presented." /><div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{content.projects.slice(0, 3).map(project => <ProjectCard key={project.slug} project={project} />)}</div>{content.projects.length === 0 && <p className="mt-8 leading-7 text-slate-600">Project updates coming soon.</p>}<Link href="/projects" className={`mt-8 ${buttonClass}`}>View Projects</Link></div></section>
-    <Testimonials testimonials={content.testimonials} /><CTASection />
+    <section className="py-12 sm:py-16">
+      <div className="site-container grid items-center gap-8 lg:grid-cols-2">
+        <SectionHeading compact eyebrow="ABOUT ROYAL STONE" title="One team for your next chapter." text="From your first floor plan to the final finish, Royal Stone Construction brings design and execution together. We help you make considered decisions for your home or commercial space." />
+        <div><p className="text-base leading-7 text-slate-600">Based in Patna, Bihar, our approach combines practical planning, clear scope and coordinated project delivery. Your priorities shape the work at every stage.</p><Link href="/about" className={`mt-5 ${homeButton}`}>Learn More About Us <ArrowRight className="h-4 w-4" /></Link></div>
+      </div>
+    </section>
+    <section id="services" className="scroll-mt-24 bg-[#faf9f7] py-12 sm:py-16">
+      <div className="site-container">
+        <SectionHeading compact eyebrow="OUR SERVICES" title="Everything you need to build better." text="One team for planning, execution and interiors." />
+        <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{services.map(service => <ServiceCard reference key={service.slug} service={service} />)}</div>
+        <Link href="/services" className={`mt-6 ${homeButton}`}>View Services <ArrowRight className="h-4 w-4" /></Link>
+      </div>
+    </section>
+    <PricingPackages reference />
+    <section id="why-us" className="scroll-mt-24 bg-[#faf9f7] py-12 sm:py-16">
+      <div className="site-container">
+        <SectionHeading compact eyebrow="WHY ROYAL STONE" title="Professional execution from concept to completion." />
+        <div className="mt-7 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">{reasons.map(({ Icon, title, text }) => <div key={title} className="flex items-start gap-4"><span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600"><Icon className="h-6 w-6" strokeWidth={1.6} /></span><div><h3 className="text-base font-bold text-slate-950">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-500">{text}</p></div></div>)}</div>
+        <Link href="/why-us" className={`mt-6 ${homeButton}`}>Why Choose Us <ArrowRight className="h-4 w-4" /></Link>
+      </div>
+    </section>
+    <section className="py-12 sm:py-16">
+      <div className="site-container">
+        <SectionHeading compact eyebrow="OUR PROCESS" title="From your first idea to final handover." text="A coordinated workflow with clear decisions at each stage." />
+        <ProcessTimeline preview reference />
+        <Link href="/process" className={`mt-6 ${homeButton}`}>Explore Our Process <ArrowRight className="h-4 w-4" /></Link>
+      </div>
+    </section>
+    <section className="bg-[#faf9f7] py-12 sm:py-16">
+      <div className="site-container">
+        <SectionHeading compact eyebrow="PROJECTS PREVIEW" title="Explore what your space could become." text="Our gallery is ready for approved project documentation. Clearly labeled concepts show how upcoming work will be presented." />
+        <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{content.projects.map(project => <ProjectCard reference key={project.slug} project={project} />)}</div>
+        {content.projects.length === 0 && <p className="mt-8 leading-7 text-slate-600">Project updates coming soon.</p>}
+        <Link href="/projects" className={`mt-6 ${homeButton}`}>View Projects <ArrowRight className="h-4 w-4" /></Link>
+      </div>
+    </section>
+    <Testimonials testimonials={content.testimonials} />
+    <HomeFAQ />
+    <CTASection reference />
+    <CTASection />
   </main>;
 }

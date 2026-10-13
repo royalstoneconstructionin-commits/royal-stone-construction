@@ -5,13 +5,21 @@ type SectionHeadingProps = {
   eyebrow: string;
   title: string;
   text?: string;
+  compact?: boolean;
 };
 
 export default function SectionHeading({
   eyebrow,
   title,
   text,
+  compact = false,
 }: SectionHeadingProps) {
+  if (compact) return (
+    <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-3">
+      <div className="max-w-2xl"><p className="text-xs font-bold uppercase tracking-[0.18em] text-red-600">{eyebrow}</p><h2 className="mt-2 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">{title}</h2></div>
+      {text && <p className="max-w-sm text-sm leading-6 text-slate-500">{text}</p>}
+    </div>
+  );
   return (
     <div className="group relative isolate max-w-3xl">
 

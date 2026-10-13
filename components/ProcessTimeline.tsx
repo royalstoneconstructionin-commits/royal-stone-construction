@@ -10,18 +10,28 @@ import { processSteps } from "@/lib/site-data";
 
 type ProcessTimelineProps = {
   preview?: boolean;
+  reference?: boolean;
 };
 
 const previewIndices = [0, 3, 6, 9];
 
 export default function ProcessTimeline({
   preview = false,
+  reference = false,
 }: ProcessTimelineProps) {
   const steps = preview
     ? processSteps.filter((_, index) =>
         previewIndices.includes(index)
       )
     : processSteps;
+
+  if (reference) return <ol className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {steps.map(([title, text], index) => <li key={title} className="relative flex items-start gap-4 pr-4">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-600 text-sm font-bold text-white">{index + 1}</span>
+      <div><p className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-red-600">Process Step {String(index + 1).padStart(2, "0")}</p><h3 className="text-sm font-bold text-slate-950">{title}</h3><p className="mt-2 text-sm leading-5 text-slate-500">{text}</p><span className="mt-2 block text-xs text-slate-500">Our Process</span></div>
+      {index < steps.length - 1 && <ArrowRight aria-hidden="true" className="absolute -right-2 top-4 hidden h-4 w-4 text-slate-400 lg:block" />}
+    </li>)}
+  </ol>;
 
   return (
     <div className="relative w-full overflow-hidden">

@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import { packageData } from "@/lib/design-packages";
 import {
   ArrowRight,
   Building2,
@@ -31,6 +32,24 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
   const submitting = useRef(false);
+  const [selectedPackage, setSelectedPackage] = useState("");
+
+  useEffect(() => {
+    const selectPackage = (city: string, name: string) => {
+      if (city !== "Patna" && city !== "Noida") return;
+      if (!packageData[city].some(item => item.name === name)) return;
+      setForm(prev => ({ ...prev, city, purpose: "Architecture" }));
+      setSelectedPackage(name);
+    };
+    const params = new URLSearchParams(window.location.search);
+    selectPackage(params.get("city") ?? "", params.get("package") ?? "");
+    const onPackage = (event: Event) => {
+      const detail = (event as CustomEvent<{ city: string; name: string }>).detail;
+      if (detail) selectPackage(detail.city, detail.name);
+    };
+    window.addEventListener("royal-stone-package", onPackage);
+    return () => window.removeEventListener("royal-stone-package", onPackage);
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -68,7 +87,9 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
         name: form.name.trim(),
         mobile: form.mobile.trim(),
         city: form.city.trim(),
-        purpose: form.purpose,
+        purpose: selectedPackage && form.purpose === "Architecture"
+          ? `${form.purpose} / ${selectedPackage} (${form.city.trim()})`
+          : form.purpose,
       });
 
       if (error) {
@@ -84,6 +105,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
         "Thank you! Your enquiry has been submitted successfully."
       );
       setForm(emptyForm);
+      setSelectedPackage("");
     } catch (error) {
       console.error("Lead submission error:", error);
       setMessage("Something went wrong. Please try again.");
@@ -136,6 +158,12 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
         </div>
 
         <form onSubmit={handleSubmit} className={compact ? "space-y-2.5" : "space-y-4"}>
+          {selectedPackage && form.purpose === "Architecture" && (
+            <div className="flex items-center justify-between gap-3 rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-sm text-red-700">
+              <span>Selected: {selectedPackage} · {form.city}</span>
+              <button type="button" onClick={() => setSelectedPackage("")} className="min-h-11 font-semibold underline">Clear</button>
+            </div>
+          )}
           {/* Name */}
           <div className="group/input relative">
             {!compact && (<User className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-red-500" />)}

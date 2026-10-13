@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -16,12 +17,30 @@ export const buttonClass =
 type CTASectionProps = {
   form?: boolean;
   title?: string;
+  reference?: boolean;
 };
 
 export default function CTASection({
   form = false,
   title = "Ready to bring your project to life?",
+  reference = false,
 }: CTASectionProps) {
+  if (reference && !form) return <section className="bg-[#faf9f7] pb-12 pt-6 sm:pb-16">
+    <div className="site-container">
+      <div className="grid overflow-hidden rounded-lg border border-slate-200 bg-white md:grid-cols-[0.8fr_1.2fr]">
+        <div className="relative min-h-64"><Image src="/construction.png" alt="Construction site illustration with a tower crane and concrete building structure" fill sizes="(max-width: 767px) 100vw, 40vw" className="object-cover" /><span className="absolute bottom-3 left-4 rounded bg-white/90 px-2 py-1 text-xs text-slate-600">Design Concept</span></div>
+        <div className="p-6 sm:p-8">
+          <p className="text-xs font-bold tracking-[0.18em] text-red-600">LET&apos;S BUILD TOGETHER</p>
+          <h2 className="mt-2 text-3xl font-bold leading-tight tracking-tight text-slate-950">Plan Your Dream Project with Our Experts</h2>
+          <p className="mt-3 font-semibold text-slate-800">{title}</p>
+          <p className="mt-2 text-sm leading-6 text-slate-500">Your dream space deserves expert planning and professional execution. Tell us your city and project requirements. Our team can help you explore the next steps, project scope and quotation.</p>
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm"><span className="flex items-center gap-2"><Building2 className="h-4 w-4 text-red-600" /><span>Expert Planning <span className="block text-xs text-slate-500">Design to execution</span></span></span><span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-red-600" /><span>Clear Consultation <span className="block text-xs text-slate-500">Understand your options</span></span></span></div>
+          <Link href="/get-quote" className="mt-5 inline-flex min-h-11 items-center gap-3 rounded-md bg-red-600 px-6 py-3 text-sm font-semibold text-white hover:bg-red-700">Get Free Quote <ArrowRight className="h-4 w-4" /></Link>
+          <p className="mt-3 flex items-center gap-2 text-xs text-slate-500"><CheckCircle2 className="h-4 w-4 text-emerald-600" />Start with a project enquiry</p>
+        </div>
+      </div>
+    </div>
+  </section>;
   return (
     <section className="relative isolate overflow-hidden bg-[#08111f] py-20 text-white sm:py-24 lg:py-28">
 
