@@ -25,7 +25,7 @@ const emptyForm: LeadFormState = {
   purpose: "",
 };
 
-export default function LeadForm() {
+export default function LeadForm({ compact = false }: { compact?: boolean }) {
   const [form, setForm] = useState<LeadFormState>(emptyForm);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -93,11 +93,16 @@ export default function LeadForm() {
     }
   }
 
+  const fieldClass = compact
+    ? "h-11 w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10"
+    : "h-14 w-full rounded-2xl border border-slate-200 bg-slate-50/70 pl-12 pr-4 font-medium text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10";
+
   return (
     <div
       id="lead-form"
-      className="group relative w-full max-w-xl overflow-hidden rounded-[32px] border border-white/70 bg-white/95 p-1 shadow-[0_30px_80px_rgba(15,23,42,0.18)] backdrop-blur-xl"
+      className={compact ? "relative w-full overflow-hidden rounded-2xl bg-white shadow-[0_12px_40px_rgba(0,0,0,0.16)]" : "group relative w-full max-w-xl overflow-hidden rounded-[32px] border border-white/70 bg-white/95 p-1 shadow-[0_30px_80px_rgba(15,23,42,0.18)] backdrop-blur-xl"}
     >
+      {!compact && <>
       {/* Animated Border Glow */}
       <div className="pointer-events-none absolute -inset-[2px] -z-10 rounded-[34px] bg-gradient-to-r from-red-600 via-orange-400 to-red-600 opacity-30 blur-md transition duration-500 group-hover:opacity-60" />
 
@@ -105,9 +110,12 @@ export default function LeadForm() {
       <div className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-red-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-52 w-52 rounded-full bg-orange-400/10 blur-3xl" />
 
-      <div className="relative rounded-[28px] bg-white px-5 py-7 sm:px-8 sm:py-9">
+      </>}
+
+      <div className={`relative rounded-[28px] bg-white ${compact ? "px-4 py-5 sm:px-5" : "px-5 py-7 sm:px-8 sm:py-9"}`}>
         {/* Header */}
-        <div className="mb-7 text-center">
+        <div className={`${compact ? "mb-4" : "mb-7"} text-center`}>
+          {!compact && (
           <div className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2 text-xs font-black tracking-[0.16em] text-red-600 shadow-sm">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
@@ -115,21 +123,22 @@ export default function LeadForm() {
             </span>
             FREE CONSULTATION
           </div>
+          )}
 
-          <h2 className="bg-gradient-to-r from-slate-950 via-slate-800 to-red-600 bg-clip-text text-3xl font-black tracking-tight text-transparent sm:text-4xl">
+          <h2 className={compact ? "text-xl font-bold tracking-tight text-slate-950 sm:text-2xl" : "bg-gradient-to-r from-slate-950 via-slate-800 to-red-600 bg-clip-text text-3xl font-black tracking-tight text-transparent sm:text-4xl"}>
             Talk to Our Experts
           </h2>
 
-          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-500 sm:text-base">
+          <p className={`mx-auto max-w-md text-sm text-slate-500 ${compact ? "mt-2 leading-5 text-slate-600" : "mt-3 leading-6 sm:text-base"}`}>
             Tell us about your project and our construction experts will contact
             you shortly.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className={compact ? "space-y-2.5" : "space-y-4"}>
           {/* Name */}
           <div className="group/input relative">
-            <User className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-red-500" />
+            {!compact && (<User className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-red-500" />)}
 
             <input
               type="text"
@@ -143,13 +152,13 @@ export default function LeadForm() {
               placeholder="Full Name"
               aria-label="Full Name"
               autoComplete="name"
-              className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50/70 pl-12 pr-4 font-medium text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10"
+              className={fieldClass}
             />
           </div>
 
           {/* Mobile */}
           <div className="group/input relative">
-            <Phone className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-red-500" />
+            {!compact && (<Phone className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-red-500" />)}
 
             <input
               type="tel"
@@ -166,13 +175,13 @@ export default function LeadForm() {
               aria-label="Mobile Number"
               inputMode="numeric"
               autoComplete="tel"
-              className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50/70 pl-12 pr-4 font-medium text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10"
+              className={fieldClass}
             />
           </div>
 
           {/* City */}
           <div className="group/input relative">
-            <MapPin className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-red-500" />
+            {!compact && (<MapPin className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-red-500" />)}
 
             <input
               type="text"
@@ -186,13 +195,13 @@ export default function LeadForm() {
               placeholder="City"
               aria-label="City"
               autoComplete="address-level2"
-              className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50/70 pl-12 pr-4 font-medium text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10"
+              className={fieldClass}
             />
           </div>
 
           {/* Purpose */}
           <div className="group/input relative">
-            <Building2 className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-red-500" />
+            {!compact && (<Building2 className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-red-500" />)}
 
             <select
               aria-label="Requirement / Purpose"
@@ -203,7 +212,7 @@ export default function LeadForm() {
                   purpose: e.target.value,
                 }))
               }
-              className="h-14 w-full appearance-none rounded-2xl border border-slate-200 bg-slate-50/70 pl-12 pr-10 font-medium text-slate-900 outline-none transition-all duration-300 hover:border-slate-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10"
+              className={compact ? `${fieldClass} pr-9` : "h-14 w-full appearance-none rounded-2xl border border-slate-200 bg-slate-50/70 pl-12 pr-10 font-medium text-slate-900 outline-none transition-all duration-300 hover:border-slate-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10"}
             >
               <option value="">Select Your Requirement</option>
               <option value="Architecture">
@@ -217,19 +226,21 @@ export default function LeadForm() {
               <option value="Other">Other</option>
             </select>
 
+            {!compact && (
             <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-slate-400">
               ▼
             </div>
+            )}
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
-            className="group/button relative flex h-14 w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-red-600 to-red-700 text-base font-extrabold text-white shadow-[0_12px_35px_rgba(220,38,38,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_45px_rgba(220,38,38,0.38)] disabled:cursor-not-allowed disabled:opacity-60"
+            className={compact ? "flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-red-600 text-base font-bold text-white transition-colors hover:bg-red-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-200 disabled:cursor-not-allowed disabled:opacity-60" : "group/button relative flex h-14 w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-red-600 to-red-700 text-base font-extrabold text-white shadow-[0_12px_35px_rgba(220,38,38,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_45px_rgba(220,38,38,0.38)] disabled:cursor-not-allowed disabled:opacity-60"}
           >
             {/* Button Light Sweep */}
-            <span className="absolute -left-20 top-0 h-full w-14 skew-x-[-25deg] bg-white/20 blur-sm transition-all duration-700 group-hover/button:left-[120%]" />
+            {!compact && (<span className="absolute -left-20 top-0 h-full w-14 skew-x-[-25deg] bg-white/20 blur-sm transition-all duration-700 group-hover/button:left-[120%]" />)}
 
             {loading ? (
               <>
@@ -239,7 +250,7 @@ export default function LeadForm() {
             ) : (
               <>
                 Submit Enquiry
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover/button:translate-x-1" />
+                {!compact && (<ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover/button:translate-x-1" />)}
               </>
             )}
           </button>
