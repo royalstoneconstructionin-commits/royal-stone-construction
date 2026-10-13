@@ -60,7 +60,7 @@ export default function ProjectCard({
           className="absolute inset-0 block overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-red-500"
         >
           <Image
-            unoptimized
+            unoptimized={!project.image.startsWith("/")}
             src={project.image}
             alt={
               isConcept
@@ -69,6 +69,7 @@ export default function ProjectCard({
             }
             width={800}
             height={600}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             loading="lazy"
             decoding="async"
             className="

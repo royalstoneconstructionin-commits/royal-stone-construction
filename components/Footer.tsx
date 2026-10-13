@@ -1,13 +1,14 @@
 
 import Link from "next/link";
 import { serviceLinks } from "@/lib/site-data";
+import { businessContact } from "@/lib/business-contact";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import {
   Facebook,
   Instagram,
   Linkedin,
   Mail,
   MapPin,
-  MessageCircle,
   Phone,
   Youtube,
   ArrowUpRight,
@@ -186,10 +187,10 @@ export default function Footer() {
                 </div>
 
                 <a
-                  href="tel:+919876543210"
+                  href={businessContact.phoneHref}
                   className="pt-2 transition-colors hover:text-white"
                 >
-                  +91 98765 43210
+                  {businessContact.phoneDisplay}
                 </a>
               </div>
 
@@ -282,26 +283,25 @@ export default function Footer() {
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/919876543210"
+        href={businessContact.whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="WhatsApp"
+        aria-label="Chat with Royal Stone Construction on WhatsApp"
         className="
           group fixed bottom-5 right-5 z-50
-          flex h-14 w-14 items-center justify-center
+          flex h-16 w-16 items-center justify-center
           rounded-full bg-[#25D366]
           text-white
-          shadow-[0_10px_35px_rgba(37,211,102,.35)]
+          shadow-[0_8px_24px_rgba(0,0,0,.12)]
           transition-all duration-300
           hover:-translate-y-1
           hover:scale-110
           hover:shadow-[0_12px_40px_rgba(37,211,102,.55)]
-          before:absolute before:inset-0 before:-z-10
-          before:animate-ping before:rounded-full
-          before:bg-[#25D366]/30
+          focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-300 focus-visible:ring-offset-2
+          motion-reduce:transform-none motion-reduce:transition-none
         "
       >
-        <MessageCircle className="h-6 w-6 transition-transform duration-300 group-hover:rotate-12" />
+        <WhatsAppIcon className="h-8 w-8" />
       </a>
     </footer>
   );

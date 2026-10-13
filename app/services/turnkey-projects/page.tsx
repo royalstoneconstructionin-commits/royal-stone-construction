@@ -1,3 +1,4 @@
+import { metadataForRoute } from "@/lib/seo";
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -20,11 +21,7 @@ import {
 import ServiceDetail from "@/components/ServiceDetail";
 import { services } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Turnkey Projects",
-  description:
-    "Explore Royal Stone Construction turnkey services, from architecture and construction planning to materials, interiors and final handover.",
-};
+export const metadata: Metadata = metadataForRoute("/services/turnkey-projects");
 
 const turnkeySteps = [
   {

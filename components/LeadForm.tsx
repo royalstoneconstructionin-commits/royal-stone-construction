@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import {
   ArrowRight,
   Building2,
@@ -10,7 +10,6 @@ import {
   Phone,
   User,
 } from "lucide-react";
-import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 type LeadFormState = {
   name: string;
@@ -27,7 +26,6 @@ const emptyForm: LeadFormState = {
 };
 
 export default function LeadForm() {
-  const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const [form, setForm] = useState<LeadFormState>(emptyForm);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -56,17 +54,16 @@ export default function LeadForm() {
       return;
     }
 
-    if (!supabase) {
-      setMessage(
-        "Online enquiries are currently unavailable. Please contact us directly."
-      );
-      return;
-    }
-
     submitting.current = true;
     setLoading(true);
 
     try {
+      const { createSupabaseBrowserClient } = await import("@/lib/supabase-browser");
+      const supabase = createSupabaseBrowserClient();
+      if (!supabase) {
+        setMessage("Online enquiries are currently unavailable. Please contact us directly.");
+        return;
+      }
       const { error } = await supabase.from("leads").insert({
         name: form.name.trim(),
         mobile: form.mobile.trim(),

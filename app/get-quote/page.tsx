@@ -1,3 +1,4 @@
+import { metadataForRoute } from "@/lib/seo";
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -20,11 +21,7 @@ import {
 import PageHero from "@/components/PageHero";
 import LeadForm from "@/components/LeadForm";
 
-export const metadata: Metadata = {
-  title: "Get Free Quote | Royal Stone Construction",
-  description:
-    "Request a free consultation for architecture, construction with material, interior design or turnkey projects from Royal Stone Construction.",
-};
+export const metadata: Metadata = metadataForRoute("/get-quote");
 
 const processSteps = [
   {

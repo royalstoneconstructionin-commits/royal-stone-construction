@@ -1,3 +1,4 @@
+import { metadataForRoute } from "@/lib/seo";
 
 import type { Metadata } from "next";
 
@@ -19,13 +20,9 @@ import CTASection from "@/components/CTASection";
 
 import { getSiteContent } from "@/lib/site-content-server";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 30;
 
-export const metadata: Metadata = {
-  title: "Projects & Gallery | Royal Stone Construction",
-  description:
-    "Explore Royal Stone Construction's architecture, residential, commercial, interior design and construction portfolio, including clearly labelled illustrative concepts.",
-};
+export const metadata: Metadata = metadataForRoute("/projects");
 
 const portfolioCategories = [
   {

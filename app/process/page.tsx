@@ -1,3 +1,4 @@
+import { metadataForRoute } from "@/lib/seo";
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -18,11 +19,7 @@ import PageHero from "@/components/PageHero";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import CTASection from "@/components/CTASection";
 
-export const metadata: Metadata = {
-  title: "Our Process | Royal Stone Construction",
-  description:
-    "Explore the Royal Stone Construction workflow from consultation, architecture planning and quotation to construction, quality inspection and final handover.",
-};
+export const metadata: Metadata = metadataForRoute("/process");
 
 const highlights = [
   {

@@ -1,3 +1,6 @@
+import { metadataForRoute } from "@/lib/seo";
+import { businessContact } from "@/lib/business-contact";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -10,7 +13,6 @@ import {
   Clock3,
   Mail,
   MapPin,
-  MessageCircle,
   Navigation,
   Phone,
   ShieldCheck,
@@ -21,23 +23,17 @@ import PageHero from "@/components/PageHero";
 import LeadForm from "@/components/LeadForm";
 import { getSiteContent } from "@/lib/site-content-server";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 30;
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Contact Royal Stone Construction",
-  },
-  description:
-    "Contact Royal Stone Construction in Patna, Bihar for architecture, construction with material and interior design enquiries.",
-};
+export const metadata: Metadata = metadataForRoute("/contact");
 
 const contactCards = [
   {
     number: "01",
     title: "Call Us",
     subtitle: "Speak with our team",
-    text: "+91 98765 43210",
-    href: "tel:+919876543210",
+    text: businessContact.phoneDisplay,
+    href: businessContact.phoneHref,
     button: "Call Now",
     icon: Phone,
     external: false,
@@ -56,10 +52,10 @@ const contactCards = [
     number: "03",
     title: "WhatsApp",
     subtitle: "Connect with our team",
-    text: "Message our team",
-    href: "https://wa.me/919876543210",
+    text: businessContact.phoneDisplay,
+    href: businessContact.whatsappHref,
     button: "Start Chat",
-    icon: MessageCircle,
+    icon: WhatsAppIcon,
     external: true,
   },
 ];
@@ -148,7 +144,9 @@ export default async function ContactPage() {
                   {/* Top Icons */}
                   <div className="relative z-10 flex items-start justify-between gap-4">
 
-                    <div className="flex h-16 w-16 items-center justify-center rounded-[20px] border border-red-100 bg-red-50 text-red-600 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-red-600 group-hover:bg-red-600 group-hover:text-white group-hover:shadow-[0_12px_35px_rgba(220,38,38,0.3)] motion-reduce:transform-none">
+                    <div className={external
+                      ? "flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(0,0,0,.12)] transition-transform duration-300 group-hover:scale-110 motion-reduce:transform-none"
+                      : "flex h-16 w-16 items-center justify-center rounded-[20px] border border-red-100 bg-red-50 text-red-600 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-red-600 group-hover:bg-red-600 group-hover:text-white group-hover:shadow-[0_12px_35px_rgba(220,38,38,0.3)] motion-reduce:transform-none"}>
 
                       <Icon className="h-8 w-8" />
 

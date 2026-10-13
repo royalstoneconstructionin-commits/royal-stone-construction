@@ -26,8 +26,14 @@ import {
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import { getSiteContent } from "@/lib/site-content-server";
+import { pageMetadata } from "@/lib/seo";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 30;
+
+// Render each published project on demand, then reuse it between refreshes.
+export function generateStaticParams() {
+  return [];
+}
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -56,8 +62,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: project.title,
-    description: project.details,
+    ...pageMetadata(project.title, project.details, `/projects/${project.slug}`, project.image),
     robots:
       project.status === "Concept"
         ? { index: false }
@@ -213,7 +218,7 @@ export default async function ProjectPage({
             <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden bg-slate-100 sm:min-h-[420px] lg:min-h-[580px]">
 
               <Image
-                unoptimized
+                unoptimized={!project.image.startsWith("/")}
                 src={project.image}
                 alt={
                   isConcept
@@ -697,7 +702,7 @@ export default async function ProjectPage({
                   <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
 
                     <Image
-                      unoptimized
+                      unoptimized={!src.startsWith("/")}
                       src={src}
                       alt={`${project.title} - ${
                         isConcept

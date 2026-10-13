@@ -1,5 +1,42 @@
 # Royal Stone Construction - Full Stack Website
 
+## Technical SEO
+
+### Loading performance
+
+Public content and the home, contact, project and sitemap routes use 30-second
+background revalidation rather than querying Supabase on every visitor request.
+After Save & Publish, cached public pages can briefly show the previous content;
+the first request after expiry triggers a background refresh. A fresh request
+after that refresh displays the update. Admin authentication and lead submissions
+remain uncached. Failed content requests retain the existing default fallback.
+
+Local project images use Next.js responsive resizing and WebP delivery with lazy
+loading below the fold. Remote image URLs retain their existing direct delivery
+so admin-entered image hosts continue to work. The enquiry form loads the Supabase
+browser library on submission rather than during initial page loading.
+
+The public pages include unique titles and descriptions, self-referencing canonical
+URLs and Open Graph/Twitter metadata. The production URL is configured in
+`lib/seo.ts` as `https://www.royalstoneconstruction.in`. Update it if the preferred
+domain changes. Visible page copy and design are unchanged by these SEO additions.
+
+`/sitemap.xml` lists the public pages and published non-concept projects from the
+same content source used by the project pages. Concept projects and the admin
+area retain noindex metadata and are excluded from the sitemap. `/robots.txt`
+allows crawlers to read those noindex directives and points to the sitemap.
+The homepage includes Organization and WebSite JSON-LD. Unverified phone numbers,
+office addresses, opening hours and customer ratings are not included in schema.
+
+After deployment, check the canonical domain serves the site and configure your
+hosting provider to redirect alternate domains (including the non-www domain) to
+the preferred HTTPS domain. Verify ownership in Google Search Console using
+`/google9514fd7b0eaaa5f4.html`, then submit `sitemap.xml`. Use URL Inspection to
+check the homepage and service pages. Do not remove the verification file.
+
+Technical SEO helps indexing but cannot guarantee rankings. For local visibility,
+maintain an accurate Google Business Profile with verified business details.
+
 Tech stack:
 - Next.js 15
 - React 19

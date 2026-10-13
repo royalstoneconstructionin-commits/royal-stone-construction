@@ -1,3 +1,4 @@
+import { metadataForRoute } from "@/lib/seo";
 import type { Metadata } from "next";
 
 import Link from "next/link";
@@ -38,15 +39,7 @@ import CTASection, {
 
 import { reasons } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-
-  title: "Why Choose Us",
-
-  description:
-
-    "Discover Royal Stone Construction's approach to quality materials, transparent pricing, project supervision and complete project management.",
-
-};
+export const metadata: Metadata = metadataForRoute("/why-us");
 
 const reasonIcons = [
 

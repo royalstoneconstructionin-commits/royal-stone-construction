@@ -1,3 +1,4 @@
+import { metadataForRoute } from "@/lib/seo";
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -26,11 +27,7 @@ import CTASection, {
   buttonClass,
 } from "@/components/CTASection";
 
-export const metadata: Metadata = {
-  title: "About Us | Royal Stone Construction",
-  description:
-    "Discover Royal Stone Construction in Patna, Bihar. Architecture, construction with material, and interior design services with professional planning and coordinated execution.",
-};
+export const metadata: Metadata = metadataForRoute("/about");
 
 const missionVision = [
   {

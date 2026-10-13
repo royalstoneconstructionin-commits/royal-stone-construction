@@ -1,3 +1,4 @@
+import { metadataForRoute } from "@/lib/seo";
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -24,11 +25,7 @@ import {
 import ServiceDetail from "@/components/ServiceDetail";
 import { services } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Floor Planning",
-  description:
-    "Explore residential and commercial floor planning, space layouts, room arrangements and architectural planning with Royal Stone Construction.",
-};
+export const metadata: Metadata = metadataForRoute("/services/floor-planning");
 
 const planningFeatures = [
   {

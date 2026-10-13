@@ -1,4 +1,6 @@
-﻿import type { Metadata } from "next";
+import StructuredData from "@/components/StructuredData";
+import { metadataForRoute } from "@/lib/seo";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Building2, ShieldCheck } from "lucide-react";
 import Hero from "@/components/Hero";
@@ -11,12 +13,13 @@ import Testimonials from "@/components/Testimonials";
 import { services } from "@/lib/site-data";
 import { getSiteContent } from "@/lib/site-content-server";
 
-export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: { absolute: "Royal Stone Construction | Architecture & Construction" }, description: "Royal Stone Construction provides architecture, construction with material and interior design in Patna, Bihar. Plan your project with one coordinated team." };
+export const revalidate = 30;
+export const metadata: Metadata = metadataForRoute("/");
 
 export default async function HomePage() {
   const content = await getSiteContent();
   return <main className="bg-white">
+    <StructuredData />
     <Hero />
     <section className="py-20"><div className="site-container grid items-center gap-10 lg:grid-cols-2"><SectionHeading eyebrow="ABOUT ROYAL STONE" title="One team for your next chapter." text="From your first floor plan to the final finish, Royal Stone Construction brings design and execution together. We help you make considered decisions for your home or commercial space." /><div><p className="text-lg leading-8 text-slate-600">Based in Patna, Bihar, our approach combines practical planning, clear scope and coordinated project delivery. Your priorities shape the work at every stage.</p><Link href="/about" className={`mt-7 ${buttonClass}`}>Learn More About Us</Link></div></div></section>
     <section id="services" className="bg-white py-20"><div className="site-container"><SectionHeading eyebrow="OUR SERVICES" title="Everything you need to build better." text="One team for planning, execution and interiors." /><div className="mt-10 grid gap-6 md:grid-cols-3">{services.slice(0, 3).map(service => <ServiceCard key={service.slug} service={service} />)}</div><Link href="/services" className={`mt-8 ${buttonClass}`}>View Services</Link></div></section>

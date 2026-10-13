@@ -1,3 +1,4 @@
+import { metadataForRoute } from "@/lib/seo";
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -25,11 +26,7 @@ import {
 import ServiceDetail from "@/components/ServiceDetail";
 import { services } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Architecture Services",
-  description:
-    "Explore Royal Stone Construction architecture services including house map planning, 2D floor plans, 3D elevations, residential and commercial architectural design.",
-};
+export const metadata: Metadata = metadataForRoute("/services/architecture");
 
 // =====================================
 // ARCHITECTURE SERVICES
