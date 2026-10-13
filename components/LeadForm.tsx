@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { packageData } from "@/lib/design-packages";
+import { calculateDesignEstimate, designEstimateNote, formatArea, formatMoney, type DesignEstimate } from "@/lib/design-estimate";
 import {
   ArrowRight,
   Building2,
@@ -33,6 +34,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
   const [success, setSuccess] = useState(false);
   const submitting = useRef(false);
   const [selectedPackage, setSelectedPackage] = useState("");
+  const [selectedEstimate, setSelectedEstimate] = useState<DesignEstimate | null>(null);
 
   useEffect(() => {
     const selectPackage = (city: string, name: string) => {
@@ -40,9 +42,11 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
       if (!packageData[city].some(item => item.name === name)) return;
       setForm(prev => ({ ...prev, city, purpose: "Architecture" }));
       setSelectedPackage(name);
+      setSelectedEstimate(null);
     };
     const params = new URLSearchParams(window.location.search);
     selectPackage(params.get("city") ?? "", params.get("package") ?? "");
+    setSelectedEstimate(calculateDesignEstimate(params.get("city") ?? "", params.get("package") ?? "", params.get("area")));
     const onPackage = (event: Event) => {
       const detail = (event as CustomEvent<{ city: string; name: string }>).detail;
       if (detail) selectPackage(detail.city, detail.name);
@@ -77,26 +81,18 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
     setLoading(true);
 
     try {
-      const { createSupabaseBrowserClient } = await import("@/lib/supabase-browser");
-      const supabase = createSupabaseBrowserClient();
-      if (!supabase) {
-        setMessage("Online enquiries are currently unavailable. Please contact us directly.");
-        return;
-      }
-      const { error } = await supabase.from("leads").insert({
-        name: form.name.trim(),
-        mobile: form.mobile.trim(),
-        city: form.city.trim(),
-        purpose: selectedPackage && form.purpose === "Architecture"
-          ? `${form.purpose} / ${selectedPackage} (${form.city.trim()})`
-          : form.purpose,
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          packageName: selectedPackage,
+          estimateArea: selectedEstimate?.area,
+        }),
       });
-
-      if (error) {
-        console.error("Supabase Error:", error);
-        setMessage(
-          "Unable to submit enquiry. Please try again or contact us directly."
-        );
+      const result = await response.json();
+      if (!response.ok) {
+        setMessage(result.error || "Unable to submit enquiry. Please try again or contact us directly.");
         return;
       }
 
@@ -106,6 +102,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
       );
       setForm(emptyForm);
       setSelectedPackage("");
+      setSelectedEstimate(null);
     } catch (error) {
       console.error("Lead submission error:", error);
       setMessage("Something went wrong. Please try again.");
@@ -161,7 +158,17 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
           {selectedPackage && form.purpose === "Architecture" && (
             <div className="flex items-center justify-between gap-3 rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-sm text-red-700">
               <span>Selected: {selectedPackage} · {form.city}</span>
-              <button type="button" onClick={() => setSelectedPackage("")} className="min-h-11 font-semibold underline">Clear</button>
+              <button type="button" onClick={() => { setSelectedPackage(""); setSelectedEstimate(null); }} className="min-h-11 font-semibold underline">Clear</button>
+            </div>
+          )}
+          {selectedEstimate && (
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-6 text-slate-700">
+              <p className="font-bold text-slate-950">Selected Design Estimate · Architecture</p>
+              <p>{selectedEstimate.city} · {selectedEstimate.packageName}</p>
+              <p>Area to Be Designed: {formatArea(selectedEstimate.area)} sqft</p>
+              <p>{formatArea(selectedEstimate.area)} sqft × {formatMoney(selectedEstimate.rate)}/sqft = {formatMoney(selectedEstimate.fee)}</p>
+              <p className="font-bold text-red-600">Estimated Design Fee: {formatMoney(selectedEstimate.fee)}</p>
+              <p className="mt-2 text-xs text-slate-500">{designEstimateNote}</p>
             </div>
           )}
           {/* Name */}
@@ -214,12 +221,14 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
             <input
               type="text"
               value={form.city}
-              onChange={(e) =>
+              onChange={(e) => {
+                setSelectedEstimate(null);
+                setSelectedPackage("");
                 setForm((prev) => ({
                   ...prev,
                   city: e.target.value,
-                }))
-              }
+                }));
+              }}
               placeholder="City"
               aria-label="City"
               autoComplete="address-level2"
@@ -234,12 +243,13 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
             <select
               aria-label="Requirement / Purpose"
               value={form.purpose}
-              onChange={(e) =>
+              onChange={(e) => {
+                setSelectedEstimate(null);
                 setForm((prev) => ({
                   ...prev,
                   purpose: e.target.value,
-                }))
-              }
+                }));
+              }}
               className={compact ? `${fieldClass} pr-9` : "h-14 w-full appearance-none rounded-2xl border border-slate-200 bg-slate-50/70 pl-12 pr-10 font-medium text-slate-900 outline-none transition-all duration-300 hover:border-slate-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10"}
             >
               <option value="">Select Your Requirement</option>

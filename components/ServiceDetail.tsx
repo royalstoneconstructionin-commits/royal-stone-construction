@@ -15,6 +15,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import CTASection from "@/components/CTASection";
 import PricingPackages from "@/components/PricingPackages";
+import DesignFeeCalculator from "@/components/DesignFeeCalculator";
 
 import { services } from "@/lib/site-data";
 
@@ -436,7 +437,7 @@ export default function ServiceDetail({
       {/* ARCHITECTURE PRICING */}
       {/* ===================================== */}
       {isArchitecture && (
-        <PricingPackages />
+        <><PricingPackages /><DesignFeeCalculator /></>
       )}
 
       {/* ===================================== */}

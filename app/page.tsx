@@ -11,6 +11,7 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import ProjectCard from "@/components/ProjectCard";
 import Testimonials from "@/components/Testimonials";
 import PricingPackages from "@/components/PricingPackages";
+import DesignFeeCalculator from "@/components/DesignFeeCalculator";
 import HomeFAQ from "@/components/HomeFAQ";
 import { services } from "@/lib/site-data";
 import { getSiteContent } from "@/lib/site-content-server";
@@ -46,6 +47,7 @@ export default async function HomePage() {
       </div>
     </section>
     <PricingPackages reference />
+    <DesignFeeCalculator />
     <section id="why-us" className="scroll-mt-24 bg-[#faf9f7] py-12 sm:py-16">
       <div className="site-container">
         <SectionHeading compact eyebrow="WHY ROYAL STONE" title="Professional execution from concept to completion." />

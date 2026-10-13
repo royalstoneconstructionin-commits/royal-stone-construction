@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import PricingPackages from "@/components/PricingPackages";
+import DesignFeeCalculator from "@/components/DesignFeeCalculator";
 import { metadataForRoute } from "@/lib/seo";
 
 export const metadata: Metadata = metadataForRoute("/packages");
@@ -26,6 +27,7 @@ export default function PackagesPage() {
         </div>
       </section>
       <PricingPackages reference />
+      <DesignFeeCalculator />
     </main>
   );
 }

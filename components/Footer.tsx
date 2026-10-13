@@ -292,6 +292,46 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Call Floating Button */}
+      <a
+        href={businessContact.phoneHref}
+        aria-label="Call Royal Stone Construction"
+        className="
+          group fixed bottom-[172px] right-5 z-50
+          flex h-16 w-16 items-center justify-center
+          rounded-full bg-red-600 text-white
+          shadow-[0_8px_24px_rgba(0,0,0,.12)]
+          transition-all duration-300
+          hover:-translate-y-1 hover:scale-110
+          hover:shadow-[0_12px_40px_rgba(220,38,38,.55)]
+          focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-300 focus-visible:ring-offset-2
+          motion-reduce:transform-none motion-reduce:transition-none
+        "
+      >
+        <Phone className="h-8 w-8" />
+      </a>
+
+      {/* LinkedIn Floating Button */}
+      <a
+        href="https://www.linkedin.com/company/royalstone-construction/about/?viewAsMember=true"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Royal Stone Construction on LinkedIn"
+        className="
+          group fixed bottom-[96px] right-5 z-50
+          flex h-16 w-16 items-center justify-center
+          rounded-full bg-[#0A66C2] text-white
+          shadow-[0_8px_24px_rgba(0,0,0,.12)]
+          transition-all duration-300
+          hover:-translate-y-1 hover:scale-110
+          hover:shadow-[0_12px_40px_rgba(10,102,194,.55)]
+          focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300 focus-visible:ring-offset-2
+          motion-reduce:transform-none motion-reduce:transition-none
+        "
+      >
+        <Linkedin className="h-8 w-8" />
+      </a>
+
       {/* WhatsApp Floating Button */}
       <a
         href={businessContact.whatsappHref}
