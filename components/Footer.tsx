@@ -1,16 +1,15 @@
 
 import Link from "next/link";
+import Image from "next/image";
 import { serviceLinks } from "@/lib/site-data";
 import { businessContact } from "@/lib/business-contact";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import {
-  Facebook,
   Instagram,
   Linkedin,
   Mail,
   MapPin,
   Phone,
-  Youtube,
   ArrowUpRight,
 } from "lucide-react";
 
@@ -18,27 +17,34 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative overflow-hidden bg-[#08111f] text-white"
+      className="relative overflow-hidden bg-[#0b1820] text-white"
     >
       {/* Background Glow */}
-      <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-red-600/10 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-orange-500/10 blur-[140px]" />
+      <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-brand-600/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-brand-500/10 blur-[140px]" />
 
       {/* Subtle top line */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-500/60 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="group">
+            <Image
+              src="/logo.png"
+              alt="Royal Stone Construction logo"
+              width={96}
+              height={96}
+              className="mb-5 rounded-full border border-brand-300 bg-white object-contain"
+            />
             <h2
               className="
                 relative inline-block
                 text-2xl font-black tracking-tight
                 text-white
                 transition-all duration-500
-                group-hover:text-red-400
-                group-hover:[text-shadow:0_0_8px_rgba(239,68,68,.9),0_0_20px_rgba(239,68,68,.55),0_0_35px_rgba(239,68,68,.35)]
+                group-hover:text-brand-400
+                group-hover:[text-shadow:0_0_8px_rgba(212,165,75,.9),0_0_20px_rgba(212,165,75,.55),0_0_35px_rgba(212,165,75,.35)]
                 sm:text-3xl
               "
             >
@@ -47,7 +53,7 @@ export default function Footer() {
               <span
                 className="
                   absolute -bottom-2 left-0 h-[2px] w-0
-                  bg-gradient-to-r from-red-500 via-orange-400 to-red-500
+                  bg-gradient-to-r from-brand-500 via-brand-400 to-brand-500
                   transition-all duration-500
                   group-hover:w-full
                 "
@@ -63,15 +69,15 @@ export default function Footer() {
               href="/get-quote"
               className="
                 mt-6 inline-flex items-center gap-2
-                rounded-full border border-red-500/30
-                bg-red-500/10 px-5 py-2.5
-                text-sm font-semibold text-red-300
+                rounded-full border border-brand-500/30
+                bg-brand-500/10 px-5 py-2.5
+                text-sm font-semibold text-brand-300
                 transition-all duration-300
                 hover:-translate-y-1
-                hover:border-red-400
-                hover:bg-red-500
+                hover:border-brand-400
+                hover:bg-brand-500
                 hover:text-white
-                hover:shadow-[0_10px_30px_rgba(239,68,68,.25)]
+                hover:shadow-[0_10px_30px_rgba(212,165,75,.25)]
               "
             >
               Get Free Quote
@@ -109,7 +115,7 @@ export default function Footer() {
                   <span
                     className="
                       absolute -bottom-1 left-0 h-px w-0
-                      bg-red-500
+                      bg-brand-500
                       transition-all duration-300
                       group-hover/link:w-full
                     "
@@ -137,10 +143,10 @@ export default function Footer() {
                 >
                   <span
                     className="
-                      h-1.5 w-1.5 rounded-full bg-red-500
+                      h-1.5 w-1.5 rounded-full bg-brand-500
                       transition-all duration-300
                       group-hover/service:scale-150
-                      group-hover/service:shadow-[0_0_12px_rgba(239,68,68,.9)]
+                      group-hover/service:shadow-[0_0_12px_rgba(212,165,75,.9)]
                     "
                   />
 
@@ -159,13 +165,13 @@ export default function Footer() {
                 <div
                   className="
                     flex h-10 w-10 shrink-0 items-center justify-center
-                    rounded-xl bg-red-500/10
+                    rounded-xl bg-brand-500/10
                     transition-all duration-300
-                    group-hover/contact:bg-red-500
-                    group-hover/contact:shadow-[0_0_25px_rgba(239,68,68,.35)]
+                    group-hover/contact:bg-brand-500
+                    group-hover/contact:shadow-[0_0_25px_rgba(212,165,75,.35)]
                   "
                 >
-                  <MapPin className="h-5 w-5 text-red-500 transition-colors group-hover/contact:text-white" />
+                  <MapPin className="h-5 w-5 text-brand-500 transition-colors group-hover/contact:text-white" />
                 </div>
 
                 <span className="pt-2 transition-colors group-hover/contact:text-white">
@@ -177,13 +183,13 @@ export default function Footer() {
                 <div
                   className="
                     flex h-10 w-10 shrink-0 items-center justify-center
-                    rounded-xl bg-red-500/10
+                    rounded-xl bg-brand-500/10
                     transition-all duration-300
-                    group-hover/contact:bg-red-500
-                    group-hover/contact:shadow-[0_0_25px_rgba(239,68,68,.35)]
+                    group-hover/contact:bg-brand-500
+                    group-hover/contact:shadow-[0_0_25px_rgba(212,165,75,.35)]
                   "
                 >
-                  <Phone className="h-5 w-5 text-red-500 transition-colors group-hover/contact:text-white" />
+                  <Phone className="h-5 w-5 text-brand-500 transition-colors group-hover/contact:text-white" />
                 </div>
 
                 <a
@@ -198,13 +204,13 @@ export default function Footer() {
                 <div
                   className="
                     flex h-10 w-10 shrink-0 items-center justify-center
-                    rounded-xl bg-red-500/10
+                    rounded-xl bg-brand-500/10
                     transition-all duration-300
-                    group-hover/contact:bg-red-500
-                    group-hover/contact:shadow-[0_0_25px_rgba(239,68,68,.35)]
+                    group-hover/contact:bg-brand-500
+                    group-hover/contact:shadow-[0_0_25px_rgba(212,165,75,.35)]
                   "
                 >
-                  <Mail className="h-5 w-5 text-red-500 transition-colors group-hover/contact:text-white" />
+                  <Mail className="h-5 w-5 text-brand-500 transition-colors group-hover/contact:text-white" />
                 </div>
 
                 <a
@@ -219,9 +225,7 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="mt-7 flex flex-wrap gap-3">
               {[
-                { Icon: Facebook, label: "Facebook", href: "#" },
-                { Icon: Instagram, label: "Instagram", href: "#" },
-                { Icon: Youtube, label: "YouTube", href: "#" },
+                { Icon: Instagram, label: "Instagram", href: businessContact.instagramHref },
                 {
                   Icon: Linkedin,
                   label: "LinkedIn",
@@ -242,9 +246,9 @@ export default function Footer() {
                     transition-all duration-300
                     hover:-translate-y-1
                     hover:scale-110
-                    hover:border-red-500
-                    hover:bg-red-600
-                    hover:shadow-[0_8px_25px_rgba(239,68,68,.35)]
+                    hover:border-brand-500
+                    hover:bg-brand-600
+                    hover:shadow-[0_8px_25px_rgba(212,165,75,.35)]
                   "
                 >
                   <Icon
@@ -273,17 +277,17 @@ export default function Footer() {
 
             <div className="flex gap-5">
               <Link
-                href="#"
+                href="/privacy-policy"
                 scroll={false}
-                className="transition-colors duration-300 hover:text-red-400"
+                className="transition-colors duration-300 hover:text-brand-400"
               >
                 Privacy Policy
               </Link>
 
               <Link
-                href="#"
+                href="/terms"
                 scroll={false}
-                className="transition-colors duration-300 hover:text-red-400"
+                className="transition-colors duration-300 hover:text-brand-400"
               >
                 Terms
               </Link>
@@ -299,12 +303,12 @@ export default function Footer() {
         className="
           group fixed bottom-[172px] right-5 z-50
           flex h-16 w-16 items-center justify-center
-          rounded-full bg-red-600 text-white
+          rounded-full bg-brand-600 text-white
           shadow-[0_8px_24px_rgba(0,0,0,.12)]
           transition-all duration-300
           hover:-translate-y-1 hover:scale-110
-          hover:shadow-[0_12px_40px_rgba(220,38,38,.55)]
-          focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-300 focus-visible:ring-offset-2
+          hover:shadow-[0_12px_40px_rgba(184,134,50,.55)]
+          focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-300 focus-visible:ring-offset-2
           motion-reduce:transform-none motion-reduce:transition-none
         "
       >

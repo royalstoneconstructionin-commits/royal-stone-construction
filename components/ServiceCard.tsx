@@ -38,11 +38,11 @@ export default function ServiceCard({
         <span className="absolute bottom-2 left-3 rounded bg-white/90 px-2 py-1 text-[10px] text-slate-600">Design Concept</span>
       </Link>
       <div className="flex flex-1 flex-col p-5">
-        <p className="mb-2 flex items-center gap-2 text-[10px] font-bold tracking-[0.14em] text-red-600"><Icon className="h-4 w-4" />OUR EXPERTISE</p>
+        <p className="mb-2 flex items-center gap-2 text-[10px] font-bold tracking-[0.14em] text-brand-600"><Icon className="h-4 w-4" />OUR EXPERTISE</p>
         <h3 className="text-lg font-bold text-slate-950">{service.title}</h3>
         <p className="mt-2 flex-1 text-sm leading-6 text-slate-500">{service.text}</p>
         <p className="mt-3 text-xs text-slate-500">Explore service details</p>
-        <Link href={`/services/${service.slug}`} className="mt-2 flex min-h-11 items-center justify-between gap-3 text-sm font-semibold text-red-600 hover:underline">Learn More<span className="sr-only"> about {service.title}</span><ArrowRight className="h-4 w-4" /></Link>
+        <Link href={`/services/${service.slug}`} className="mt-2 flex min-h-11 items-center justify-between gap-3 text-sm font-semibold text-brand-600 hover:underline">Learn More<span className="sr-only"> about {service.title}</span><ArrowRight className="h-4 w-4" /></Link>
       </div>
     </article>;
   }
@@ -55,13 +55,13 @@ export default function ServiceCard({
         border border-slate-200/90
         bg-white
         p-6 sm:p-8
-        shadow-[0_10px_35px_rgba(15,23,42,0.06)]
+        shadow-[0_10px_35px_rgba(11,24,32,0.06)]
         transition-all duration-500 ease-out
         hover:-translate-y-2
-        hover:border-red-300
-        hover:shadow-[0_25px_65px_rgba(220,38,38,0.15)]
-        focus-within:border-red-300
-        focus-within:shadow-[0_20px_50px_rgba(220,38,38,0.12)]
+        hover:border-brand-300
+        hover:shadow-[0_25px_65px_rgba(184,134,50,0.15)]
+        focus-within:border-brand-300
+        focus-within:shadow-[0_20px_50px_rgba(184,134,50,0.12)]
         motion-reduce:transform-none
       "
     >
@@ -70,10 +70,10 @@ export default function ServiceCard({
         className="
           pointer-events-none absolute -right-24 -top-24
           -z-10 h-72 w-72 rounded-full
-          bg-red-500/5 blur-[80px]
+          bg-brand-500/5 blur-[80px]
           transition-all duration-700
           group-hover:scale-125
-          group-hover:bg-red-500/15
+          group-hover:bg-brand-500/15
         "
       />
 
@@ -82,9 +82,9 @@ export default function ServiceCard({
         className="
           pointer-events-none absolute -bottom-24 -left-24
           -z-10 h-56 w-56 rounded-full
-          bg-orange-400/5 blur-[80px]
+          bg-brand-400/5 blur-[80px]
           transition-all duration-700
-          group-hover:bg-orange-400/10
+          group-hover:bg-brand-400/10
         "
       />
 
@@ -93,10 +93,10 @@ export default function ServiceCard({
         className="
           pointer-events-none absolute -right-12 -top-12
           h-48 w-48 rounded-full
-          border border-red-500/5
+          border border-brand-500/5
           transition-all duration-700
           group-hover:scale-110
-          group-hover:border-red-500/15
+          group-hover:border-brand-500/15
         "
       />
 
@@ -109,24 +109,24 @@ export default function ServiceCard({
             relative flex h-[70px] w-[70px]
             shrink-0 items-center justify-center
             rounded-[22px]
-            border border-red-100
-            bg-gradient-to-br from-red-50 to-white
-            text-red-600
-            shadow-[0_8px_25px_rgba(220,38,38,0.08)]
+            border border-brand-100
+            bg-gradient-to-br from-brand-50 to-white
+            text-brand-600
+            shadow-[0_8px_25px_rgba(184,134,50,0.08)]
             transition-all duration-500
             group-hover:-rotate-3
             group-hover:scale-110
-            group-hover:border-red-600
-            group-hover:bg-red-600
+            group-hover:border-brand-600
+            group-hover:bg-brand-600
             group-hover:text-white
-            group-hover:shadow-[0_12px_35px_rgba(220,38,38,0.3)]
+            group-hover:shadow-[0_12px_35px_rgba(184,134,50,0.3)]
             motion-reduce:transform-none
           "
         >
           <div
             className="
               absolute inset-0 rounded-[22px]
-              bg-gradient-to-br from-red-600 to-red-700
+              bg-gradient-to-br from-brand-600 to-brand-700
               opacity-0
               transition-opacity duration-500
               group-hover:opacity-100
@@ -154,9 +154,9 @@ export default function ServiceCard({
             text-slate-400
             transition-all duration-500
             group-hover:rotate-45
-            group-hover:border-red-200
-            group-hover:bg-red-50
-            group-hover:text-red-600
+            group-hover:border-brand-200
+            group-hover:bg-brand-50
+            group-hover:text-brand-600
             motion-reduce:transform-none
           "
         >
@@ -170,15 +170,15 @@ export default function ServiceCard({
 
         <span
           className="
-            h-2 w-2 rounded-full bg-red-600
-            shadow-[0_0_12px_rgba(220,38,38,0.45)]
+            h-2 w-2 rounded-full bg-brand-600
+            shadow-[0_0_12px_rgba(184,134,50,0.45)]
           "
         />
 
         <span
           className="
             text-xs font-black uppercase
-            tracking-[0.18em] text-red-600
+            tracking-[0.18em] text-brand-600
           "
         >
           OUR EXPERTISE
@@ -193,8 +193,8 @@ export default function ServiceCard({
           text-2xl font-black leading-snug
           tracking-tight text-slate-950
           transition-all duration-500
-          group-hover:text-red-600
-          group-hover:[text-shadow:0_0_20px_rgba(220,38,38,0.12)]
+          group-hover:text-brand-600
+          group-hover:[text-shadow:0_0_20px_rgba(184,134,50,0.12)]
           sm:text-[27px]
         "
       >
@@ -206,10 +206,10 @@ export default function ServiceCard({
         className="
           relative z-10 mt-5
           h-1 w-12 rounded-full
-          bg-gradient-to-r from-red-600 to-orange-400
+          bg-gradient-to-r from-brand-600 to-brand-400
           transition-all duration-500
           group-hover:w-24
-          group-hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]
+          group-hover:shadow-[0_0_15px_rgba(212,165,75,0.4)]
         "
       />
 
@@ -233,7 +233,7 @@ export default function ServiceCard({
           text-sm font-semibold text-slate-500
         "
       >
-        <CheckCircle2 className="h-4 w-4 shrink-0 text-red-600" />
+        <CheckCircle2 className="h-4 w-4 shrink-0 text-brand-600" />
 
         <span>
           Explore service details
@@ -247,8 +247,8 @@ export default function ServiceCard({
           bg-gradient-to-r
           from-slate-200 via-slate-100 to-transparent
           transition-all duration-500
-          group-hover:from-red-300
-          group-hover:via-red-100
+          group-hover:from-brand-300
+          group-hover:via-brand-100
         "
       />
 
@@ -260,19 +260,19 @@ export default function ServiceCard({
           inline-flex min-h-14 w-full
           items-center justify-between gap-3
           overflow-hidden rounded-2xl
-          border border-red-100
-          bg-red-50 px-5 py-3
-          text-sm font-extrabold text-red-600
+          border border-brand-100
+          bg-brand-50 px-5 py-3
+          text-sm font-extrabold text-brand-600
           transition-all duration-300
-          hover:border-red-600
+          hover:border-brand-600
           hover:bg-gradient-to-r
-          hover:from-red-600
-          hover:to-red-700
+          hover:from-brand-600
+          hover:to-brand-700
           hover:text-white
-          hover:shadow-[0_12px_35px_rgba(220,38,38,0.25)]
+          hover:shadow-[0_12px_35px_rgba(184,134,50,0.25)]
           focus-visible:outline-none
           focus-visible:ring-4
-          focus-visible:ring-red-200
+          focus-visible:ring-brand-200
         "
       >
         {/* BUTTON LIGHT SWEEP */}
@@ -302,7 +302,7 @@ export default function ServiceCard({
             relative z-10 flex h-9 w-9
             items-center justify-center
             rounded-xl bg-white
-            text-red-600 shadow-sm
+            text-brand-600 shadow-sm
             transition-all duration-300
             group-hover/button:translate-x-1
             group-hover/button:bg-white/20
@@ -320,7 +320,7 @@ export default function ServiceCard({
           pointer-events-none absolute bottom-0 left-0
           h-1 w-0
           bg-gradient-to-r
-          from-red-700 via-red-500 to-orange-400
+          from-brand-700 via-brand-500 to-brand-400
           transition-all duration-500
           group-hover:w-full
         "

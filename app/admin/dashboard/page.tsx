@@ -439,7 +439,7 @@ export default function AdminDashboard() {
       label: "Total Leads",
       value: counts.total,
       icon: Users,
-      color: "bg-red-50 text-red-600",
+      color: "bg-brand-50 text-brand-600",
     },
     {
       label: "New Enquiries",
@@ -535,9 +535,9 @@ export default function AdminDashboard() {
 
   if (!authorised) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#08111f] px-5 py-12">
+      <main className="flex min-h-screen items-center justify-center bg-[#0b1820] px-5 py-12">
         <div className="w-full max-w-md rounded-[30px] border border-white/10 bg-white/[0.06] p-8 text-center text-white shadow-2xl backdrop-blur-xl">
-          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-[24px] border border-red-500/20 bg-red-500/10 text-red-400">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-[24px] border border-brand-500/20 bg-brand-500/10 text-brand-400">
             {loading ? (
               <Loader2 className="h-10 w-10 animate-spin" />
             ) : (
@@ -562,7 +562,7 @@ export default function AdminDashboard() {
             <button
               type="button"
               onClick={() => void loadLeads()}
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3 font-bold text-white transition hover:bg-red-700"
+              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 font-bold text-white transition hover:bg-brand-700"
             >
               <RefreshCw className="h-4 w-4" />
               Try Again
@@ -580,12 +580,12 @@ export default function AdminDashboard() {
           PREMIUM DARK HEADER
       ====================================== */}
 
-      <header className="relative isolate overflow-hidden bg-[#08111f] px-4 pb-16 pt-7 text-white sm:px-6 sm:pb-20 lg:px-8">
+      <header className="relative isolate overflow-hidden bg-[#0b1820] px-4 pb-16 pt-7 text-white sm:px-6 sm:pb-20 lg:px-8">
 
         {/* Background Lighting */}
-        <div className="pointer-events-none absolute -left-28 -top-20 h-96 w-96 rounded-full bg-red-600/20 blur-[110px]" />
+        <div className="pointer-events-none absolute -left-28 -top-20 h-96 w-96 rounded-full bg-brand-600/20 blur-[110px]" />
 
-        <div className="pointer-events-none absolute -right-28 top-0 h-96 w-96 rounded-full bg-orange-500/10 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-28 top-0 h-96 w-96 rounded-full bg-brand-500/10 blur-[120px]" />
 
         {/* Architectural Grid */}
         <div
@@ -603,12 +603,12 @@ export default function AdminDashboard() {
           <div className="flex flex-col gap-5 border-b border-white/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
 
             <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-red-600 shadow-[0_10px_30px_rgba(220,38,38,0.3)]">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-600 shadow-[0_10px_30px_rgba(184,134,50,0.3)]">
                 <Building2 className="h-7 w-7 text-white" />
               </div>
 
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.15em] text-red-400">
+                <p className="text-xs font-black uppercase tracking-[0.15em] text-brand-400">
                   ROYAL STONE CONSTRUCTION
                 </p>
 
@@ -639,7 +639,7 @@ export default function AdminDashboard() {
               <button
                 type="button"
                 onClick={() => void logout()}
-                className="group inline-flex min-h-11 items-center gap-2 rounded-xl bg-red-600 px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-[0_10px_25px_rgba(220,38,38,0.3)]"
+                className="group inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-[0_10px_25px_rgba(184,134,50,0.3)]"
               >
                 <LogOut className="h-4 w-4" />
                 Logout
@@ -651,14 +651,14 @@ export default function AdminDashboard() {
           <div className="mt-9 flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
 
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.15em] text-red-300">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/25 bg-brand-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.15em] text-brand-300">
                 <ShieldCheck className="h-4 w-4" />
                 ADMINISTRATOR DASHBOARD
               </div>
 
               <h1 className="mt-5 text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
                 Business{" "}
-                <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent">
                   Dashboard.
                 </span>
               </h1>
@@ -709,7 +709,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* ADMIN NAVIGATION */}
-        <div className="mt-8 flex flex-col justify-between gap-4 rounded-[24px] border border-slate-200 bg-white p-3 shadow-[0_8px_35px_rgba(15,23,42,0.04)] sm:flex-row sm:items-center">
+        <div className="mt-8 flex flex-col justify-between gap-4 rounded-[24px] border border-slate-200 bg-white p-3 shadow-[0_8px_35px_rgba(11,24,32,0.04)] sm:flex-row sm:items-center">
 
           <div className="flex flex-wrap gap-2">
 
@@ -719,7 +719,7 @@ export default function AdminDashboard() {
               aria-pressed={activeTab === "leads"}
               className={`inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-extrabold transition-all duration-300 ${
                 activeTab === "leads"
-                  ? "bg-red-600 text-white shadow-[0_8px_22px_rgba(220,38,38,0.2)]"
+                  ? "bg-brand-600 text-white shadow-[0_8px_22px_rgba(184,134,50,0.2)]"
                   : "text-slate-600 hover:bg-slate-100"
               }`}
             >
@@ -733,7 +733,7 @@ export default function AdminDashboard() {
               aria-pressed={activeTab === "content"}
               className={`inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-extrabold transition-all duration-300 ${
                 activeTab === "content"
-                  ? "bg-red-600 text-white shadow-[0_8px_22px_rgba(220,38,38,0.2)]"
+                  ? "bg-brand-600 text-white shadow-[0_8px_22px_rgba(184,134,50,0.2)]"
                   : "text-slate-600 hover:bg-slate-100"
               }`}
             >
@@ -790,7 +790,7 @@ export default function AdminDashboard() {
           className={activeTab === "leads" ? "block" : "hidden"}
         >
           {/* LEAD TABLE WRAPPER */}
-          <div className="mt-7 overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_15px_55px_rgba(15,23,42,0.05)]">
+          <div className="mt-7 overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_15px_55px_rgba(11,24,32,0.05)]">
 
             {/* TABLE HEADER */}
             <div className="border-b border-slate-100 p-5 sm:p-7">
@@ -798,7 +798,7 @@ export default function AdminDashboard() {
               <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
 
                 <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-red-50 text-red-600">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
                     <Users className="h-7 w-7" />
                   </div>
 
@@ -817,7 +817,7 @@ export default function AdminDashboard() {
                   type="button"
                   onClick={exportCSV}
                   disabled={filtered.length === 0}
-                  className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#08111f] px-5 py-3 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-600 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0b1820] px-5 py-3 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-600 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <Download className="h-5 w-5" />
                   Export CSV
@@ -839,7 +839,7 @@ export default function AdminDashboard() {
                       setSearch(event.target.value)
                     }
                     placeholder="Search name, mobile, city, purpose..."
-                    className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50 pl-12 pr-4 text-sm text-slate-900 outline-none transition focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-100"
+                    className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50 pl-12 pr-4 text-sm text-slate-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100"
                   />
                 </div>
 
@@ -852,8 +852,8 @@ export default function AdminDashboard() {
                       aria-pressed={statusFilter === status}
                       className={`rounded-xl border px-3.5 py-2.5 text-xs font-extrabold transition-all duration-300 ${
                         statusFilter === status
-                          ? "border-red-600 bg-red-600 text-white shadow-sm"
-                          : "border-slate-200 bg-white text-slate-600 hover:border-red-200 hover:bg-red-50 hover:text-red-600"
+                          ? "border-brand-600 bg-brand-600 text-white shadow-sm"
+                          : "border-slate-200 bg-white text-slate-600 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-600"
                       }`}
                     >
                       {status}
@@ -867,7 +867,7 @@ export default function AdminDashboard() {
               <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
                 <p className="text-xs font-semibold text-slate-500">
                   Showing{" "}
-                  <span className="font-black text-red-600">
+                  <span className="font-black text-brand-600">
                     {filtered.length}
                   </span>{" "}
                   of {leads.length} enquiries
@@ -880,7 +880,7 @@ export default function AdminDashboard() {
                       setSearch("");
                       setStatusFilter("All");
                     }}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 hover:text-red-700"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-600 hover:text-brand-700"
                   >
                     <X className="h-4 w-4" />
                     Clear Filters
@@ -892,7 +892,7 @@ export default function AdminDashboard() {
             {/* LOADING */}
             {loading ? (
               <div className="flex flex-col items-center justify-center px-6 py-20 text-center">
-                <Loader2 className="h-10 w-10 animate-spin text-red-600" />
+                <Loader2 className="h-10 w-10 animate-spin text-brand-600" />
 
                 <h3 className="mt-5 text-lg font-black text-slate-950">
                   Loading Enquiries
@@ -905,7 +905,7 @@ export default function AdminDashboard() {
             ) : filtered.length === 0 ? (
               /* EMPTY STATE */
               <div className="flex flex-col items-center justify-center px-6 py-20 text-center">
-                <div className="flex h-20 w-20 items-center justify-center rounded-[24px] bg-red-50 text-red-600">
+                <div className="flex h-20 w-20 items-center justify-center rounded-[24px] bg-brand-50 text-brand-600">
                   <Search className="h-9 w-9" />
                 </div>
 
@@ -941,7 +941,7 @@ export default function AdminDashboard() {
                     {filtered.map((lead, index) => (
                       <tr
                         key={lead.id}
-                        className="group transition-colors duration-300 hover:bg-red-50/30"
+                        className="group transition-colors duration-300 hover:bg-brand-50/30"
                       >
                         {/* SERIAL */}
                         <td className="px-5 py-5 text-sm font-semibold text-slate-400">
@@ -951,7 +951,7 @@ export default function AdminDashboard() {
                         {/* CUSTOMER */}
                         <td className="px-5 py-5">
                           <div className="flex items-center gap-3">
-                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-red-600 to-red-700 text-sm font-black text-white shadow-[0_5px_15px_rgba(220,38,38,0.15)] transition-transform duration-300 group-hover:scale-105">
+                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-brand-700 text-sm font-black text-white shadow-[0_5px_15px_rgba(184,134,50,0.15)] transition-transform duration-300 group-hover:scale-105">
                               {getInitials(lead.name)}
                             </div>
 
@@ -971,7 +971,7 @@ export default function AdminDashboard() {
                         <td className="px-5 py-5">
                           <a
                             href={`tel:${lead.mobile}`}
-                            className="inline-flex items-center gap-2 text-sm font-bold text-red-600 hover:text-red-700"
+                            className="inline-flex items-center gap-2 text-sm font-bold text-brand-600 hover:text-brand-700"
                           >
                             <Phone className="h-4 w-4" />
                             {lead.mobile}
@@ -981,14 +981,14 @@ export default function AdminDashboard() {
                         {/* CITY */}
                         <td className="px-5 py-5">
                           <div className="flex items-center gap-2 text-sm text-slate-700">
-                            <MapPin className="h-4 w-4 shrink-0 text-red-500" />
+                            <MapPin className="h-4 w-4 shrink-0 text-brand-500" />
                             {lead.city}
                           </div>
                         </td>
 
                         {/* REQUIREMENT */}
                         <td className="px-5 py-5">
-                          <span className="inline-flex max-w-[240px] items-center rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs font-extrabold leading-5 text-red-700">
+                          <span className="inline-flex max-w-[240px] items-center rounded-xl border border-brand-100 bg-brand-50 px-3 py-2 text-xs font-extrabold leading-5 text-brand-700">
                             {lead.purpose}
                           </span>
                         </td>
@@ -1005,7 +1005,7 @@ export default function AdminDashboard() {
                                 event.target.value as LeadStatus
                               )
                             }
-                            className={`min-w-[145px] cursor-pointer rounded-xl border px-3 py-2.5 text-xs font-black outline-none transition focus:ring-4 focus:ring-red-100 disabled:cursor-not-allowed disabled:opacity-60 ${
+                            className={`min-w-[145px] cursor-pointer rounded-xl border px-3 py-2.5 text-xs font-black outline-none transition focus:ring-4 focus:ring-brand-100 disabled:cursor-not-allowed disabled:opacity-60 ${
                               statusStyles[lead.status]
                             }`}
                           >
@@ -1038,7 +1038,7 @@ export default function AdminDashboard() {
                             disabled={busyLeadId !== null}
                             aria-label={`Delete lead for ${lead.name}`}
                             title="Delete lead"
-                            className="flex h-10 w-10 items-center justify-center rounded-xl border border-red-100 bg-red-50 text-red-600 transition-all duration-300 hover:border-red-600 hover:bg-red-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                            className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-100 bg-brand-50 text-brand-600 transition-all duration-300 hover:border-brand-600 hover:bg-brand-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
                           >
                             {busyLeadId === lead.id ? (
                               <Loader2 className="h-4 w-4 animate-spin" />
@@ -1069,9 +1069,9 @@ export default function AdminDashboard() {
           </div>
 
           {/* BOTTOM LEAD MANAGEMENT NOTE */}
-          <div className="mt-7 flex flex-col items-start justify-between gap-5 rounded-[26px] bg-[#08111f] p-6 text-white sm:flex-row sm:items-center sm:p-8">
+          <div className="mt-7 flex flex-col items-start justify-between gap-5 rounded-[26px] bg-[#0b1820] p-6 text-white sm:flex-row sm:items-center sm:p-8">
             <div className="flex items-start gap-4">
-              <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl bg-red-600 p-3 text-white">
+              <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl bg-brand-600 p-3 text-white">
                 <Mail className="h-6 w-6" />
               </div>
 
@@ -1088,7 +1088,7 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-xs font-bold text-red-300">
+            <div className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-xs font-bold text-brand-300">
               <Activity className="h-4 w-4" />
               Lead Tracking
             </div>
@@ -1105,14 +1105,14 @@ export default function AdminDashboard() {
             activeTab === "content" ? "block" : "hidden"
           }
         >
-          <div className="mt-7 overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_15px_55px_rgba(15,23,42,0.05)]">
+          <div className="mt-7 overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_15px_55px_rgba(11,24,32,0.05)]">
 
             {/* CONTENT HEADER */}
-            <div className="relative overflow-hidden bg-[#08111f] p-7 text-white sm:p-10">
-              <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-red-600/20 blur-[90px]" />
+            <div className="relative overflow-hidden bg-[#0b1820] p-7 text-white sm:p-10">
+              <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-600/20 blur-[90px]" />
 
               <div className="relative">
-                <div className="inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-xs font-black uppercase tracking-wider text-red-300">
+                <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/25 bg-brand-500/10 px-4 py-2 text-xs font-black uppercase tracking-wider text-brand-300">
                   <Sparkles className="h-4 w-4" />
                   WEBSITE CONTENT CONTROL
                 </div>
@@ -1137,7 +1137,7 @@ export default function AdminDashboard() {
                       key={item}
                       className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold text-slate-200"
                     >
-                      <CheckCircle2 className="h-4 w-4 text-red-400" />
+                      <CheckCircle2 className="h-4 w-4 text-brand-400" />
                       {item}
                     </span>
                   ))}
@@ -1160,7 +1160,7 @@ export default function AdminDashboard() {
           </p>
 
           <span className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500">
-            <ShieldCheck className="h-4 w-4 text-red-600" />
+            <ShieldCheck className="h-4 w-4 text-brand-600" />
             Powered by your existing Supabase integration
           </span>
         </footer>
@@ -1186,10 +1186,10 @@ function StatCard({
   color: string;
 }) {
   return (
-    <article className="group relative min-w-0 overflow-hidden rounded-[25px] border border-slate-200 bg-white p-6 shadow-[0_12px_35px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-red-200 hover:shadow-[0_20px_50px_rgba(220,38,38,0.12)] motion-reduce:transform-none">
+    <article className="group relative min-w-0 overflow-hidden rounded-[25px] border border-slate-200 bg-white p-6 shadow-[0_12px_35px_rgba(11,24,32,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-brand-200 hover:shadow-[0_20px_50px_rgba(184,134,50,0.12)] motion-reduce:transform-none">
 
       {/* Background Glow */}
-      <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-red-500/5 blur-[65px] transition-colors duration-500 group-hover:bg-red-500/15" />
+      <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-500/5 blur-[65px] transition-colors duration-500 group-hover:bg-brand-500/15" />
 
       <div className="relative flex items-start justify-between gap-3">
         <div
@@ -1198,7 +1198,7 @@ function StatCard({
           <Icon className="h-7 w-7" />
         </div>
 
-        <ArrowRight className="h-4 w-4 -rotate-45 text-slate-300 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-red-600" />
+        <ArrowRight className="h-4 w-4 -rotate-45 text-slate-300 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand-600" />
       </div>
 
       <p className="relative mt-7 text-4xl font-black tracking-tight text-slate-950">
@@ -1209,7 +1209,7 @@ function StatCard({
         {label}
       </h3>
 
-      <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover:w-full" />
+      <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover:w-full" />
     </article>
   );
 }

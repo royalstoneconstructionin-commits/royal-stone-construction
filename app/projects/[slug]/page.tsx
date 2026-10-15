@@ -101,6 +101,7 @@ export default async function ProjectPage({
   );
 
   const projectInfo = [
+    { label: "Project Duration", value: project.duration, icon: Ruler },
     {
       label: "Project Location",
       value: project.city,
@@ -147,7 +148,7 @@ export default async function ProjectPage({
           PROJECT SHOWCASE
       ===================================== */}
 
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-red-50/30 py-16 sm:py-20 lg:py-24">
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-brand-50/30 py-16 sm:py-20 lg:py-24">
 
         {/* Background Pattern */}
         <div
@@ -160,9 +161,9 @@ export default async function ProjectPage({
         />
 
         {/* Background Glow */}
-        <div className="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-red-500/10 blur-[110px]" />
+        <div className="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-brand-500/10 blur-[110px]" />
 
-        <div className="pointer-events-none absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-orange-400/10 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-brand-400/10 blur-[120px]" />
 
         <div className="site-container relative z-10">
 
@@ -171,14 +172,14 @@ export default async function ProjectPage({
 
             <Link
               href="/projects"
-              className="group inline-flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-extrabold text-slate-700 shadow-sm transition-all duration-300 hover:-translate-x-1 hover:border-red-200 hover:bg-red-50 hover:text-red-600"
+              className="group inline-flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-extrabold text-slate-700 shadow-sm transition-all duration-300 hover:-translate-x-1 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-600"
             >
               <ArrowLeft className="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1" />
 
               Back to Projects
             </Link>
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.12em] text-red-600">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.12em] text-brand-600">
               <Sparkles className="h-4 w-4" />
               Royal Stone Portfolio
             </div>
@@ -212,7 +213,7 @@ export default async function ProjectPage({
               MAIN PROJECT IMAGE
           ===================================== */}
 
-          <div className="group relative isolate overflow-hidden rounded-[32px] border border-slate-200 bg-[#08111f] shadow-[0_25px_70px_rgba(15,23,42,0.15)]">
+          <div className="group relative isolate overflow-hidden rounded-[32px] border border-slate-200 bg-[#0b1820] shadow-[0_25px_70px_rgba(11,24,32,0.15)]">
 
             {/* Image */}
             <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden bg-slate-100 sm:min-h-[420px] lg:min-h-[580px]">
@@ -238,7 +239,7 @@ export default async function ProjectPage({
               {/* Status Badge */}
               <div className="absolute left-4 top-4 z-10 sm:left-7 sm:top-7">
 
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/95 px-4 py-2.5 text-xs font-black uppercase tracking-wide text-red-600 shadow-xl backdrop-blur-xl">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/95 px-4 py-2.5 text-xs font-black uppercase tracking-wide text-brand-600 shadow-xl backdrop-blur-xl">
 
                   <BadgeCheck className="h-4 w-4" />
 
@@ -254,7 +255,7 @@ export default async function ProjectPage({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Open ${project.title} image`}
-                className="group/open absolute right-4 top-4 z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/30 bg-slate-950/30 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:bg-red-600 sm:right-7 sm:top-7"
+                className="group/open absolute right-4 top-4 z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/30 bg-slate-950/30 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:bg-brand-600 sm:right-7 sm:top-7"
               >
                 <Maximize2 className="h-5 w-5" />
               </a>
@@ -268,7 +269,7 @@ export default async function ProjectPage({
 
                     <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-3 py-2 text-xs font-bold backdrop-blur-lg">
 
-                      <Building2 className="h-4 w-4 text-red-300" />
+                      <Building2 className="h-4 w-4 text-brand-300" />
 
                       {project.type}
 
@@ -281,7 +282,7 @@ export default async function ProjectPage({
                     {project.city && (
                       <p className="mt-3 flex items-center gap-2 text-sm text-slate-200">
 
-                        <MapPin className="h-4 w-4 text-red-300" />
+                        <MapPin className="h-4 w-4 text-brand-300" />
 
                         {project.city}
 
@@ -301,7 +302,7 @@ export default async function ProjectPage({
             </div>
 
             {/* Bottom Accent */}
-            <div className="h-1 w-full bg-gradient-to-r from-red-600 via-orange-400 to-transparent" />
+            <div className="h-1 w-full bg-gradient-to-r from-brand-600 via-brand-400 to-transparent" />
 
           </div>
 
@@ -323,16 +324,16 @@ export default async function ProjectPage({
               .map(({ label, value, icon: Icon }) => (
                 <div
                   key={label}
-                  className="group relative overflow-hidden rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-red-200 hover:shadow-[0_15px_40px_rgba(220,38,38,0.1)]"
+                  className="group relative overflow-hidden rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_8px_30px_rgba(11,24,32,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-[0_15px_40px_rgba(184,134,50,0.1)]"
                 >
 
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-red-600 transition-all duration-300 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white">
 
                     <Icon className="h-6 w-6" />
 
                   </div>
 
-                  <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-red-600">
+                  <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-brand-600">
                     {label}
                   </p>
 
@@ -340,7 +341,7 @@ export default async function ProjectPage({
                     {value}
                   </p>
 
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover:w-full" />
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover:w-full" />
 
                 </div>
               ))}
@@ -357,7 +358,7 @@ export default async function ProjectPage({
       <section className="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
 
         {/* Background Lights */}
-        <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-red-500/5 blur-[100px]" />
+        <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-500/5 blur-[100px]" />
 
         <div className="site-container relative z-10">
 
@@ -367,11 +368,11 @@ export default async function ProjectPage({
             <div className="space-y-9">
 
               {/* PROJECT OVERVIEW */}
-              <div className="group relative overflow-hidden rounded-[30px] border border-slate-200 bg-white p-7 shadow-[0_12px_40px_rgba(15,23,42,0.05)] transition-all duration-300 hover:border-red-200 hover:shadow-[0_20px_55px_rgba(220,38,38,0.08)] sm:p-9">
+              <div className="group relative overflow-hidden rounded-[30px] border border-slate-200 bg-white p-7 shadow-[0_12px_40px_rgba(11,24,32,0.05)] transition-all duration-300 hover:border-brand-200 hover:shadow-[0_20px_55px_rgba(184,134,50,0.08)] sm:p-9">
 
-                <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-red-500/5 blur-[80px]" />
+                <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-brand-500/5 blur-[80px]" />
 
-                <div className="relative inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-red-600">
+                <div className="relative inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-brand-600">
 
                   <Sparkles className="h-4 w-4" />
 
@@ -382,12 +383,12 @@ export default async function ProjectPage({
                 <h2 className="relative mt-6 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
                   Project{" "}
 
-                  <span className="text-red-600">
+                  <span className="text-brand-600">
                     Overview.
                   </span>
                 </h2>
 
-                <div className="relative mt-6 h-1 w-16 rounded-full bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover:w-28" />
+                <div className="relative mt-6 h-1 w-16 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover:w-28" />
 
                 <p className="relative mt-7 whitespace-pre-line text-base leading-8 text-slate-600 sm:text-lg">
 
@@ -398,7 +399,7 @@ export default async function ProjectPage({
 
                 <div className="relative mt-8 flex items-center gap-2 border-t border-slate-100 pt-6 text-sm font-bold text-slate-500">
 
-                  <Building2 className="h-5 w-5 text-red-600" />
+                  <Building2 className="h-5 w-5 text-brand-600" />
 
                   Royal Stone Construction
 
@@ -407,18 +408,18 @@ export default async function ProjectPage({
               </div>
 
               {/* PROJECT WORK */}
-              <div className="group relative overflow-hidden rounded-[30px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-7 shadow-[0_12px_40px_rgba(15,23,42,0.05)] transition-all duration-300 hover:border-red-200 hover:shadow-[0_20px_55px_rgba(220,38,38,0.08)] sm:p-9">
+              <div className="group relative overflow-hidden rounded-[30px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-7 shadow-[0_12px_40px_rgba(11,24,32,0.05)] transition-all duration-300 hover:border-brand-200 hover:shadow-[0_20px_55px_rgba(184,134,50,0.08)] sm:p-9">
 
                 <div className="flex items-center gap-4">
 
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-red-50 text-red-600 transition-all duration-300 group-hover:bg-red-600 group-hover:text-white group-hover:shadow-[0_10px_25px_rgba(220,38,38,0.2)]">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-all duration-300 group-hover:bg-brand-600 group-hover:text-white group-hover:shadow-[0_10px_25px_rgba(184,134,50,0.2)]">
 
                     <Hammer className="h-7 w-7" />
 
                   </div>
 
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-red-600">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-brand-600">
                       PROJECT SCOPE
                     </p>
 
@@ -442,7 +443,7 @@ export default async function ProjectPage({
 
                 <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-slate-500">
 
-                  <CheckCircle2 className="h-4 w-4 text-red-600" />
+                  <CheckCircle2 className="h-4 w-4 text-brand-600" />
 
                   {isConcept
                     ? "Illustrative scope information"
@@ -454,11 +455,11 @@ export default async function ProjectPage({
 
               {/* MATERIALS */}
               {project.materials?.trim() && (
-                <div className="group relative overflow-hidden rounded-[28px] border border-red-100 bg-gradient-to-r from-red-50 via-white to-orange-50 p-7 sm:p-8">
+                <div className="group relative overflow-hidden rounded-[28px] border border-brand-100 bg-gradient-to-r from-brand-50 via-white to-brand-50 p-7 sm:p-8">
 
                   <div className="flex items-center gap-4">
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-red-600 text-white">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-600 text-white">
 
                       <Layers3 className="h-6 w-6" />
 
@@ -487,15 +488,15 @@ export default async function ProjectPage({
 
             <aside className="relative lg:sticky lg:top-28">
 
-              <div className="relative isolate overflow-hidden rounded-[32px] bg-[#08111f] p-7 text-white shadow-[0_25px_65px_rgba(15,23,42,0.16)] sm:p-9">
+              <div className="relative isolate overflow-hidden rounded-[32px] bg-[#0b1820] p-7 text-white shadow-[0_25px_65px_rgba(11,24,32,0.16)] sm:p-9">
 
                 {/* Background Glow */}
-                <div className="pointer-events-none absolute -right-20 -top-20 -z-10 h-72 w-72 rounded-full bg-red-600/20 blur-[90px]" />
+                <div className="pointer-events-none absolute -right-20 -top-20 -z-10 h-72 w-72 rounded-full bg-brand-600/20 blur-[90px]" />
 
-                <div className="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-60 w-60 rounded-full bg-orange-500/10 blur-[100px]" />
+                <div className="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-60 w-60 rounded-full bg-brand-500/10 blur-[100px]" />
 
                 {/* Header */}
-                <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.13em] text-red-300">
+                <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.13em] text-brand-300">
 
                   <BadgeCheck className="h-4 w-4" />
 
@@ -506,7 +507,7 @@ export default async function ProjectPage({
                 <h2 className="mt-6 text-2xl font-black leading-tight sm:text-3xl">
                   Project{" "}
 
-                  <span className="text-red-400">
+                  <span className="text-brand-400">
                     Details.
                   </span>
                 </h2>
@@ -526,7 +527,7 @@ export default async function ProjectPage({
                         className="group/info flex items-start gap-4 py-5"
                       >
 
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 text-red-400 transition-all duration-300 group-hover/info:bg-red-600 group-hover/info:text-white">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-brand-500/20 bg-brand-500/10 text-brand-400 transition-all duration-300 group-hover/info:bg-brand-600 group-hover/info:text-white">
 
                           <Icon className="h-5 w-5" />
 
@@ -534,7 +535,7 @@ export default async function ProjectPage({
 
                         <div className="min-w-0 flex-1">
 
-                          <dt className="text-xs font-black uppercase tracking-[0.12em] text-red-300">
+                          <dt className="text-xs font-black uppercase tracking-[0.12em] text-brand-300">
                             {label}
                           </dt>
 
@@ -551,7 +552,7 @@ export default async function ProjectPage({
                   {project.materials?.trim() && (
                     <div className="flex items-start gap-4 py-5">
 
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 text-red-400">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-brand-500/20 bg-brand-500/10 text-brand-400">
 
                         <Layers3 className="h-5 w-5" />
 
@@ -559,7 +560,7 @@ export default async function ProjectPage({
 
                       <div className="min-w-0 flex-1">
 
-                        <dt className="text-xs font-black uppercase tracking-[0.12em] text-red-300">
+                        <dt className="text-xs font-black uppercase tracking-[0.12em] text-brand-300">
                           Materials
                         </dt>
 
@@ -577,7 +578,7 @@ export default async function ProjectPage({
                 {/* CTA */}
                 <Link
                   href="/get-quote"
-                  className="group/btn relative mt-8 inline-flex min-h-14 w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-red-600 to-red-700 px-6 py-4 text-sm font-extrabold text-white shadow-[0_12px_35px_rgba(220,38,38,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(220,38,38,0.4)]"
+                  className="group/btn relative mt-8 inline-flex min-h-14 w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-brand-600 to-brand-700 px-6 py-4 text-sm font-extrabold text-white shadow-[0_12px_35px_rgba(184,134,50,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(184,134,50,0.4)]"
                 >
 
                   <span className="pointer-events-none absolute -left-20 top-0 h-full w-14 skew-x-[-25deg] bg-white/20 transition-all duration-700 group-hover/btn:left-[120%]" />
@@ -593,7 +594,7 @@ export default async function ProjectPage({
                 {/* Trust Note */}
                 <div className="mt-6 flex items-start gap-3">
 
-                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
+                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-400" />
 
                   <p className="text-xs leading-6 text-slate-400">
                     Project specifications and quotation
@@ -603,7 +604,7 @@ export default async function ProjectPage({
                 </div>
 
                 {/* Bottom Accent */}
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600 via-orange-400 to-transparent" />
+                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-brand-600 via-brand-400 to-transparent" />
 
               </div>
 
@@ -619,12 +620,12 @@ export default async function ProjectPage({
       ===================================== */}
 
       {galleryImages.length > 0 && (
-        <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-white to-red-50/40 py-20 sm:py-24 lg:py-28">
+        <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-white to-brand-50/40 py-20 sm:py-24 lg:py-28">
 
           {/* Background Glow */}
-          <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-red-500/5 blur-[110px]" />
+          <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-brand-500/5 blur-[110px]" />
 
-          <div className="pointer-events-none absolute -right-32 bottom-10 h-80 w-80 rounded-full bg-orange-400/5 blur-[110px]" />
+          <div className="pointer-events-none absolute -right-32 bottom-10 h-80 w-80 rounded-full bg-brand-400/5 blur-[110px]" />
 
           <div className="site-container relative z-10">
 
@@ -633,7 +634,7 @@ export default async function ProjectPage({
 
               <div className="max-w-3xl">
 
-                <div className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.15em] text-red-600">
+                <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.15em] text-brand-600">
 
                   <Images className="h-4 w-4" />
 
@@ -645,7 +646,7 @@ export default async function ProjectPage({
 
                   Explore the{" "}
 
-                  <span className="bg-gradient-to-r from-red-700 to-orange-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
                     Details.
                   </span>
 
@@ -660,9 +661,9 @@ export default async function ProjectPage({
               </div>
 
               {/* Gallery Count */}
-              <div className="flex w-fit items-center gap-3 rounded-2xl border border-red-100 bg-white px-5 py-4 shadow-sm">
+              <div className="flex w-fit items-center gap-3 rounded-2xl border border-brand-100 bg-white px-5 py-4 shadow-sm">
 
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
 
                   <Images className="h-6 w-6" />
 
@@ -695,7 +696,7 @@ export default async function ProjectPage({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Open ${project.title} gallery image ${index + 1}`}
-                  className="group relative block overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_10px_35px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-red-300 hover:shadow-[0_25px_60px_rgba(220,38,38,0.13)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-300 motion-reduce:transform-none"
+                  className="group relative block overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_10px_35px_rgba(11,24,32,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-brand-300 hover:shadow-[0_25px_60px_rgba(184,134,50,0.13)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-300 motion-reduce:transform-none"
                 >
 
                   {/* Image */}
@@ -720,7 +721,7 @@ export default async function ProjectPage({
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
                     {/* Image Number */}
-                    <span className="absolute left-5 top-5 rounded-full border border-white/20 bg-white/90 px-4 py-2 text-xs font-black text-red-600 shadow-lg backdrop-blur-lg">
+                    <span className="absolute left-5 top-5 rounded-full border border-white/20 bg-white/90 px-4 py-2 text-xs font-black text-brand-600 shadow-lg backdrop-blur-lg">
 
                       {String(index + 1).padStart(
                         2,
@@ -730,7 +731,7 @@ export default async function ProjectPage({
                     </span>
 
                     {/* Open Icon */}
-                    <div className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-slate-950/30 text-white backdrop-blur-xl transition-all duration-300 group-hover:scale-110 group-hover:bg-red-600">
+                    <div className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-slate-950/30 text-white backdrop-blur-xl transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-600">
 
                       <Maximize2 className="h-5 w-5" />
 
@@ -743,7 +744,7 @@ export default async function ProjectPage({
 
                         <div>
 
-                          <p className="text-xs font-bold uppercase tracking-[0.14em] text-red-200">
+                          <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand-200">
                             {isConcept
                               ? "Concept Illustration"
                               : "Project Image"}
@@ -764,7 +765,7 @@ export default async function ProjectPage({
                   </div>
 
                   {/* Bottom Border */}
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover:w-full" />
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover:w-full" />
 
                 </a>
               ))}
@@ -784,11 +785,11 @@ export default async function ProjectPage({
 
         <div className="site-container">
 
-          <div className="flex flex-col items-start justify-between gap-6 rounded-[28px] border border-red-100 bg-gradient-to-r from-red-50 via-white to-orange-50 p-7 sm:flex-row sm:items-center sm:p-9">
+          <div className="flex flex-col items-start justify-between gap-6 rounded-[28px] border border-brand-100 bg-gradient-to-r from-brand-50 via-white to-brand-50 p-7 sm:flex-row sm:items-center sm:p-9">
 
             <div className="flex items-start gap-4">
 
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-red-600 text-white shadow-[0_10px_30px_rgba(220,38,38,0.25)]">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-600 text-white shadow-[0_10px_30px_rgba(184,134,50,0.25)]">
 
                 <PaintBucket className="h-7 w-7" />
 
@@ -812,7 +813,7 @@ export default async function ProjectPage({
 
             <Link
               href="/projects"
-              className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-3 font-extrabold text-white shadow-[0_10px_30px_rgba(220,38,38,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-red-700 hover:shadow-[0_15px_40px_rgba(220,38,38,0.3)]"
+              className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-2xl bg-brand-600 px-6 py-3 font-extrabold text-white shadow-[0_10px_30px_rgba(184,134,50,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-brand-700 hover:shadow-[0_15px_40px_rgba(184,134,50,0.3)]"
             >
 
               View All Projects

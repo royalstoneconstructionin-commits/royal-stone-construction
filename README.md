@@ -166,9 +166,27 @@ Open:
 Restart `npm run dev` after editing `.env.local`.
 
 ## Replace business details
-Edit phone, email, address and social links in:
-`components/Footer.tsx`
+Phone, email and verified social links are in `lib/business-contact.ts`.
+Use the existing admin dashboard's Website Content editor > Business Details
+for verified address, Google Maps URL, working hours, service areas and design
+pricing terms. Leave unknown details blank; they remain hidden publicly.
+
+Real projects require the publication approval checkbox confirming project facts
+and permission to publish the images. Concepts remain labelled examples.
+Testimonials require genuine feedback and permission to publish; an optional
+original Google review URL can be added. These fields use the existing
+`site_content` JSON storage and do not require a database migration.
+Package rates and inclusions remain in `lib/design-packages.ts`.
 
 ## Logo
 The project expects:
-`public/royal-stone-logo.png`
+`public/logo.png` (used without creating another logo file).
+
+## Verify website changes
+
+Run `npm run lint`, `npm run build`, `node scripts/check-design-estimate.mjs --integration`
+and `node scripts/check-site.mjs`. Integration tests use a local mock database;
+they do not send real enquiries. Optional browser checks run with
+`node scripts/check-site.mjs --browser` and require Playwright installed under
+`.qa/browser-check` plus local Chrome. They intercept enquiry requests and save
+responsive screenshots under `.qa`.

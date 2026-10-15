@@ -54,7 +54,7 @@ export default function ProcessPage() {
       />
 
       {/* MAIN PROCESS SECTION */}
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-white to-red-50/40 py-20 sm:py-24 lg:py-28">
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-white to-brand-50/40 py-20 sm:py-24 lg:py-28">
 
         {/* Background Grid */}
         <div
@@ -67,12 +67,12 @@ export default function ProcessPage() {
         />
 
         {/* Background Glow */}
-        <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-red-500/10 blur-[110px]" />
+        <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-brand-500/10 blur-[110px]" />
 
-        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-orange-400/10 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-brand-400/10 blur-[120px]" />
 
         {/* Decorative Rings */}
-        <div className="pointer-events-none absolute -right-40 -top-40 hidden h-[500px] w-[500px] rounded-full border border-red-500/10 lg:block" />
+        <div className="pointer-events-none absolute -right-40 -top-40 hidden h-[500px] w-[500px] rounded-full border border-brand-500/10 lg:block" />
 
         <div className="site-container relative z-10">
 
@@ -80,11 +80,11 @@ export default function ProcessPage() {
           <div className="mx-auto max-w-3xl text-center">
 
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-white px-5 py-2.5 text-xs font-black uppercase tracking-[0.16em] text-red-600 shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-5 py-2.5 text-xs font-black uppercase tracking-[0.16em] text-brand-600 shadow-sm">
 
               <span className="relative flex h-2 w-2">
-                <span className="absolute h-full w-full animate-ping rounded-full bg-red-400 opacity-60 motion-reduce:animate-none" />
-                <span className="relative h-2 w-2 rounded-full bg-red-600" />
+                <span className="absolute h-full w-full animate-ping rounded-full bg-brand-400 opacity-60 motion-reduce:animate-none" />
+                <span className="relative h-2 w-2 rounded-full bg-brand-600" />
               </span>
 
               <Sparkles className="h-4 w-4" />
@@ -98,11 +98,11 @@ export default function ProcessPage() {
 
               From Planning to{" "}
 
-              <span className="group/title relative inline-block bg-gradient-to-r from-red-700 via-red-600 to-orange-500 bg-clip-text text-transparent transition-all duration-500 hover:drop-shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+              <span className="group/title relative inline-block bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 bg-clip-text text-transparent transition-all duration-500 hover:drop-shadow-[0_0_15px_rgba(184,134,50,0.3)]">
 
                 Completion.
 
-                <span className="absolute -bottom-2 left-0 h-1 w-0 rounded-full bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover/title:w-full" />
+                <span className="absolute -bottom-2 left-0 h-1 w-0 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover/title:w-full" />
 
               </span>
 
@@ -118,7 +118,7 @@ export default function ProcessPage() {
             </p>
 
             {/* Decorative Line */}
-            <div className="mx-auto mt-7 h-1 w-24 rounded-full bg-gradient-to-r from-red-600 via-red-500 to-orange-400 shadow-[0_0_20px_rgba(220,38,38,0.3)]" />
+            <div className="mx-auto mt-7 h-1 w-24 rounded-full bg-gradient-to-r from-brand-600 via-brand-500 to-brand-400 shadow-[0_0_20px_rgba(184,134,50,0.3)]" />
 
           </div>
 
@@ -126,17 +126,17 @@ export default function ProcessPage() {
           <div className="relative mt-14">
 
             {/* Outer Light */}
-            <div className="pointer-events-none absolute -inset-5 rounded-[40px] bg-gradient-to-br from-red-500/5 via-transparent to-orange-400/5 blur-3xl" />
+            <div className="pointer-events-none absolute -inset-5 rounded-[40px] bg-gradient-to-br from-brand-500/5 via-transparent to-brand-400/5 blur-3xl" />
 
             {/* Actual Timeline */}
-            <div className="relative rounded-[32px] border border-slate-200/80 bg-white/70 p-4 shadow-[0_20px_65px_rgba(15,23,42,0.05)] backdrop-blur-md sm:p-7 lg:p-10">
+            <div className="relative rounded-[32px] border border-slate-200/80 bg-white/70 p-4 shadow-[0_20px_65px_rgba(11,24,32,0.05)] backdrop-blur-md sm:p-7 lg:p-10">
 
               {/* Timeline Header */}
               <div className="flex flex-col justify-between gap-5 border-b border-slate-200 pb-7 sm:flex-row sm:items-center">
 
                 <div className="flex items-center gap-4">
 
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-red-600 to-red-700 text-white shadow-[0_10px_30px_rgba(220,38,38,0.25)]">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-600 to-brand-700 text-white shadow-[0_10px_30px_rgba(184,134,50,0.25)]">
 
                     <ClipboardCheck className="h-7 w-7" />
 
@@ -154,7 +154,7 @@ export default function ProcessPage() {
 
                 </div>
 
-                <span className="inline-flex w-fit items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2.5 text-xs font-extrabold text-red-600">
+                <span className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-2.5 text-xs font-extrabold text-brand-600">
 
                   <BadgeCheck className="h-4 w-4" />
 
@@ -172,11 +172,11 @@ export default function ProcessPage() {
           </div>
 
           {/* Bottom Process Note */}
-          <div className="mt-10 flex flex-col items-start justify-between gap-5 rounded-[26px] border border-red-100 bg-gradient-to-r from-red-50 via-white to-orange-50 p-6 sm:flex-row sm:items-center sm:p-8">
+          <div className="mt-10 flex flex-col items-start justify-between gap-5 rounded-[26px] border border-brand-100 bg-gradient-to-r from-brand-50 via-white to-brand-50 p-6 sm:flex-row sm:items-center sm:p-8">
 
             <div className="flex items-start gap-4">
 
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-red-600 text-white shadow-[0_10px_25px_rgba(220,38,38,0.2)]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-600 text-white shadow-[0_10px_25px_rgba(184,134,50,0.2)]">
 
                 <CheckCircle2 className="h-6 w-6" />
 
@@ -198,7 +198,7 @@ export default function ProcessPage() {
 
             <Link
               href="/get-quote"
-              className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-3 font-extrabold text-white shadow-[0_10px_30px_rgba(220,38,38,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-red-700 hover:shadow-[0_15px_40px_rgba(220,38,38,0.35)]"
+              className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-2xl bg-brand-600 px-6 py-3 font-extrabold text-white shadow-[0_10px_30px_rgba(184,134,50,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-brand-700 hover:shadow-[0_15px_40px_rgba(184,134,50,0.35)]"
             >
               Start Your Project
 
@@ -211,12 +211,12 @@ export default function ProcessPage() {
       </section>
 
       {/* WHY OUR PROCESS */}
-      <section className="relative isolate overflow-hidden bg-[#08111f] py-20 text-white sm:py-24 lg:py-28">
+      <section className="relative isolate overflow-hidden bg-[#0b1820] py-20 text-white sm:py-24 lg:py-28">
 
         {/* Background Glow */}
-        <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-red-600/15 blur-[120px]" />
+        <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-brand-600/15 blur-[120px]" />
 
-        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-orange-500/10 blur-[130px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-brand-500/10 blur-[130px]" />
 
         {/* Grid Pattern */}
         <div
@@ -233,7 +233,7 @@ export default function ProcessPage() {
           {/* Header */}
           <div className="mx-auto max-w-3xl text-center">
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2.5 text-xs font-black uppercase tracking-[0.15em] text-red-300">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/25 bg-brand-500/10 px-4 py-2.5 text-xs font-black uppercase tracking-[0.15em] text-brand-300">
 
               <Sparkles className="h-4 w-4" />
 
@@ -245,7 +245,7 @@ export default function ProcessPage() {
 
               Built on Planning.
 
-              <span className="mt-1 block text-red-400">
+              <span className="mt-1 block text-brand-400">
                 Driven by Quality.
               </span>
 
@@ -271,19 +271,19 @@ export default function ProcessPage() {
               }) => (
                 <article
                   key={number}
-                  className="group relative isolate flex h-full flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.05] p-7 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-red-500/40 hover:bg-white/[0.08] hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] motion-reduce:transform-none sm:p-8"
+                  className="group relative isolate flex h-full flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.05] p-7 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-brand-500/40 hover:bg-white/[0.08] hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] motion-reduce:transform-none sm:p-8"
                 >
 
                   {/* Decorative Number */}
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute right-5 top-3 text-[80px] font-black leading-none text-white/[0.04] transition-all duration-500 group-hover:text-red-500/[0.08]"
+                    className="pointer-events-none absolute right-5 top-3 text-[80px] font-black leading-none text-white/[0.04] transition-all duration-500 group-hover:text-brand-500/[0.08]"
                   >
                     {number}
                   </span>
 
                   {/* Icon */}
-                  <div className="relative flex h-16 w-16 items-center justify-center rounded-[20px] border border-red-500/20 bg-red-500/10 text-red-400 transition-all duration-300 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white group-hover:shadow-[0_10px_30px_rgba(239,68,68,0.3)] motion-reduce:transform-none">
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-[20px] border border-brand-500/20 bg-brand-500/10 text-brand-400 transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white group-hover:shadow-[0_10px_30px_rgba(212,165,75,0.3)] motion-reduce:transform-none">
 
                     <Icon className="h-8 w-8" />
 
@@ -292,9 +292,9 @@ export default function ProcessPage() {
                   {/* Number Label */}
                   <div className="relative mt-8 flex items-center gap-2">
 
-                    <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
 
-                    <span className="text-xs font-black uppercase tracking-[0.15em] text-red-400">
+                    <span className="text-xs font-black uppercase tracking-[0.15em] text-brand-400">
                       OUR APPROACH {number}
                     </span>
 
@@ -315,16 +315,16 @@ export default function ProcessPage() {
 
                   <div className="relative mt-5 flex items-center justify-between">
 
-                    <span className="text-xs font-bold text-red-300">
+                    <span className="text-xs font-bold text-brand-300">
                       Royal Stone Construction
                     </span>
 
-                    <ArrowUpRight className="h-5 w-5 text-slate-500 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-red-400" />
+                    <ArrowUpRight className="h-5 w-5 text-slate-500 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand-400" />
 
                   </div>
 
                   {/* Animated Bottom Border */}
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover:w-full" />
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover:w-full" />
 
                 </article>
               )

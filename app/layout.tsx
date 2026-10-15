@@ -7,7 +7,7 @@ import { siteName, siteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: siteName,
-  icons: { icon: "/royal-stone-logo.png", apple: "/royal-stone-logo.png" },
+  icons: { icon: "/logo.png", apple: "/logo.png" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   title: { default: "Royal Stone Construction | Architecture & Construction", template: "%s | Royal Stone Construction" },
   description:

@@ -9,7 +9,7 @@ export function absoluteUrl(path: string) {
   return url.pathname === "/" && !url.search && !url.hash ? url.origin : url.toString();
 }
 
-export function pageMetadata(title: string, description: string, path: string, image = "/royal-stone-logo.png"): Metadata {
+export function pageMetadata(title: string, description: string, path: string, image = "/logo.png"): Metadata {
   const fullTitle = `${title} | ${siteName}`;
   return {
     title: { absolute: fullTitle },
@@ -29,6 +29,10 @@ export function pageMetadata(title: string, description: string, path: string, i
 }
 
 export const publicPages = {
+  "/privacy-policy": ["Privacy Policy", "How Royal Stone Construction's website collects and handles enquiry information, with contact details for privacy questions."],
+  "/terms": ["Website Terms", "Read how Royal Stone Construction website enquiries, package prices, calculator estimates and scope confirmation work."],
+  "/locations/patna": ["Architecture & Construction Services in Patna, Bihar", "Explore Royal Stone Construction architecture, construction with material and interior services in Patna, with local design packages and consultation details."],
+  "/locations/noida": ["Architecture Design Packages in Noida", "Compare Royal Stone Construction architecture design packages for Noida, including planning and drawing inclusions, design area estimates and enquiries."],
   "/": ["Architecture & Construction in Patna", "Royal Stone Construction provides architecture, construction with material and interior design in Patna, Bihar. Plan your project with one coordinated team."],
   "/about": ["About Us", "Discover Royal Stone Construction in Patna, Bihar. Architecture, construction with material and interior design with practical planning and coordinated execution."],
   "/services": ["Architecture, Construction & Interior Design Services", "Explore architecture, construction with material, interior design, turnkey projects, floor planning, elevation, structural planning and renovation services."],

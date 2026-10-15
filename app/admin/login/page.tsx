@@ -145,7 +145,7 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-[#08111f] px-4 py-8 sm:px-6 lg:px-8">
+    <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-[#0b1820] px-4 py-8 sm:px-6 lg:px-8">
 
       {/* =====================================
           ANIMATED BACKGROUND
@@ -154,10 +154,10 @@ export default function AdminLoginPage() {
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
 
         {/* Red Glow */}
-        <div className="absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-red-600/20 blur-[130px]" />
+        <div className="absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-600/20 blur-[130px]" />
 
         {/* Orange Glow */}
-        <div className="absolute -bottom-48 -right-32 h-[500px] w-[500px] rounded-full bg-orange-500/10 blur-[130px]" />
+        <div className="absolute -bottom-48 -right-32 h-[500px] w-[500px] rounded-full bg-brand-500/10 blur-[130px]" />
 
         {/* Architectural Grid */}
         <div
@@ -170,9 +170,9 @@ export default function AdminLoginPage() {
         />
 
         {/* Decorative Rings */}
-        <div className="absolute -right-40 -top-40 hidden h-[550px] w-[550px] rounded-full border border-red-500/10 lg:block" />
+        <div className="absolute -right-40 -top-40 hidden h-[550px] w-[550px] rounded-full border border-brand-500/10 lg:block" />
 
-        <div className="absolute -right-20 -top-20 hidden h-[350px] w-[350px] rounded-full border border-red-500/10 lg:block" />
+        <div className="absolute -right-20 -top-20 hidden h-[350px] w-[350px] rounded-full border border-brand-500/10 lg:block" />
 
       </div>
 
@@ -189,9 +189,9 @@ export default function AdminLoginPage() {
         <section className="relative isolate overflow-hidden bg-[#0d192c] px-7 py-10 text-white sm:px-10 lg:flex lg:flex-col lg:justify-between lg:px-14 lg:py-14">
 
           {/* Background Glow */}
-          <div className="pointer-events-none absolute -left-32 -top-20 -z-10 h-96 w-96 rounded-full bg-red-600/20 blur-[110px]" />
+          <div className="pointer-events-none absolute -left-32 -top-20 -z-10 h-96 w-96 rounded-full bg-brand-600/20 blur-[110px]" />
 
-          <div className="pointer-events-none absolute -bottom-24 -right-28 -z-10 h-80 w-80 rounded-full bg-orange-500/10 blur-[110px]" />
+          <div className="pointer-events-none absolute -bottom-24 -right-28 -z-10 h-80 w-80 rounded-full bg-brand-500/10 blur-[110px]" />
 
           {/* Branding */}
           <div className="relative">
@@ -200,7 +200,7 @@ export default function AdminLoginPage() {
               href="/"
               className="group inline-flex items-center gap-4"
             >
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[20px] bg-gradient-to-br from-red-600 to-red-800 text-white shadow-[0_12px_40px_rgba(220,38,38,0.3)] transition-all duration-300 group-hover:scale-105 motion-reduce:transform-none">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[20px] bg-gradient-to-br from-brand-600 to-brand-800 text-white shadow-[0_12px_40px_rgba(184,134,50,0.3)] transition-all duration-300 group-hover:scale-105 motion-reduce:transform-none">
 
                 <Building2 className="h-8 w-8" />
 
@@ -211,7 +211,7 @@ export default function AdminLoginPage() {
                   Royal Stone
                 </p>
 
-                <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-red-400">
+                <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-brand-400">
                   Construction
                 </p>
               </div>
@@ -223,7 +223,7 @@ export default function AdminLoginPage() {
           {/* Main Left Content */}
           <div className="relative mt-12 lg:mt-0">
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2.5 text-xs font-black uppercase tracking-[0.14em] text-red-300">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-2.5 text-xs font-black uppercase tracking-[0.14em] text-brand-300">
 
               <Sparkles className="h-4 w-4" />
 
@@ -235,7 +235,7 @@ export default function AdminLoginPage() {
 
               Manage Your
 
-              <span className="mt-2 block bg-gradient-to-r from-red-400 via-red-400 to-orange-300 bg-clip-text text-transparent">
+              <span className="mt-2 block bg-gradient-to-r from-brand-400 via-brand-400 to-brand-300 bg-clip-text text-transparent">
                 Business Smarter.
               </span>
 
@@ -266,10 +266,10 @@ export default function AdminLoginPage() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="group flex items-center gap-4 rounded-[20px] border border-white/10 bg-white/[0.05] px-5 py-4 backdrop-blur-md transition-all duration-300 hover:translate-x-1 hover:border-red-500/30 hover:bg-white/[0.09] motion-reduce:transform-none"
+                  className="group flex items-center gap-4 rounded-[20px] border border-white/10 bg-white/[0.05] px-5 py-4 backdrop-blur-md transition-all duration-300 hover:translate-x-1 hover:border-brand-500/30 hover:bg-white/[0.09] motion-reduce:transform-none"
                 >
 
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 text-red-400 transition-all duration-300 group-hover:bg-red-600 group-hover:text-white">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-brand-500/20 bg-brand-500/10 text-brand-400 transition-all duration-300 group-hover:bg-brand-600 group-hover:text-white">
 
                     <CheckCircle2 className="h-5 w-5" />
 
@@ -295,7 +295,7 @@ export default function AdminLoginPage() {
           {/* Left Footer */}
           <div className="relative mt-10 flex items-center gap-3 border-t border-white/10 pt-7">
 
-            <ShieldCheck className="h-5 w-5 text-red-400" />
+            <ShieldCheck className="h-5 w-5 text-brand-400" />
 
             <p className="text-xs font-semibold text-slate-400">
               Authorized administrator access only
@@ -312,12 +312,12 @@ export default function AdminLoginPage() {
         <section className="relative flex items-center justify-center bg-white px-6 py-12 sm:px-12 lg:px-14 lg:py-16">
 
           {/* Light Glow */}
-          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-red-500/5 blur-[80px]" />
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-500/5 blur-[80px]" />
 
           <div className="relative w-full max-w-md">
 
             {/* Login Icon */}
-            <div className="flex h-20 w-20 items-center justify-center rounded-[25px] border border-red-100 bg-gradient-to-br from-red-50 to-white text-red-600 shadow-[0_12px_35px_rgba(220,38,38,0.1)]">
+            <div className="flex h-20 w-20 items-center justify-center rounded-[25px] border border-brand-100 bg-gradient-to-br from-brand-50 to-white text-brand-600 shadow-[0_12px_35px_rgba(184,134,50,0.1)]">
 
               <LockKeyhole className="h-9 w-9" />
 
@@ -326,13 +326,13 @@ export default function AdminLoginPage() {
             {/* Heading */}
             <div className="mt-8">
 
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-red-600">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-brand-600">
                 WELCOME BACK
               </p>
 
               <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
                 Admin Login
-                <span className="text-red-600">.</span>
+                <span className="text-brand-600">.</span>
               </h2>
 
               <p className="mt-4 leading-7 text-slate-600">
@@ -363,7 +363,7 @@ export default function AdminLoginPage() {
 
                 <div className="group relative">
 
-                  <Mail className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors duration-300 group-focus-within:text-red-600" />
+                  <Mail className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors duration-300 group-focus-within:text-brand-600" />
 
                   <input
                     id="admin-email"
@@ -380,7 +380,7 @@ export default function AdminLoginPage() {
                       setError("");
                     }}
                     placeholder="Enter your admin email"
-                    className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-12 pr-4 text-sm font-semibold text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-100 disabled:opacity-60"
+                    className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-12 pr-4 text-sm font-semibold text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 disabled:opacity-60"
                   />
 
                 </div>
@@ -397,7 +397,7 @@ export default function AdminLoginPage() {
 
                 <div className="group relative">
 
-                  <KeyRound className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors duration-300 group-focus-within:text-red-600" />
+                  <KeyRound className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors duration-300 group-focus-within:text-brand-600" />
 
                   <input
                     id="admin-password"
@@ -412,7 +412,7 @@ export default function AdminLoginPage() {
                       setError("");
                     }}
                     placeholder="Enter your password"
-                    className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-12 pr-14 text-sm font-semibold text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-100 disabled:opacity-60"
+                    className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-12 pr-14 text-sm font-semibold text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 disabled:opacity-60"
                   />
 
                   {/* SHOW / HIDE PASSWORD */}
@@ -428,7 +428,7 @@ export default function AdminLoginPage() {
                         : "Show password"
                     }
                     aria-pressed={showPassword}
-                    className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-xl text-slate-400 transition-all duration-300 hover:bg-red-50 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:opacity-50"
+                    className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-xl text-slate-400 transition-all duration-300 hover:bg-brand-50 hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 disabled:opacity-50"
                   >
 
                     {showPassword ? (
@@ -460,7 +460,7 @@ export default function AdminLoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="group relative flex h-14 w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-red-600 to-red-700 px-6 font-extrabold text-white shadow-[0_12px_35px_rgba(220,38,38,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(220,38,38,0.4)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-200 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 motion-reduce:transform-none"
+                className="group relative flex h-14 w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-brand-600 to-brand-700 px-6 font-extrabold text-white shadow-[0_12px_35px_rgba(184,134,50,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(184,134,50,0.4)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-200 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 motion-reduce:transform-none"
               >
 
                 {/* Light Sweep */}
@@ -503,7 +503,7 @@ export default function AdminLoginPage() {
             {/* SECURITY NOTE */}
             <div className="mt-7 flex items-start gap-3 rounded-[20px] border border-slate-200 bg-slate-50 p-5">
 
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
                 <ShieldCheck className="h-5 w-5" />
               </div>
 
@@ -525,7 +525,7 @@ export default function AdminLoginPage() {
 
               <Link
                 href="/"
-                className="group inline-flex items-center gap-2 text-sm font-extrabold text-slate-600 transition-colors duration-300 hover:text-red-600"
+                className="group inline-flex items-center gap-2 text-sm font-extrabold text-slate-600 transition-colors duration-300 hover:text-brand-600"
               >
 
                 <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
@@ -547,7 +547,7 @@ export default function AdminLoginPage() {
 
         <p className="text-xs font-semibold text-slate-400">
           Royal Stone Construction
-          <span className="mx-2 text-red-400">•</span>
+          <span className="mx-2 text-brand-400">•</span>
           Admin Control Center
         </p>
 

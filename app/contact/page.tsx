@@ -61,7 +61,7 @@ const contactCards = [
 ];
 
 export default async function ContactPage() {
-  const { workingHours } = await getSiteContent();
+  const { workingHours, address, mapUrl, serviceAreas } = await getSiteContent();
 
   return (
     <main className="overflow-hidden bg-white">
@@ -79,16 +79,16 @@ export default async function ContactPage() {
       <section className="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
 
         {/* Background Glow */}
-        <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-red-500/5 blur-[110px]" />
+        <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-brand-500/5 blur-[110px]" />
 
-        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-orange-400/5 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-brand-400/5 blur-[120px]" />
 
         <div className="site-container relative z-10">
 
           {/* Section Heading */}
           <div className="mx-auto max-w-3xl text-center">
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.16em] text-red-600">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.16em] text-brand-600">
 
               <Sparkles className="h-4 w-4" />
 
@@ -98,7 +98,7 @@ export default async function ContactPage() {
 
             <h2 className="mt-6 text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
               Let&apos;s Start a{" "}
-              <span className="bg-gradient-to-r from-red-700 via-red-600 to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 bg-clip-text text-transparent">
                 Conversation.
               </span>
             </h2>
@@ -127,16 +127,16 @@ export default async function ContactPage() {
               }) => (
                 <article
                   key={title}
-                  className="group relative isolate flex h-full min-w-0 flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white p-7 shadow-[0_10px_35px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-red-300 hover:shadow-[0_25px_65px_rgba(220,38,38,0.14)] motion-reduce:transform-none sm:p-8"
+                  className="group relative isolate flex h-full min-w-0 flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white p-7 shadow-[0_10px_35px_rgba(11,24,32,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-brand-300 hover:shadow-[0_25px_65px_rgba(184,134,50,0.14)] motion-reduce:transform-none sm:p-8"
                 >
 
                   {/* Background Glow */}
-                  <div className="pointer-events-none absolute -right-20 -top-20 -z-10 h-60 w-60 rounded-full bg-red-500/5 blur-[80px] transition-colors duration-500 group-hover:bg-red-500/15" />
+                  <div className="pointer-events-none absolute -right-20 -top-20 -z-10 h-60 w-60 rounded-full bg-brand-500/5 blur-[80px] transition-colors duration-500 group-hover:bg-brand-500/15" />
 
                   {/* Decorative Number */}
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute right-5 top-2 text-[85px] font-black leading-none text-slate-100 transition-all duration-500 group-hover:scale-110 group-hover:text-red-50"
+                    className="pointer-events-none absolute right-5 top-2 text-[85px] font-black leading-none text-slate-100 transition-all duration-500 group-hover:scale-110 group-hover:text-brand-50"
                   >
                     {number}
                   </span>
@@ -146,29 +146,29 @@ export default async function ContactPage() {
 
                     <div className={external
                       ? "flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(0,0,0,.12)] transition-transform duration-300 group-hover:scale-110 motion-reduce:transform-none"
-                      : "flex h-16 w-16 items-center justify-center rounded-[20px] border border-red-100 bg-red-50 text-red-600 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-red-600 group-hover:bg-red-600 group-hover:text-white group-hover:shadow-[0_12px_35px_rgba(220,38,38,0.3)] motion-reduce:transform-none"}>
+                      : "flex h-16 w-16 items-center justify-center rounded-[20px] border border-brand-100 bg-brand-50 text-brand-600 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-brand-600 group-hover:bg-brand-600 group-hover:text-white group-hover:shadow-[0_12px_35px_rgba(184,134,50,0.3)] motion-reduce:transform-none"}>
 
                       <Icon className="h-8 w-8" />
 
                     </div>
 
-                    <ArrowUpRight className="h-5 w-5 text-slate-300 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-red-600" />
+                    <ArrowUpRight className="h-5 w-5 text-slate-300 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand-600" />
 
                   </div>
 
                   {/* Label */}
                   <div className="relative z-10 mt-8 flex items-center gap-2">
 
-                    <span className="h-2 w-2 rounded-full bg-red-600" />
+                    <span className="h-2 w-2 rounded-full bg-brand-600" />
 
-                    <span className="text-xs font-black uppercase tracking-[0.15em] text-red-600">
+                    <span className="text-xs font-black uppercase tracking-[0.15em] text-brand-600">
                       {subtitle}
                     </span>
 
                   </div>
 
                   {/* Title */}
-                  <h3 className="relative z-10 mt-4 text-2xl font-black tracking-tight text-slate-950 transition-colors duration-300 group-hover:text-red-600">
+                  <h3 className="relative z-10 mt-4 text-2xl font-black tracking-tight text-slate-950 transition-colors duration-300 group-hover:text-brand-600">
                     {title}
                   </h3>
 
@@ -178,7 +178,7 @@ export default async function ContactPage() {
                   </p>
 
                   {/* Divider */}
-                  <div className="relative z-10 mt-8 h-px w-full bg-gradient-to-r from-slate-200 to-transparent transition-colors duration-300 group-hover:from-red-300" />
+                  <div className="relative z-10 mt-8 h-px w-full bg-gradient-to-r from-slate-200 to-transparent transition-colors duration-300 group-hover:from-brand-300" />
 
                   {/* Action Button */}
                   <a
@@ -189,7 +189,7 @@ export default async function ContactPage() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="group/button relative z-10 mt-6 inline-flex min-h-12 items-center justify-between gap-3 overflow-hidden rounded-2xl border border-red-100 bg-red-50 px-5 py-3.5 text-sm font-extrabold text-red-600 transition-all duration-300 hover:border-red-600 hover:bg-red-600 hover:text-white hover:shadow-[0_10px_30px_rgba(220,38,38,0.25)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-200"
+                    className="group/button relative z-10 mt-6 inline-flex min-h-12 items-center justify-between gap-3 overflow-hidden rounded-2xl border border-brand-100 bg-brand-50 px-5 py-3.5 text-sm font-extrabold text-brand-600 transition-all duration-300 hover:border-brand-600 hover:bg-brand-600 hover:text-white hover:shadow-[0_10px_30px_rgba(184,134,50,0.25)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-200"
                   >
 
                     <span className="relative z-10">
@@ -204,7 +204,7 @@ export default async function ContactPage() {
                   </a>
 
                   {/* Animated Bottom Border */}
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red-700 via-red-500 to-orange-400 transition-all duration-500 group-hover:w-full" />
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-brand-700 via-brand-500 to-brand-400 transition-all duration-500 group-hover:w-full" />
 
                 </article>
               )
@@ -218,7 +218,7 @@ export default async function ContactPage() {
       {/* =====================================
           CONTACT DETAILS + LEAD FORM
       ===================================== */}
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-white to-red-50/40 py-20 sm:py-24 lg:py-28">
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-white to-brand-50/40 py-20 sm:py-24 lg:py-28">
 
         {/* Background Grid */}
         <div
@@ -230,16 +230,16 @@ export default async function ContactPage() {
           }}
         />
 
-        <div className="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-red-500/5 blur-[110px]" />
+        <div className="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-brand-500/5 blur-[110px]" />
 
-        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-orange-400/10 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-brand-400/10 blur-[120px]" />
 
         <div className="site-container relative z-10">
 
           {/* Section Header */}
           <div className="mb-12 max-w-3xl">
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.16em] text-red-600">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.16em] text-brand-600">
 
               <Building2 className="h-4 w-4" />
 
@@ -249,7 +249,7 @@ export default async function ContactPage() {
 
             <h2 className="mt-6 text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
               Your Next Project{" "}
-              <span className="text-red-600">
+              <span className="text-brand-600">
                 Starts Here.
               </span>
             </h2>
@@ -269,15 +269,15 @@ export default async function ContactPage() {
             <div className="space-y-7">
 
               {/* Dark Contact Panel */}
-              <div className="group relative isolate overflow-hidden rounded-[32px] bg-[#08111f] p-7 text-white shadow-[0_20px_60px_rgba(15,23,42,0.15)] sm:p-9">
+              <div className="group relative isolate overflow-hidden rounded-[32px] bg-[#0b1820] p-7 text-white shadow-[0_20px_60px_rgba(11,24,32,0.15)] sm:p-9">
 
                 {/* Background Glow */}
-                <div className="pointer-events-none absolute -right-20 -top-20 -z-10 h-72 w-72 rounded-full bg-red-600/20 blur-[90px]" />
+                <div className="pointer-events-none absolute -right-20 -top-20 -z-10 h-72 w-72 rounded-full bg-brand-600/20 blur-[90px]" />
 
-                <div className="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-64 w-64 rounded-full bg-orange-500/10 blur-[100px]" />
+                <div className="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-64 w-64 rounded-full bg-brand-500/10 blur-[100px]" />
 
                 {/* Heading */}
-                <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-black tracking-[0.15em] text-red-300">
+                <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-2 text-xs font-black tracking-[0.15em] text-brand-300">
 
                   <Sparkles className="h-4 w-4" />
 
@@ -287,7 +287,7 @@ export default async function ContactPage() {
 
                 <h3 className="mt-6 text-2xl font-black leading-tight sm:text-3xl">
                   Visit or arrange a{" "}
-                  <span className="text-red-400">
+                  <span className="text-brand-400">
                     consultation.
                   </span>
                 </h3>
@@ -300,7 +300,7 @@ export default async function ContactPage() {
                 {/* Location */}
                 <div className="mt-9 flex items-start gap-4 border-t border-white/10 pt-7">
 
-                  <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10 p-3 text-red-400 transition-all duration-300 group-hover:border-red-500/40">
+                  <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-brand-500/20 bg-brand-500/10 p-3 text-brand-400 transition-all duration-300 group-hover:border-brand-500/40">
                     <MapPin className="h-6 w-6" />
                   </div>
 
@@ -310,21 +310,21 @@ export default async function ContactPage() {
                     </h4>
 
                     <p className="mt-2 text-sm leading-7 text-slate-300 sm:text-base">
-                      Patna, Bihar, India
+                      {address?.trim() || "Contact us to arrange a consultation"}
                     </p>
 
-                    <p className="mt-2 text-xs leading-6 text-slate-400">
+                    {!address?.trim() && <p className="mt-2 text-xs leading-6 text-slate-400">
                       Please contact us for the exact
                       meeting address.
-                    </p>
+                    </p>}
                   </div>
 
                 </div>
 
                 {/* Working Hours */}
-                <div className="mt-7 flex items-start gap-4 border-t border-white/10 pt-7">
+                {workingHours.trim() && <div className="mt-7 flex items-start gap-4 border-t border-white/10 pt-7">
 
-                  <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10 p-3 text-red-400">
+                  <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-brand-500/20 bg-brand-500/10 p-3 text-brand-400">
                     <Clock3 className="h-6 w-6" />
                   </div>
 
@@ -339,10 +339,11 @@ export default async function ContactPage() {
                     </p>
                   </div>
 
-                </div>
+                </div>}
+                {serviceAreas?.trim() && <p className="mt-7 whitespace-pre-line text-sm leading-7 text-slate-300">Confirmed service areas: {serviceAreas}</p>}
 
                 {/* Footer Line */}
-                <div className="mt-8 flex items-center gap-2 border-t border-white/10 pt-6 text-sm font-semibold text-red-300">
+                <div className="mt-8 flex items-center gap-2 border-t border-white/10 pt-6 text-sm font-semibold text-brand-300">
 
                   <CheckCircle2 className="h-4 w-4 shrink-0" />
 
@@ -351,75 +352,15 @@ export default async function ContactPage() {
                 </div>
 
                 {/* Bottom Glow Line */}
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600 via-orange-400 to-transparent" />
+                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-brand-600 via-brand-400 to-transparent" />
 
               </div>
 
-              {/* Google Map */}
-              <div className="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_12px_40px_rgba(15,23,42,0.07)] transition-all duration-500 hover:border-red-200 hover:shadow-[0_20px_55px_rgba(220,38,38,0.1)]">
-
-                {/* Map Header */}
-                <div className="flex flex-wrap items-center justify-between gap-4 p-5 sm:p-6">
-
-                  <div className="flex items-center gap-3">
-
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-red-600">
-                      <Navigation className="h-6 w-6" />
-                    </div>
-
-                    <div>
-                      <h3 className="text-lg font-black text-slate-950">
-                        Find Us in Patna
-                      </h3>
-
-                      <p className="mt-1 text-xs text-slate-500">
-                        City location overview
-                      </p>
-                    </div>
-
-                  </div>
-
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=Patna%2C%20Bihar%2C%20India"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/map inline-flex items-center gap-2 rounded-xl border border-red-100 bg-red-50 px-4 py-2.5 text-xs font-extrabold text-red-600 transition-all duration-300 hover:border-red-600 hover:bg-red-600 hover:text-white"
-                  >
-                    Open Map
-
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/map:-translate-y-0.5 group-hover/map:translate-x-0.5" />
-                  </a>
-
-                </div>
-
-                {/* Embedded Map */}
-                <div className="relative h-[300px] w-full overflow-hidden bg-slate-100 sm:h-[340px]">
-
-                  <iframe
-                    title="Patna Bihar city location map"
-                    src="https://maps.google.com/maps?q=Patna%2C%20Bihar%2C%20India&output=embed"
-                    width="600"
-                    height="340"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="h-full w-full border-0 grayscale-[15%] transition-all duration-700 group-hover:grayscale-0"
-                  />
-
-                </div>
-
-                {/* Map Footer */}
-                <div className="flex items-start gap-3 border-t border-slate-100 bg-slate-50 px-5 py-4">
-
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
-
-                  <p className="text-xs leading-6 text-slate-500">
-                    This map shows Patna city, not an exact office address.
-                    Contact our team for meeting directions.
-                  </p>
-
-                </div>
-
-              </div>
+              {mapUrl?.trim() && <div className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="flex items-center gap-3"><Navigation className="h-6 w-6 text-brand-600" /><h3 className="text-lg font-black text-slate-950">Consultation directions</h3></div>
+                <p className="mt-3 text-sm leading-7 text-slate-600">Contact us to arrange a consultation before visiting.</p>
+                <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-brand-600 underline">Open verified map <ArrowUpRight className="h-4 w-4" /></a>
+              </div>}
 
             </div>
 
@@ -429,12 +370,12 @@ export default async function ContactPage() {
             <div className="relative lg:sticky lg:top-28">
 
               {/* Background Glow */}
-              <div className="pointer-events-none absolute -inset-5 rounded-[45px] bg-gradient-to-br from-red-500/15 via-transparent to-orange-400/15 blur-3xl" />
+              <div className="pointer-events-none absolute -inset-5 rounded-[45px] bg-gradient-to-br from-brand-500/15 via-transparent to-brand-400/15 blur-3xl" />
 
               {/* Decoration */}
-              <div className="pointer-events-none absolute -right-4 -top-4 hidden h-36 w-36 rounded-[35px] border border-red-500/20 lg:block" />
+              <div className="pointer-events-none absolute -right-4 -top-4 hidden h-36 w-36 rounded-[35px] border border-brand-500/20 lg:block" />
 
-              <div className="pointer-events-none absolute -bottom-5 -left-5 hidden h-28 w-28 rounded-full border border-orange-400/20 lg:block" />
+              <div className="pointer-events-none absolute -bottom-5 -left-5 hidden h-28 w-28 rounded-full border border-brand-400/20 lg:block" />
 
               {/* Form Wrapper */}
               <div className="relative mx-auto w-full max-w-xl">
@@ -442,25 +383,25 @@ export default async function ContactPage() {
                 {/* Top Label */}
                 <div className="mb-5 flex items-center justify-center gap-2">
 
-                  <span className="h-px w-8 bg-red-300" />
+                  <span className="h-px w-8 bg-brand-300" />
 
-                  <span className="text-xs font-black uppercase tracking-[0.15em] text-red-600">
+                  <span className="text-xs font-black uppercase tracking-[0.15em] text-brand-600">
                     REQUEST A CONSULTATION
                   </span>
 
-                  <span className="h-px w-8 bg-red-300" />
+                  <span className="h-px w-8 bg-brand-300" />
 
                 </div>
 
                 {/* Existing Supabase Form */}
-                <div className="relative rounded-[34px] transition-all duration-500 hover:shadow-[0_25px_70px_rgba(220,38,38,0.12)]">
+                <div className="relative rounded-[34px] transition-all duration-500 hover:shadow-[0_25px_70px_rgba(184,134,50,0.12)]">
                   <LeadForm />
                 </div>
 
                 {/* Trust Note */}
                 <div className="mt-6 flex items-start justify-center gap-3 rounded-2xl border border-slate-200 bg-white/90 px-5 py-4 shadow-sm">
 
-                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
+                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
 
                   <p className="text-xs leading-6 text-slate-600">
                     Your enquiry will be shared with
@@ -482,18 +423,18 @@ export default async function ContactPage() {
       {/* =====================================
           FINAL CONTACT CTA
       ===================================== */}
-      <section className="relative overflow-hidden bg-[#08111f] py-16 text-white sm:py-20">
+      <section className="relative overflow-hidden bg-[#0b1820] py-16 text-white sm:py-20">
 
         {/* Background Lights */}
-        <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-red-600/15 blur-[100px]" />
+        <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-brand-600/15 blur-[100px]" />
 
-        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-orange-500/10 blur-[110px]" />
+        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-brand-500/10 blur-[110px]" />
 
         <div className="site-container relative z-10 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
 
           <div className="max-w-2xl">
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2 text-xs font-black tracking-[0.14em] text-red-300">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/20 bg-brand-500/10 px-4 py-2 text-xs font-black tracking-[0.14em] text-brand-300">
 
               <Sparkles className="h-4 w-4" />
 
@@ -503,7 +444,7 @@ export default async function ContactPage() {
 
             <h2 className="mt-6 text-3xl font-black leading-tight sm:text-4xl">
               Have a project in mind?
-              <span className="mt-1 block text-red-400">
+              <span className="mt-1 block text-brand-400">
                 Let&apos;s discuss your plans.
               </span>
             </h2>
@@ -518,7 +459,7 @@ export default async function ContactPage() {
 
           <Link
             href="/get-quote"
-            className="group relative inline-flex min-h-14 shrink-0 items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-red-600 to-red-700 px-7 py-4 font-extrabold text-white shadow-[0_12px_35px_rgba(220,38,38,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(220,38,38,0.4)]"
+            className="group relative inline-flex min-h-14 shrink-0 items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-brand-600 to-brand-700 px-7 py-4 font-extrabold text-white shadow-[0_12px_35px_rgba(184,134,50,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(184,134,50,0.4)]"
           >
 
             <span className="pointer-events-none absolute -left-20 top-0 h-full w-14 skew-x-[-25deg] bg-white/20 transition-all duration-700 group-hover:left-[120%]" />

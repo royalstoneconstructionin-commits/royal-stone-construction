@@ -1,7 +1,7 @@
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { createClient } from "@supabase/supabase-js";
-import { defaultContent, isSiteContent } from "@/lib/content";
+import { defaultContent, isSiteContent, publicSiteContent } from "@/lib/content";
 
 // Public RLS-protected content only. Uses the existing public credentials.
 const getCachedContent = unstable_cache(async (url: string, key: string) => {
@@ -19,6 +19,6 @@ export const getSiteContent = cache(async () => {
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !key) return defaultContent;
   try {
-    return await getCachedContent(url, key);
+    return publicSiteContent(await getCachedContent(url, key));
   } catch { return defaultContent; }
 });

@@ -16,7 +16,7 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   if (compact) return (
     <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-3">
-      <div className="max-w-2xl"><p className="text-xs font-bold uppercase tracking-[0.18em] text-red-600">{eyebrow}</p><h2 className="mt-2 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">{title}</h2></div>
+      <div className="max-w-2xl"><p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-600">{eyebrow}</p><h2 className="mt-2 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">{title}</h2></div>
       {text && <p className="max-w-sm text-sm leading-6 text-slate-500">{text}</p>}
     </div>
   );
@@ -28,10 +28,10 @@ export default function SectionHeading({
         className="
           pointer-events-none absolute -left-16 -top-10 -z-10
           h-48 w-72 rounded-full
-          bg-red-500/5 blur-[75px]
+          bg-brand-500/5 blur-[75px]
           opacity-50
           transition-all duration-700
-          group-hover:bg-red-500/10
+          group-hover:bg-brand-500/10
           group-hover:opacity-100
         "
       />
@@ -40,13 +40,13 @@ export default function SectionHeading({
       <div
         className="
           inline-flex max-w-full items-center gap-3
-          rounded-full border border-red-100
-          bg-gradient-to-r from-red-50 to-white
+          rounded-full border border-brand-100
+          bg-gradient-to-r from-brand-50 to-white
           px-4 py-2.5
-          shadow-[0_5px_20px_rgba(220,38,38,0.05)]
+          shadow-[0_5px_20px_rgba(184,134,50,0.05)]
           transition-all duration-500
-          group-hover:border-red-300
-          group-hover:shadow-[0_8px_30px_rgba(220,38,38,0.12)]
+          group-hover:border-brand-300
+          group-hover:shadow-[0_8px_30px_rgba(184,134,50,0.12)]
         "
       >
 
@@ -57,18 +57,18 @@ export default function SectionHeading({
             className="
               absolute inline-flex h-full w-full
               animate-ping rounded-full
-              bg-red-400 opacity-60
+              bg-brand-400 opacity-60
               motion-reduce:animate-none
             "
           />
 
-          <span className="relative h-2.5 w-2.5 rounded-full bg-red-600" />
+          <span className="relative h-2.5 w-2.5 rounded-full bg-brand-600" />
 
         </span>
 
         <Sparkles
           className="
-            h-4 w-4 shrink-0 text-red-600
+            h-4 w-4 shrink-0 text-brand-600
             transition-transform duration-500
             group-hover:rotate-12
             group-hover:scale-110
@@ -79,7 +79,7 @@ export default function SectionHeading({
         <span
           className="
             text-xs font-black uppercase
-            tracking-[0.15em] text-red-600
+            tracking-[0.15em] text-brand-600
             sm:text-sm
             sm:tracking-[0.18em]
           "
@@ -99,7 +99,7 @@ export default function SectionHeading({
             text-slate-950
             transition-all duration-500
             group-hover:text-slate-900
-            group-hover:[text-shadow:0_0_22px_rgba(220,38,38,0.16)]
+            group-hover:[text-shadow:0_0_22px_rgba(184,134,50,0.16)]
             sm:text-4xl
             lg:text-5xl
           "
@@ -121,8 +121,8 @@ export default function SectionHeading({
             className="
               h-full w-full rounded-full
               bg-gradient-to-r
-              from-red-700 via-red-500 to-orange-400
-              shadow-[0_0_15px_rgba(220,38,38,0.35)]
+              from-brand-700 via-brand-500 to-brand-400
+              shadow-[0_0_15px_rgba(184,134,50,0.35)]
             "
           />
         </div>
@@ -153,11 +153,11 @@ export default function SectionHeading({
         className="
           pointer-events-none absolute -right-4 top-4
           hidden h-16 w-16
-          rounded-full border border-red-100/60
+          rounded-full border border-brand-100/60
           opacity-40
           transition-all duration-700
           group-hover:scale-110
-          group-hover:border-red-300
+          group-hover:border-brand-300
           group-hover:opacity-80
           md:block
         "

@@ -49,10 +49,10 @@ type Notice = {
 };
 
 const inputClass =
-  "mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3.5 text-sm font-medium text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10 disabled:cursor-not-allowed disabled:opacity-60";
+  "mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3.5 text-sm font-medium text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10 disabled:cursor-not-allowed disabled:opacity-60";
 
 const actionClass =
-  "group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-red-600 to-red-700 px-5 py-3 text-sm font-extrabold text-white shadow-[0_10px_30px_rgba(220,38,38,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_35px_rgba(220,38,38,0.3)] disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:transform-none";
+  "group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-brand-600 to-brand-700 px-5 py-3 text-sm font-extrabold text-white shadow-[0_10px_30px_rgba(184,134,50,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_35px_rgba(184,134,50,0.3)] disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:transform-none";
 
 // -----------------------------------------
 // Reusable Field
@@ -444,15 +444,6 @@ export default function SiteContentEditor() {
       return;
     }
 
-    if (!published.workingHours.trim()) {
-      setTab("hours");
-      setNotice({
-        type: "error",
-        text: "Please enter working hours or a consultation availability message before publishing.",
-      });
-      return;
-    }
-
     setSaving(true);
     setNotice(null);
 
@@ -553,7 +544,7 @@ export default function SiteContentEditor() {
     },
     {
       id: "hours" as const,
-      label: "Working Hours",
+      label: "Business Details",
       icon: Clock3,
       count: null,
     },
@@ -570,12 +561,12 @@ export default function SiteContentEditor() {
           PREMIUM ADMIN HEADER
       ===================================== */}
 
-      <div className="relative isolate overflow-hidden rounded-[30px] bg-[#08111f] p-6 text-white shadow-[0_20px_60px_rgba(15,23,42,0.15)] sm:p-8 lg:p-10">
+      <div className="relative isolate overflow-hidden rounded-[30px] bg-[#0b1820] p-6 text-white shadow-[0_20px_60px_rgba(11,24,32,0.15)] sm:p-8 lg:p-10">
 
         {/* Decorative Background */}
-        <div className="pointer-events-none absolute -right-20 -top-24 -z-10 h-80 w-80 rounded-full bg-red-600/20 blur-[90px]" />
+        <div className="pointer-events-none absolute -right-20 -top-24 -z-10 h-80 w-80 rounded-full bg-brand-600/20 blur-[90px]" />
 
-        <div className="pointer-events-none absolute -bottom-32 -left-20 -z-10 h-72 w-72 rounded-full bg-orange-500/10 blur-[100px]" />
+        <div className="pointer-events-none absolute -bottom-32 -left-20 -z-10 h-72 w-72 rounded-full bg-brand-500/10 blur-[100px]" />
 
         <div
           className="pointer-events-none absolute inset-0 -z-10 opacity-[0.04]"
@@ -591,7 +582,7 @@ export default function SiteContentEditor() {
           {/* Header Text */}
           <div className="max-w-2xl">
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.15em] text-red-300">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.15em] text-brand-300">
 
               <Sparkles className="h-4 w-4" />
 
@@ -601,7 +592,7 @@ export default function SiteContentEditor() {
 
             <h2 className="mt-6 text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
               Website{" "}
-              <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent">
                 Content Manager
               </span>
             </h2>
@@ -681,7 +672,7 @@ export default function SiteContentEditor() {
         </div>
 
         {/* Header Bottom Line */}
-        <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600 via-orange-400 to-transparent" />
+        <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-brand-600 via-brand-400 to-transparent" />
 
       </div>
 
@@ -721,20 +712,20 @@ export default function SiteContentEditor() {
         ].map(({ title, value, icon: Icon, info }) => (
           <div
             key={title}
-            className="group relative overflow-hidden rounded-[25px] border border-slate-200 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-red-200 hover:shadow-[0_15px_40px_rgba(220,38,38,0.09)]"
+            className="group relative overflow-hidden rounded-[25px] border border-slate-200 bg-white p-5 shadow-[0_8px_30px_rgba(11,24,32,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-[0_15px_40px_rgba(184,134,50,0.09)]"
           >
 
-            <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-red-500/5 blur-3xl transition-colors group-hover:bg-red-500/10" />
+            <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-brand-500/5 blur-3xl transition-colors group-hover:bg-brand-500/10" />
 
             <div className="flex items-start justify-between">
 
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-red-600 transition-all duration-300 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white">
 
                 <Icon className="h-6 w-6" />
 
               </div>
 
-              <ArrowUpRight className="h-4 w-4 text-slate-300 transition-colors group-hover:text-red-600" />
+              <ArrowUpRight className="h-4 w-4 text-slate-300 transition-colors group-hover:text-brand-600" />
 
             </div>
 
@@ -750,7 +741,7 @@ export default function SiteContentEditor() {
               {info}
             </p>
 
-            <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover:w-full" />
+            <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover:w-full" />
 
           </div>
         ))}
@@ -789,7 +780,7 @@ export default function SiteContentEditor() {
           MAIN CONTENT EDITOR
       ===================================== */}
 
-      <div className="min-w-0 overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_15px_50px_rgba(15,23,42,0.05)]">
+      <div className="min-w-0 overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_15px_50px_rgba(11,24,32,0.05)]">
 
         {/* Editor Header */}
         <div className="flex flex-col justify-between gap-5 border-b border-slate-100 px-5 py-7 sm:flex-row sm:items-center sm:px-8">
@@ -805,7 +796,7 @@ export default function SiteContentEditor() {
             </p>
           </div>
 
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2 text-xs font-extrabold text-red-600">
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-2 text-xs font-extrabold text-brand-600">
             <ShieldCheck className="h-4 w-4" />
             Admin Content Control
           </div>
@@ -817,7 +808,7 @@ export default function SiteContentEditor() {
           /* LOADING STATE */
           <div className="flex min-h-72 flex-col items-center justify-center px-6 py-16 text-center">
 
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-red-50 text-red-600">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
               <Loader2 className="h-8 w-8 animate-spin" />
             </div>
 
@@ -836,7 +827,7 @@ export default function SiteContentEditor() {
           /* ERROR / RETRY STATE */
           <div className="flex min-h-64 flex-col items-center justify-center px-6 py-12 text-center">
 
-            <AlertCircle className="h-12 w-12 text-red-500" />
+            <AlertCircle className="h-12 w-12 text-brand-500" />
 
             <h3 className="mt-5 text-xl font-black text-slate-950">
               Content Editor Unavailable
@@ -885,8 +876,8 @@ export default function SiteContentEditor() {
                         aria-pressed={active}
                         className={`group relative inline-flex min-h-12 items-center gap-2.5 overflow-hidden rounded-2xl border px-4 py-3 text-sm font-extrabold transition-all duration-300 ${
                           active
-                            ? "border-red-600 bg-gradient-to-r from-red-600 to-red-700 text-white shadow-[0_8px_25px_rgba(220,38,38,0.2)]"
-                            : "border-slate-200 bg-white text-slate-600 hover:-translate-y-0.5 hover:border-red-200 hover:bg-red-50 hover:text-red-600"
+                            ? "border-brand-600 bg-gradient-to-r from-brand-600 to-brand-700 text-white shadow-[0_8px_25px_rgba(184,134,50,0.2)]"
+                            : "border-slate-200 bg-white text-slate-600 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-600"
                         }`}
                       >
 
@@ -978,7 +969,7 @@ export default function SiteContentEditor() {
                   {content.projects.length === 0 && (
                     <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 px-6 py-14 text-center">
 
-                      <FolderKanban className="mx-auto h-12 w-12 text-red-500" />
+                      <FolderKanban className="mx-auto h-12 w-12 text-brand-500" />
 
                       <h4 className="mt-5 text-xl font-black text-slate-950">
                         No Projects Added
@@ -1006,7 +997,7 @@ export default function SiteContentEditor() {
                         return (
                           <div
                             key={index}
-                            className="group overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.04)] transition-all duration-300 hover:border-red-200 hover:shadow-[0_12px_40px_rgba(220,38,38,0.07)]"
+                            className="group overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-[0_8px_30px_rgba(11,24,32,0.04)] transition-all duration-300 hover:border-brand-200 hover:shadow-[0_12px_40px_rgba(184,134,50,0.07)]"
                           >
 
                             {/* Project Summary */}
@@ -1063,7 +1054,7 @@ export default function SiteContentEditor() {
                                 </div>
 
                                 <p className="mt-2 flex items-center gap-1.5 text-xs text-slate-500 sm:text-sm">
-                                  <MapPin className="h-3.5 w-3.5 shrink-0 text-red-500" />
+                                  <MapPin className="h-3.5 w-3.5 shrink-0 text-brand-500" />
 
                                   {project.city || "Location not added"}
                                 </p>
@@ -1075,7 +1066,7 @@ export default function SiteContentEditor() {
                               </div>
 
                               {/* Expand Icon */}
-                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
 
                                 <ChevronDown
                                   className={`h-5 w-5 transition-transform duration-300 ${
@@ -1093,7 +1084,7 @@ export default function SiteContentEditor() {
 
                                 <div className="mb-7 flex items-center gap-3">
 
-                                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
 
                                     <FileText className="h-5 w-5" />
 
@@ -1153,6 +1144,12 @@ export default function SiteContentEditor() {
                                       })
                                     }
                                   />
+
+                                  <Field label="Duration (optional, verified only)" value={project.duration ?? ""} onChange={duration => updateProject(index, { duration })} />
+                                  <label className="flex min-h-11 items-center gap-3 text-sm font-bold text-slate-700">
+                                    <input type="checkbox" checked={project.approved === true} onChange={event => updateProject(index, { approved: event.target.checked })} className="h-5 w-5 accent-brand-600" />
+                                    Project facts and images verified; permission to publish confirmed
+                                  </label>
 
                                   <Choice
                                     label="Project Category"
@@ -1279,7 +1276,7 @@ export default function SiteContentEditor() {
 
                                   <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
 
-                                    <ShieldCheck className="h-4 w-4 text-red-500" />
+                                    <ShieldCheck className="h-4 w-4 text-brand-500" />
 
                                     Changes publish after saving.
 
@@ -1361,7 +1358,7 @@ export default function SiteContentEditor() {
                   {content.testimonials.length === 0 && (
                     <div className="rounded-[28px] border border-dashed border-slate-300 bg-slate-50 px-6 py-14 text-center">
 
-                      <MessageSquareQuote className="mx-auto h-12 w-12 text-red-500" />
+                      <MessageSquareQuote className="mx-auto h-12 w-12 text-brand-500" />
 
                       <h4 className="mt-5 text-xl font-black text-slate-950">
                         No Feedback Added Yet
@@ -1382,12 +1379,12 @@ export default function SiteContentEditor() {
                       (item, index) => (
                         <div
                           key={index}
-                          className="group relative overflow-hidden rounded-[26px] border border-slate-200 bg-white p-6 shadow-[0_10px_35px_rgba(15,23,42,0.05)] transition-all duration-300 hover:border-red-200 hover:shadow-[0_15px_40px_rgba(220,38,38,0.07)]"
+                          className="group relative overflow-hidden rounded-[26px] border border-slate-200 bg-white p-6 shadow-[0_10px_35px_rgba(11,24,32,0.05)] transition-all duration-300 hover:border-brand-200 hover:shadow-[0_15px_40px_rgba(184,134,50,0.07)]"
                         >
 
                           <div className="flex items-start justify-between gap-3">
 
-                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-red-600">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
 
                               <MessageSquareQuote className="h-6 w-6" />
 
@@ -1443,6 +1440,7 @@ export default function SiteContentEditor() {
                               }
                               multiline
                             />
+                            <Field label="Original Google review URL (optional)" value={item.reviewUrl ?? ""} onChange={reviewUrl => updateTestimonial(index, { reviewUrl })} />
 
                           </div>
 
@@ -1458,7 +1456,7 @@ export default function SiteContentEditor() {
                                     event.target.checked,
                                 })
                               }
-                              className="mt-1 h-5 w-5 shrink-0 accent-red-600"
+                              className="mt-1 h-5 w-5 shrink-0 accent-brand-600"
                             />
 
                             <div>
@@ -1480,13 +1478,13 @@ export default function SiteContentEditor() {
                             onClick={() =>
                               removeTestimonial(index)
                             }
-                            className="mt-6 inline-flex items-center gap-2 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm font-bold text-red-700 transition-colors hover:border-red-600 hover:bg-red-600 hover:text-white"
+                            className="mt-6 inline-flex items-center gap-2 rounded-xl border border-brand-100 bg-brand-50 px-4 py-3 text-sm font-bold text-brand-700 transition-colors hover:border-brand-600 hover:bg-brand-600 hover:text-white"
                           >
                             <Trash2 className="h-4 w-4" />
                             Remove Feedback
                           </button>
 
-                          <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover:w-full" />
+                          <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover:w-full" />
 
                         </div>
                       )
@@ -1509,12 +1507,12 @@ export default function SiteContentEditor() {
                     {/* Left */}
                     <div>
 
-                      <div className="flex h-16 w-16 items-center justify-center rounded-[22px] bg-red-50 text-red-600">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-[22px] bg-brand-50 text-brand-600">
                         <Clock3 className="h-8 w-8" />
                       </div>
 
                       <h3 className="mt-6 text-2xl font-black text-slate-950 sm:text-3xl">
-                        Working Hours & Availability
+                        Verified Business Details
                       </h3>
 
                       <p className="mt-4 leading-8 text-slate-600">
@@ -1524,9 +1522,9 @@ export default function SiteContentEditor() {
                         business schedule changes.
                       </p>
 
-                      <div className="mt-7 flex items-start gap-3 rounded-2xl border border-red-100 bg-red-50 px-5 py-4">
+                      <div className="mt-7 flex items-start gap-3 rounded-2xl border border-brand-100 bg-brand-50 px-5 py-4">
 
-                        <Sparkles className="mt-1 h-5 w-5 shrink-0 text-red-600" />
+                        <Sparkles className="mt-1 h-5 w-5 shrink-0 text-brand-600" />
 
                         <p className="text-sm leading-7 text-slate-700">
                           If your working hours are not
@@ -1542,7 +1540,7 @@ export default function SiteContentEditor() {
                     {/* Right */}
                     <div className="relative overflow-hidden rounded-[28px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-sm sm:p-8">
 
-                      <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-red-500/5 blur-[80px]" />
+                      <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-brand-500/5 blur-[80px]" />
 
                       <h4 className="relative text-xl font-black text-slate-950">
                         Consultation Schedule
@@ -1555,7 +1553,7 @@ export default function SiteContentEditor() {
                       <div className="relative mt-7">
 
                         <Field
-                          label="Working Hours / Consultation Availability"
+                          label="Verified working hours (optional)"
                           value={content.workingHours}
                           onChange={(workingHours) =>
                             change({
@@ -1567,12 +1565,20 @@ export default function SiteContentEditor() {
                           multiline
                         />
 
+                        <div className="mt-5 space-y-5">
+                          <Field label="Verified meeting address (optional)" value={content.address ?? ""} onChange={address => change({ ...content, address })} multiline />
+                          <Field label="Verified Google Maps URL (optional)" value={content.mapUrl ?? ""} onChange={mapUrl => change({ ...content, mapUrl })} />
+                          <Field label="Confirmed service areas (optional)" value={content.serviceAreas ?? ""} onChange={serviceAreas => change({ ...content, serviceAreas })} multiline />
+                          <Field label="Verified design pricing terms (optional)" value={content.pricingDetails ?? ""} onChange={pricingDetails => change({ ...content, pricingDetails })} placeholder="Confirmed billing area, revisions, formats, delivery time, minimum fees and applicable charges. Leave unconfirmed details out. Package rates stay in the existing pricing source." multiline />
+                          <p className="text-xs leading-6 text-slate-500">Leave unknown details blank. Real projects require explicit approval before they appear publicly. Review approval confirms genuine text and permission to publish.</p>
+                        </div>
+
                       </div>
 
                       {/* Preview */}
-                      <div className="relative mt-7 rounded-2xl border border-red-100 bg-white p-5">
+                      <div className="relative mt-7 rounded-2xl border border-brand-100 bg-white p-5">
 
-                        <div className="flex items-center gap-2 text-sm font-black text-red-600">
+                        <div className="flex items-center gap-2 text-sm font-black text-brand-600">
 
                           <Clock3 className="h-4 w-4" />
 

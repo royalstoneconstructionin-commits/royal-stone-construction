@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 
 import type { Project } from "@/lib/content";
+import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
 
 const categories = [
@@ -105,11 +106,12 @@ export default function ProjectGallery({
     <section className="relative isolate w-full overflow-hidden py-6">
 
       {/* Background Glows */}
-      <div className="pointer-events-none absolute -left-32 top-20 h-80 w-80 rounded-full bg-red-500/5 blur-[100px]" />
+      <div className="pointer-events-none absolute -left-32 top-20 h-80 w-80 rounded-full bg-brand-500/5 blur-[100px]" />
 
-      <div className="pointer-events-none absolute -right-32 bottom-20 h-80 w-80 rounded-full bg-orange-400/5 blur-[110px]" />
+      <div className="pointer-events-none absolute -right-32 bottom-20 h-80 w-80 rounded-full bg-brand-400/5 blur-[110px]" />
 
       <div className="relative z-10">
+        {!projects.some(project => project.status !== "Concept") && <div className="mb-8 rounded-xl border border-slate-200 bg-white p-5"><p className="text-sm leading-7 text-slate-600">No approved customer projects are published yet. The examples below are illustrative concepts.</p><Link href="/get-quote" className="mt-2 inline-flex min-h-11 items-center font-semibold text-brand-600 underline">Get Quote</Link></div>}
 
         {/* GALLERY HEADER */}
         <div className="mb-10 flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
@@ -117,7 +119,7 @@ export default function ProjectGallery({
           <div className="max-w-3xl">
 
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.14em] text-red-600">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-2.5 text-xs font-black uppercase tracking-[0.14em] text-brand-600">
 
               <Sparkles className="h-4 w-4" />
 
@@ -130,11 +132,11 @@ export default function ProjectGallery({
 
               Our Projects &
 
-              <span className="group/title relative ml-2 inline-block bg-gradient-to-r from-red-700 via-red-600 to-orange-500 bg-clip-text text-transparent transition-all duration-500 hover:drop-shadow-[0_0_15px_rgba(220,38,38,0.25)]">
+              <span className="group/title relative ml-2 inline-block bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 bg-clip-text text-transparent transition-all duration-500 hover:drop-shadow-[0_0_15px_rgba(184,134,50,0.25)]">
 
                 Designs
 
-                <span className="absolute bottom-0 left-0 h-1 w-0 rounded-full bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover/title:w-full" />
+                <span className="absolute bottom-0 left-0 h-1 w-0 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover/title:w-full" />
 
               </span>
 
@@ -153,13 +155,13 @@ export default function ProjectGallery({
           </div>
 
           {/* Portfolio Counter */}
-          <div className="group relative w-fit overflow-hidden rounded-[24px] border border-red-100 bg-gradient-to-br from-white to-red-50 px-6 py-5 shadow-[0_10px_35px_rgba(220,38,38,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(220,38,38,0.13)]">
+          <div className="group relative w-fit overflow-hidden rounded-[24px] border border-brand-100 bg-gradient-to-br from-white to-brand-50 px-6 py-5 shadow-[0_10px_35px_rgba(184,134,50,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(184,134,50,0.13)]">
 
-            <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-red-500/10 blur-2xl" />
+            <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-500/10 blur-2xl" />
 
             <div className="relative flex items-center gap-4">
 
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-[0_8px_25px_rgba(220,38,38,0.25)] transition-transform duration-300 group-hover:scale-110">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-600 text-white shadow-[0_8px_25px_rgba(184,134,50,0.25)] transition-transform duration-300 group-hover:scale-110">
 
                 <Images className="h-7 w-7" />
 
@@ -181,17 +183,17 @@ export default function ProjectGallery({
         </div>
 
         {/* FILTER PANEL */}
-        <div className="relative overflow-hidden rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_12px_45px_rgba(15,23,42,0.05)] sm:p-7">
+        <div className="relative overflow-hidden rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_12px_45px_rgba(11,24,32,0.05)] sm:p-7">
 
           {/* Glow Decoration */}
-          <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-red-500/5 blur-[75px]" />
+          <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-brand-500/5 blur-[75px]" />
 
           {/* Filter Header */}
           <div className="relative flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
 
             <div className="flex items-center gap-3">
 
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-red-50 text-red-600">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
 
                 <SlidersHorizontal className="h-5 w-5" />
 
@@ -212,7 +214,7 @@ export default function ProjectGallery({
             {/* Search */}
             <div className="group/search relative w-full lg:max-w-sm">
 
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors duration-300 group-focus-within/search:text-red-600" />
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors duration-300 group-focus-within/search:text-brand-600" />
 
               <input
                 type="search"
@@ -222,7 +224,7 @@ export default function ProjectGallery({
                 }
                 placeholder="Search projects or city..."
                 aria-label="Search projects"
-                className="h-13 min-h-13 w-full rounded-2xl border border-slate-200 bg-slate-50/80 py-3 pl-12 pr-11 text-sm font-medium text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10"
+                className="h-13 min-h-13 w-full rounded-2xl border border-slate-200 bg-slate-50/80 py-3 pl-12 pr-11 text-sm font-medium text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10"
               />
 
               {search && (
@@ -230,7 +232,7 @@ export default function ProjectGallery({
                   type="button"
                   onClick={() => setSearch("")}
                   aria-label="Clear search"
-                  className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition hover:bg-red-50 hover:text-red-600"
+                  className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition hover:bg-brand-50 hover:text-brand-600"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -263,10 +265,10 @@ export default function ProjectGallery({
                   type="button"
                   onClick={() => setCategory(label)}
                   aria-pressed={active}
-                  className={`group/filter relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-2xl border px-4 py-3 text-sm font-extrabold transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-200 ${
+                  className={`group/filter relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-2xl border px-4 py-3 text-sm font-extrabold transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-200 ${
                     active
-                      ? "border-red-600 bg-gradient-to-r from-red-600 to-red-700 text-white shadow-[0_8px_25px_rgba(220,38,38,0.22)]"
-                      : "border-slate-200 bg-white text-slate-600 hover:-translate-y-0.5 hover:border-red-300 hover:bg-red-50 hover:text-red-600 hover:shadow-[0_8px_20px_rgba(220,38,38,0.08)]"
+                      ? "border-brand-600 bg-gradient-to-r from-brand-600 to-brand-700 text-white shadow-[0_8px_25px_rgba(184,134,50,0.22)]"
+                      : "border-slate-200 bg-white text-slate-600 hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-600 hover:shadow-[0_8px_20px_rgba(184,134,50,0.08)]"
                   }`}
                 >
 
@@ -286,7 +288,7 @@ export default function ProjectGallery({
                     className={`relative z-10 flex min-w-6 items-center justify-center rounded-lg px-1.5 py-0.5 text-[11px] font-black ${
                       active
                         ? "bg-white/20 text-white"
-                        : "bg-slate-100 text-slate-500 group-hover/filter:bg-red-100 group-hover/filter:text-red-600"
+                        : "bg-slate-100 text-slate-500 group-hover/filter:bg-brand-100 group-hover/filter:text-brand-600"
                     }`}
                   >
                     {count}
@@ -304,8 +306,8 @@ export default function ProjectGallery({
             <div className="flex items-center gap-2">
 
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-50 motion-reduce:animate-none" />
-                <span className="relative h-2 w-2 rounded-full bg-red-600" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-50 motion-reduce:animate-none" />
+                <span className="relative h-2 w-2 rounded-full bg-brand-600" />
               </span>
 
               <p
@@ -314,7 +316,7 @@ export default function ProjectGallery({
                 className="text-sm font-medium text-slate-600"
               >
                 Showing{" "}
-                <strong className="font-black text-red-600">
+                <strong className="font-black text-brand-600">
                   {visible.length}
                 </strong>{" "}
                 of{" "}
@@ -330,7 +332,7 @@ export default function ProjectGallery({
               <button
                 type="button"
                 onClick={resetFilters}
-                className="group/reset inline-flex items-center gap-2 rounded-xl border border-red-100 bg-red-50 px-4 py-2.5 text-sm font-bold text-red-600 transition-all duration-300 hover:border-red-600 hover:bg-red-600 hover:text-white"
+                className="group/reset inline-flex items-center gap-2 rounded-xl border border-brand-100 bg-brand-50 px-4 py-2.5 text-sm font-bold text-brand-600 transition-all duration-300 hover:border-brand-600 hover:bg-brand-600 hover:text-white"
               >
 
                 <RotateCcw className="h-4 w-4 transition-transform duration-500 group-hover/reset:-rotate-45" />
@@ -370,12 +372,12 @@ export default function ProjectGallery({
         ) : (
 
           /* EMPTY STATE */
-          <div className="relative mt-9 overflow-hidden rounded-[32px] border border-dashed border-red-200 bg-gradient-to-br from-white via-slate-50 to-red-50/60 px-6 py-16 text-center sm:px-10 sm:py-20">
+          <div className="relative mt-9 overflow-hidden rounded-[32px] border border-dashed border-brand-200 bg-gradient-to-br from-white via-slate-50 to-brand-50/60 px-6 py-16 text-center sm:px-10 sm:py-20">
 
             {/* Background */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/5 blur-[90px]" />
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/5 blur-[90px]" />
 
-            <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-[24px] border border-red-100 bg-white text-red-600 shadow-[0_12px_35px_rgba(220,38,38,0.1)]">
+            <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-[24px] border border-brand-100 bg-white text-brand-600 shadow-[0_12px_35px_rgba(184,134,50,0.1)]">
 
               <Images className="h-9 w-9" />
 
@@ -401,7 +403,7 @@ export default function ProjectGallery({
               <button
                 type="button"
                 onClick={resetFilters}
-                className="group/empty relative mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-red-600 to-red-700 px-6 py-3 font-extrabold text-white shadow-[0_10px_30px_rgba(220,38,38,0.2)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(220,38,38,0.35)]"
+                className="group/empty relative mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-brand-600 to-brand-700 px-6 py-3 font-extrabold text-white shadow-[0_10px_30px_rgba(184,134,50,0.2)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(184,134,50,0.35)]"
               >
 
                 View All Projects
@@ -420,7 +422,7 @@ export default function ProjectGallery({
 
           <div className="flex items-start gap-3">
 
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
               <Sparkles className="h-4 w-4" />
             </div>
 

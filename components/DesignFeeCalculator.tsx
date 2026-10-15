@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { packageData, type PackageCity } from "@/lib/design-packages";
 import { calculateDesignEstimate, designBillingPolicy, designEstimateNote, dimensionArea, estimateEnquiryHref, formatArea, formatMoney, packageRate, positiveNumber } from "@/lib/design-estimate";
 
-export default function DesignFeeCalculator() {
+export default function DesignFeeCalculator({ city: controlledCity, onCityChange }: { city?: PackageCity; onCityChange?: (city: PackageCity) => void }) {
   const id = useId();
   const router = useRouter();
-  const [city, setCity] = useState<PackageCity>("Patna");
+  const [localCity, setLocalCity] = useState<PackageCity>("Patna");
+  const city = controlledCity ?? localCity;
+  const setCity = onCityChange ?? setLocalCity;
   const [packageName, setPackageName] = useState(packageData.Patna[0].name);
   const [mode, setMode] = useState("area");
   const [area, setArea] = useState("");
@@ -16,7 +18,7 @@ export default function DesignFeeCalculator() {
   const [length, setLength] = useState("");
   useEffect(() => {
     const selected = new URLSearchParams(window.location.search).get("city");
-    if (selected === "Patna" || selected === "Noida") setCity(selected);
+    if (selected === "Patna" || selected === "Noida") setLocalCity(selected);
   }, []);
   const packages = packageData[city];
   const item = packages.find(pkg => pkg.name === packageName) ?? packages[0];
@@ -24,11 +26,11 @@ export default function DesignFeeCalculator() {
   const enteredArea = mode === "area" ? positiveNumber(area) : dimensionArea(width, length);
   const estimate = calculateDesignEstimate(city, item?.name ?? "", enteredArea);
   const hasInput = mode === "area" ? area !== "" : width !== "" && length !== "";
-  const fieldClass = "mt-2 min-h-12 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-base text-slate-950 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200";
+  const fieldClass = "mt-2 min-h-12 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-base text-slate-950 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200";
 
   return <section id="design-fee-calculator" aria-labelledby={`${id}-title`} className="bg-[#faf9f7] py-12 sm:py-16">
     <div className="site-container">
-      <p className="text-xs font-bold tracking-[0.18em] text-red-600">PLAN YOUR DESIGN</p>
+      <p className="text-xs font-bold tracking-[0.18em] text-brand-600">PLAN YOUR DESIGN</p>
       <h2 id={`${id}-title`} className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Design Fee Calculator</h2>
       <div className="mt-7 grid items-start gap-6 lg:grid-cols-2">
         <div className="min-w-0 space-y-5 rounded-2xl border border-slate-200 bg-white p-5 sm:p-7">
@@ -46,7 +48,7 @@ export default function DesignFeeCalculator() {
           </div>
           <p className="text-sm text-slate-600">Selected package rate: <strong className="text-slate-950">{rate === null ? "Contact us for pricing" : `${formatMoney(rate)}/sqft`}</strong></p>
           <fieldset><legend className="text-sm font-semibold text-slate-800">Area input mode</legend>
-            <div className="mt-3 flex flex-wrap gap-5">{[["area", "Enter Area"], ["dimensions", "Calculate Area"]].map(([value, label]) => <label key={value} className="flex min-h-11 items-center gap-2 text-sm text-slate-800"><input type="radio" name={`${id}-mode`} value={value} checked={mode === value} onChange={() => setMode(value)} className="h-4 w-4 accent-red-600" />{label}</label>)}</div>
+            <div className="mt-3 flex flex-wrap gap-5">{[["area", "Enter Area"], ["dimensions", "Calculate Area"]].map(([value, label]) => <label key={value} className="flex min-h-11 items-center gap-2 text-sm text-slate-800"><input type="radio" name={`${id}-mode`} value={value} checked={mode === value} onChange={() => setMode(value)} className="h-4 w-4 accent-brand-600" />{label}</label>)}</div>
           </fieldset>
           {mode === "area" ? <label htmlFor={`${id}-area`} className="block text-sm font-semibold text-slate-800">Area to Be Designed (sqft)
             <input id={`${id}-area`} type="number" inputMode="decimal" min="0" step="any" value={area} onChange={event => setArea(event.target.value)} placeholder="e.g. 1000" aria-describedby={`${id}-helper ${id}-error`} className={fieldClass} />
@@ -64,8 +66,8 @@ export default function DesignFeeCalculator() {
             <div className="mt-5 rounded-xl bg-slate-950 p-5 text-white"><p className="text-sm text-slate-300">Estimated Design Fee</p><p className="mt-2 break-words text-3xl font-bold">{estimate ? formatMoney(estimate.fee) : rate === null ? "Contact us for pricing" : "Enter your design area"}</p>{estimate && <p className="mt-3 break-words text-sm text-slate-300">{formatArea(estimate.area)} sqft × {formatMoney(estimate.rate)}/sqft = {formatMoney(estimate.fee)}</p>}</div>
           </div>
           <h4 className="mt-5 font-semibold text-slate-950">Package inclusions</h4>
-          <ul className="mt-3 grid gap-2 text-sm text-slate-600 sm:grid-cols-2">{item?.features.map(feature => <li key={feature} className="flex gap-2"><span aria-hidden="true" className="text-red-600">✓</span>{feature}</li>)}</ul>
-          <button type="button" disabled={!estimate} onClick={() => { if (estimate) router.push(estimateEnquiryHref(estimate)); }} className="mt-6 min-h-12 w-full rounded-lg bg-red-600 px-4 py-3 font-semibold text-white transition-colors hover:bg-red-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-200 disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none">Enquire About This Estimate</button>
+          <ul className="mt-3 grid gap-2 text-sm text-slate-600 sm:grid-cols-2">{item?.features.map(feature => <li key={feature} className="flex gap-2"><span aria-hidden="true" className="text-brand-600">✓</span>{feature}</li>)}</ul>
+          <button type="button" disabled={!estimate} onClick={() => { if (estimate) router.push(estimateEnquiryHref(estimate)); }} className="mt-6 min-h-12 w-full rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-200 disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none">Enquire About This Estimate</button>
           <p className="mt-4 text-xs leading-6 text-slate-500">{designEstimateNote}</p>
         </div>
       </div>

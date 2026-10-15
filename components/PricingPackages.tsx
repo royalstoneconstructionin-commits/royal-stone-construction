@@ -5,13 +5,15 @@ import { Check } from "lucide-react";
 
 import Link from "next/link";
 import { ArrowRight, Gem, House, ClipboardList } from "lucide-react";
-import { packageData, packageEnquiryHref } from "@/lib/design-packages";
-export default function PricingPackages({ reference = false }: { reference?: boolean }) {
-  const [selectedCity, setSelectedCity] = useState<"Patna" | "Noida">("Patna");
+import { packageData, packageEnquiryHref, type PackageCity } from "@/lib/design-packages";
+export default function PricingPackages({ reference = false, city, onCityChange }: { reference?: boolean; city?: PackageCity; onCityChange?: (city: PackageCity) => void }) {
+  const [localCity, setLocalCity] = useState<PackageCity>("Patna");
+  const selectedCity = city ?? localCity;
+  const setSelectedCity = onCityChange ?? setLocalCity;
 
   useEffect(() => {
     const city = new URLSearchParams(window.location.search).get("city");
-    if (city === "Patna" || city === "Noida") setSelectedCity(city);
+    if (city === "Patna" || city === "Noida") setLocalCity(city);
   }, []);
 
   const packages = packageData[selectedCity];
@@ -23,7 +25,7 @@ export default function PricingPackages({ reference = false }: { reference?: boo
     document
       .getElementById("lead-form")
       ?.scrollIntoView({
-        behavior: "smooth",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
       });
   };
 
@@ -34,14 +36,14 @@ export default function PricingPackages({ reference = false }: { reference?: boo
         <div className="site-container">
           <div className="mb-7 flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="text-xs font-bold tracking-[0.18em] text-red-600">DESIGN PACKAGES</p>
+              <p className="text-xs font-bold tracking-[0.18em] text-brand-600">DESIGN PACKAGES</p>
               <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Choose the right starting point.</h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">Explore our existing architecture packages for Patna and Noida, with scope and pricing details on the architecture page.</p>
               <p className="mt-2 text-sm text-slate-500">Select your city to view package pricing and services.</p>
             </div>
             <div className="flex gap-2" role="group" aria-label="Package city">
               {(["Patna", "Noida"] as const).map(city => (
-                <button key={city} type="button" aria-pressed={city === selectedCity} onClick={() => setSelectedCity(city)} className={`min-h-11 rounded-full px-7 text-sm font-semibold transition-colors ${city === selectedCity ? "bg-red-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-red-50"}`}>{city}</button>
+                <button key={city} type="button" aria-pressed={city === selectedCity} onClick={() => setSelectedCity(city)} className={`min-h-11 rounded-full px-7 text-sm font-semibold transition-colors ${city === selectedCity ? "bg-brand-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-brand-50"}`}>{city}</button>
               ))}
             </div>
           </div>
@@ -51,19 +53,19 @@ export default function PricingPackages({ reference = false }: { reference?: boo
               const Icon = icons[index];
               return <article key={item.name} className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
                 <div className="flex items-start gap-4 border-b border-slate-100 bg-[#fdf5f5] p-5">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600"><Icon className="h-6 w-6" /></span>
-                  <div><h3 className="text-xl font-bold text-slate-950">{item.name}</h3><p className="mt-1 text-xl font-bold text-red-600">{item.price}</p><p className="mt-1 text-xs text-slate-500">{selectedCity}{item.popular ? " · Most Popular" : ""}</p></div>
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-600"><Icon className="h-6 w-6" /></span>
+                  <div><h3 className="text-xl font-bold text-slate-950">{item.name}</h3><p className="mt-1 text-xl font-bold text-brand-600">{item.price}</p><p className="mt-1 text-xs text-slate-500">{selectedCity}{item.popular ? " · Most Popular" : ""}</p></div>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <p className="mb-3 text-sm font-bold text-slate-950">Inclusions:</p>
-                  <ul className="flex-1 space-y-2.5">{item.features.map(feature => <li key={feature} className="flex items-start gap-2 text-sm leading-5 text-slate-600"><Check className="mt-0.5 h-4 w-4 shrink-0 text-red-600" /><span>{feature}</span></li>)}</ul>
-                  <Link href={`/services/architecture?${new URLSearchParams({ city: selectedCity })}#packages`} aria-label={`View Details: ${item.name} in ${selectedCity}`} className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-red-600 hover:underline">View Details <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                  <Link href={packageEnquiryHref(selectedCity, item.name)} aria-label={`Enquire Now: ${item.name} in ${selectedCity}`} className="mt-2 flex min-h-11 items-center justify-center gap-3 rounded-md bg-red-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700">Enquire Now <ArrowRight className="h-4 w-4" /></Link>
+                  <ul className="flex-1 space-y-2.5">{item.features.map(feature => <li key={feature} className="flex items-start gap-2 text-sm leading-5 text-slate-600"><Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" /><span>{feature}</span></li>)}</ul>
+                  <Link href={`/services/architecture?${new URLSearchParams({ city: selectedCity })}#packages`} aria-label={`View Details: ${item.name} in ${selectedCity}`} className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-brand-600 hover:underline">View Details <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                  <Link href={packageEnquiryHref(selectedCity, item.name)} aria-label={`Enquire Now: ${item.name} in ${selectedCity}`} className="mt-2 flex min-h-11 items-center justify-center gap-3 rounded-md bg-brand-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-700">Enquire Now <ArrowRight className="h-4 w-4" /></Link>
                 </div>
               </article>;
             })}
           </div>
-          <Link href="/services/architecture" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-red-600 hover:underline">View Design Packages <ArrowRight className="h-4 w-4" /></Link>
+          <Link href="/services/architecture" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-600 hover:underline">View Design Packages <ArrowRight className="h-4 w-4" /></Link>
           <p className="mt-4 max-w-3xl text-sm leading-6 text-slate-500">Final pricing may vary depending on project size, location, scope and design requirements. Contact our team for a detailed quotation.</p>
         </div>
       </section>
@@ -97,6 +99,7 @@ export default function PricingPackages({ reference = false }: { reference?: boo
           <button
             type="button"
             onClick={() => setSelectedCity("Patna")}
+            aria-pressed={selectedCity === "Patna"}
             className={`rounded-xl px-7 py-3 font-bold transition ${
               selectedCity === "Patna"
                 ? "bg-[#111111] text-white shadow-lg"
@@ -109,6 +112,7 @@ export default function PricingPackages({ reference = false }: { reference?: boo
           <button
             type="button"
             onClick={() => setSelectedCity("Noida")}
+            aria-pressed={selectedCity === "Noida"}
             className={`rounded-xl px-7 py-3 font-bold transition ${
               selectedCity === "Noida"
                 ? "bg-[#111111] text-white shadow-lg"
@@ -135,7 +139,7 @@ export default function PricingPackages({ reference = false }: { reference?: boo
           {packages.map((item) => (
             <div
               key={`${selectedCity}-${item.name}`}
-              className={`relative flex min-h-[620px] flex-col rounded-3xl bg-white p-7 shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(15,23,42,0.14)] sm:p-8 ${
+              className={`relative flex min-h-[620px] flex-col rounded-3xl bg-white p-7 shadow-[0_18px_50px_rgba(11,24,32,0.08)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(11,24,32,0.14)] sm:p-8 ${
                 item.popular
                   ? "border-2 border-[#b88a32]"
                   : "border border-slate-200"

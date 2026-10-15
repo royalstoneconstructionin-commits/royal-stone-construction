@@ -10,8 +10,7 @@ import CTASection from "@/components/CTASection";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import ProjectCard from "@/components/ProjectCard";
 import Testimonials from "@/components/Testimonials";
-import PricingPackages from "@/components/PricingPackages";
-import DesignFeeCalculator from "@/components/DesignFeeCalculator";
+import DesignPackagesSection from "@/components/DesignPackagesSection";
 import HomeFAQ from "@/components/HomeFAQ";
 import { services } from "@/lib/site-data";
 import { getSiteContent } from "@/lib/site-content-server";
@@ -19,7 +18,7 @@ import { getSiteContent } from "@/lib/site-content-server";
 export const revalidate = 30;
 export const metadata: Metadata = metadataForRoute("/");
 
-const homeButton = "inline-flex min-h-11 items-center justify-center gap-3 rounded-md bg-red-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700";
+const homeButton = "inline-flex min-h-11 items-center justify-center gap-3 rounded-md bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-700";
 const reasons = [
   { Icon: ShieldCheck, title: "Transparent Process", text: "Clear communication, planning and progress visibility." },
   { Icon: Building2, title: "One Team", text: "Architecture, construction and interiors under one workflow." },
@@ -46,12 +45,11 @@ export default async function HomePage() {
         <Link href="/services" className={`mt-6 ${homeButton}`}>View Services <ArrowRight className="h-4 w-4" /></Link>
       </div>
     </section>
-    <PricingPackages reference />
-    <DesignFeeCalculator />
+    <DesignPackagesSection reference pricingDetails={content.pricingDetails} />
     <section id="why-us" className="scroll-mt-24 bg-[#faf9f7] py-12 sm:py-16">
       <div className="site-container">
         <SectionHeading compact eyebrow="WHY ROYAL STONE" title="Professional execution from concept to completion." />
-        <div className="mt-7 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">{reasons.map(({ Icon, title, text }) => <div key={title} className="flex items-start gap-4"><span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600"><Icon className="h-6 w-6" strokeWidth={1.6} /></span><div><h3 className="text-base font-bold text-slate-950">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-500">{text}</p></div></div>)}</div>
+        <div className="mt-7 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">{reasons.map(({ Icon, title, text }) => <div key={title} className="flex items-start gap-4"><span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-600"><Icon className="h-6 w-6" strokeWidth={1.6} /></span><div><h3 className="text-base font-bold text-slate-950">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-500">{text}</p></div></div>)}</div>
         <Link href="/why-us" className={`mt-6 ${homeButton}`}>Why Choose Us <ArrowRight className="h-4 w-4" /></Link>
       </div>
     </section>
@@ -65,6 +63,7 @@ export default async function HomePage() {
     <section className="bg-[#faf9f7] py-12 sm:py-16">
       <div className="site-container">
         <SectionHeading compact eyebrow="PROJECTS PREVIEW" title="Explore what your space could become." text="Our gallery is ready for approved project documentation. Clearly labeled concepts show how upcoming work will be presented." />
+        {!content.projects.some(project => project.status !== "Concept") && <p className="mt-5 text-sm leading-7 text-slate-600">No approved customer projects are published yet. <Link href="/get-quote" className="font-semibold text-brand-600 underline">Get Quote</Link></p>}
         <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{content.projects.map(project => <ProjectCard reference key={project.slug} project={project} />)}</div>
         {content.projects.length === 0 && <p className="mt-8 leading-7 text-slate-600">Project updates coming soon.</p>}
         <Link href="/projects" className={`mt-6 ${homeButton}`}>View Projects <ArrowRight className="h-4 w-4" /></Link>
@@ -72,7 +71,6 @@ export default async function HomePage() {
     </section>
     <Testimonials testimonials={content.testimonials} />
     <HomeFAQ />
-    <CTASection reference />
     <CTASection />
   </main>;
 }

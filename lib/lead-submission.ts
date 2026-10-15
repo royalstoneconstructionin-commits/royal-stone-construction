@@ -23,6 +23,12 @@ export function prepareLeadSubmission(input: unknown) {
     if (!getDesignPackage(city, packageName)) throw new Error("Please select a valid city and package.");
     requirement = `${purpose} / ${packageName} (${city})`;
   }
+  for (const [key, label] of [["projectType", "Project type"], ["projectArea", "Plot / design area"], ["preferredStart", "Preferred start"], ["budget", "Approximate budget"]]) {
+    const value = body[key];
+    if (value === undefined || value === "") continue;
+    if (typeof value !== "string" || value.trim().length > 200) throw new Error("Please keep optional project details within 200 characters each.");
+    if (value.trim()) requirement += ` | ${label}: ${value.trim().replace(/[\r\n]+/g, " ")}`;
+  }
   // Use the existing text column: legacy leads and admin search/export remain compatible.
   return { name, mobile, city, purpose: requirement };
 }

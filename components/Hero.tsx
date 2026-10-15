@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import {
   ArrowDownRight,
   ChevronLeft,
@@ -61,17 +62,18 @@ export default function Hero() {
     <section
       id="home"
       aria-label="Royal Stone Construction"
-      className="relative isolate scroll-mt-20 overflow-hidden bg-[#111815]"
+      className="relative isolate scroll-mt-20 overflow-hidden bg-[#0b1820]"
     >
       {/* Background slider */}
       <div className="absolute inset-0" aria-hidden="true">
         {slides.map((slide, index) => (
-          <img
+          <Image
             key={slide.image}
             src={slide.image}
             alt=""
-            fetchPriority={index === 0 ? "high" : "auto"}
-            decoding="async"
+            fill
+            sizes="100vw"
+            priority={index === 0}
             className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1200ms] motion-reduce:transition-none ${
               active === index ? "opacity-100" : "opacity-0"
             }`}
@@ -85,7 +87,7 @@ export default function Hero() {
           {/* Main content */}
           <div className="hero-left-copy max-w-2xl">
             <div className="flex items-center gap-4">
-              <span className="h-px w-10 bg-red-500" />
+              <span className="h-px w-10 bg-brand-500" />
 
               <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white sm:text-xs">
                 Royal Stone Construction
@@ -109,7 +111,7 @@ export default function Hero() {
 
             <a
               href="#hero-enquiry"
-              className="mt-7 inline-flex min-h-12 items-center gap-5 rounded-md bg-red-600 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500"
+              className="mt-7 inline-flex min-h-12 items-center gap-5 rounded-md bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
             >
               Discuss your project
               <ArrowDownRight className="h-4 w-4" />
@@ -120,7 +122,7 @@ export default function Hero() {
               {["Architecture", "Construction", "Interiors"].map(
                 (service) => (
                   <span key={service} className="flex items-center gap-2">
-                    <span className="h-1 w-1 rounded-full bg-red-500" />
+                    <span className="h-1 w-1 rounded-full bg-brand-500" />
                     {service}
                   </span>
                 )
@@ -136,13 +138,13 @@ export default function Hero() {
             <div className="overflow-hidden rounded-xl border border-white/20 bg-white shadow-[0_24px_80px_rgba(0,0,0,0.25)]">
               <div className="border-b border-slate-100 px-6 py-5">
                 <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-red-600" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand-600" />
                   <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                     Let’s build together
                   </p>
                 </div>
 
-                <h2 className="mt-2 text-xl font-semibold tracking-tight text-[#17221c]">
+                <h2 className="mt-2 text-xl font-semibold tracking-tight text-[#142630]">
                   Tell us about your project
                 </h2>
               </div>
@@ -184,11 +186,11 @@ export default function Hero() {
                 onClick={() => setActive(index)}
                 aria-label={`Show ${slide.label} background`}
                 aria-pressed={active === index}
-                className="flex h-11 w-7 items-center justify-center rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c8ad7f]"
+                className="flex h-11 w-7 items-center justify-center rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4a54b]"
               >
                 <span
                   className={`h-1 w-full rounded-full ${
-                    active === index ? "bg-red-500" : "bg-white/60"
+                    active === index ? "bg-brand-500" : "bg-white/60"
                   }`}
                 />
               </button>
@@ -199,7 +201,7 @@ export default function Hero() {
                 type="button"
                 onClick={() => setPaused((current) => !current)}
                 aria-label={paused ? "Play slideshow" : "Pause slideshow"}
-                className="ml-2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c8ad7f]"
+                className="ml-2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4a54b]"
               >
                 {paused ? (
                   <Play className="h-4 w-4" />
@@ -213,7 +215,7 @@ export default function Hero() {
               type="button"
               onClick={() => moveSlide(-1)}
               aria-label="Previous background"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c8ad7f]"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4a54b]"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -222,7 +224,7 @@ export default function Hero() {
               type="button"
               onClick={() => moveSlide(1)}
               aria-label="Next background"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c8ad7f]"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4a54b]"
             >
               <ChevronRight className="h-5 w-5" />
             </button>

@@ -59,10 +59,10 @@ export default function TurnkeyProjectsPage() {
   return (
     <>
       {/* PREMIUM SERVICE TOP BAR */}
-      <section className="relative isolate overflow-hidden bg-[#08111f] py-7 text-white sm:py-9">
-        <div className="pointer-events-none absolute -left-20 top-0 h-60 w-60 rounded-full bg-red-600/20 blur-[90px]" />
+      <section className="relative isolate overflow-hidden bg-[#0b1820] py-7 text-white sm:py-9">
+        <div className="pointer-events-none absolute -left-20 top-0 h-60 w-60 rounded-full bg-brand-600/20 blur-[90px]" />
 
-        <div className="pointer-events-none absolute -right-20 bottom-0 h-60 w-60 rounded-full bg-orange-500/10 blur-[100px]" />
+        <div className="pointer-events-none absolute -right-20 bottom-0 h-60 w-60 rounded-full bg-brand-500/10 blur-[100px]" />
 
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.035]"
@@ -78,32 +78,32 @@ export default function TurnkeyProjectsPage() {
             <div>
               <Link
                 href="/services"
-                className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition-colors duration-300 hover:text-red-300"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition-colors duration-300 hover:text-brand-300"
               >
                 <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
                 All Services
               </Link>
 
               <div className="mt-4 flex flex-wrap items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-red-500/30 bg-red-500/10 text-red-400">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-brand-500/30 bg-brand-500/10 text-brand-400">
                   <Layers3 className="h-6 w-6" />
                 </div>
 
                 <div>
-                  <p className="text-xs font-black uppercase tracking-[0.16em] text-red-400">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-brand-400">
                     COMPLETE PROJECT SOLUTIONS
                   </p>
 
-                  <h1 className="mt-1 text-xl font-black tracking-tight sm:text-2xl">
+                  <p className="mt-1 text-xl font-black tracking-tight sm:text-2xl">
                     Turnkey Projects
-                  </h1>
+                  </p>
                 </div>
               </div>
             </div>
 
             <Link
               href="/get-quote"
-              className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl bg-red-600 px-6 py-3 text-sm font-extrabold text-white shadow-[0_10px_30px_rgba(220,38,38,0.25)] transition-all duration-300 hover:-translate-y-1 hover:bg-red-700 hover:shadow-[0_15px_40px_rgba(220,38,38,0.35)] motion-reduce:transform-none"
+              className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl bg-brand-600 px-6 py-3 text-sm font-extrabold text-white shadow-[0_10px_30px_rgba(184,134,50,0.25)] transition-all duration-300 hover:-translate-y-1 hover:bg-brand-700 hover:shadow-[0_15px_40px_rgba(184,134,50,0.35)] motion-reduce:transform-none"
             >
               Get Free Quote
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -116,7 +116,7 @@ export default function TurnkeyProjectsPage() {
       <ServiceDetail service={service} />
 
       {/* TURNKEY WORKFLOW */}
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-white to-red-50/40 py-20 sm:py-24 lg:py-28">
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-white to-brand-50/40 py-20 sm:py-24 lg:py-28">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{
@@ -126,21 +126,21 @@ export default function TurnkeyProjectsPage() {
           }}
         />
 
-        <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-red-500/10 blur-[110px]" />
+        <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-brand-500/10 blur-[110px]" />
 
-        <div className="pointer-events-none absolute -right-32 bottom-10 h-96 w-96 rounded-full bg-orange-400/10 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-10 h-96 w-96 rounded-full bg-brand-400/10 blur-[120px]" />
 
         <div className="site-container relative z-10">
           {/* HEADER */}
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-white px-4 py-2.5 text-xs font-black uppercase tracking-[0.15em] text-red-600 shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-4 py-2.5 text-xs font-black uppercase tracking-[0.15em] text-brand-600 shadow-sm">
               <Sparkles className="h-4 w-4" />
               TURNKEY APPROACH
             </div>
 
             <h2 className="mt-6 text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
               One Coordinated{" "}
-              <span className="bg-gradient-to-r from-red-700 via-red-600 to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 bg-clip-text text-transparent">
                 Project Journey.
               </span>
             </h2>
@@ -159,35 +159,35 @@ export default function TurnkeyProjectsPage() {
               ({ number, title, description, icon: Icon }) => (
                 <article
                   key={number}
-                  className="group relative isolate flex h-full min-w-0 flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white p-7 shadow-[0_12px_40px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-red-300 hover:shadow-[0_25px_65px_rgba(220,38,38,0.13)] motion-reduce:transform-none sm:p-8"
+                  className="group relative isolate flex h-full min-w-0 flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white p-7 shadow-[0_12px_40px_rgba(11,24,32,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-brand-300 hover:shadow-[0_25px_65px_rgba(184,134,50,0.13)] motion-reduce:transform-none sm:p-8"
                 >
                   {/* BACKGROUND GLOW */}
-                  <div className="pointer-events-none absolute -right-20 -top-20 -z-10 h-60 w-60 rounded-full bg-red-500/5 blur-[80px] transition-colors duration-500 group-hover:bg-red-500/15" />
+                  <div className="pointer-events-none absolute -right-20 -top-20 -z-10 h-60 w-60 rounded-full bg-brand-500/5 blur-[80px] transition-colors duration-500 group-hover:bg-brand-500/15" />
 
                   {/* DECORATIVE NUMBER */}
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute right-5 top-3 text-[85px] font-black leading-none text-slate-100 transition-colors duration-500 group-hover:text-red-50"
+                    className="pointer-events-none absolute right-5 top-3 text-[85px] font-black leading-none text-slate-100 transition-colors duration-500 group-hover:text-brand-50"
                   >
                     {number}
                   </span>
 
                   {/* ICON */}
-                  <div className="relative flex h-16 w-16 items-center justify-center rounded-[20px] border border-red-100 bg-red-50 text-red-600 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-red-600 group-hover:bg-red-600 group-hover:text-white group-hover:shadow-[0_12px_35px_rgba(220,38,38,0.3)] motion-reduce:transform-none">
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-[20px] border border-brand-100 bg-brand-50 text-brand-600 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-brand-600 group-hover:bg-brand-600 group-hover:text-white group-hover:shadow-[0_12px_35px_rgba(184,134,50,0.3)] motion-reduce:transform-none">
                     <Icon className="h-8 w-8" />
                   </div>
 
                   {/* STEP */}
                   <div className="relative mt-8 flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-red-600" />
+                    <span className="h-2 w-2 rounded-full bg-brand-600" />
 
-                    <span className="text-xs font-black uppercase tracking-[0.15em] text-red-600">
+                    <span className="text-xs font-black uppercase tracking-[0.15em] text-brand-600">
                       STAGE {number}
                     </span>
                   </div>
 
                   {/* TITLE */}
-                  <h3 className="relative mt-4 text-xl font-black leading-snug text-slate-950 transition-colors duration-300 group-hover:text-red-600 sm:text-2xl">
+                  <h3 className="relative mt-4 text-xl font-black leading-snug text-slate-950 transition-colors duration-300 group-hover:text-brand-600 sm:text-2xl">
                     {title}
                   </h3>
 
@@ -197,28 +197,28 @@ export default function TurnkeyProjectsPage() {
                   </p>
 
                   {/* DIVIDER */}
-                  <div className="relative mt-8 h-px bg-gradient-to-r from-slate-200 to-transparent transition-colors duration-300 group-hover:from-red-300" />
+                  <div className="relative mt-8 h-px bg-gradient-to-r from-slate-200 to-transparent transition-colors duration-300 group-hover:from-brand-300" />
 
                   {/* FOOTER */}
                   <div className="relative mt-5 flex items-center justify-between">
                     <span className="flex items-center gap-2 text-xs font-bold text-slate-500">
-                      <CheckCircle2 className="h-4 w-4 text-red-600" />
+                      <CheckCircle2 className="h-4 w-4 text-brand-600" />
                       Project Stage
                     </span>
 
-                    <ArrowUpRight className="h-5 w-5 text-slate-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-red-600 motion-reduce:transform-none" />
+                    <ArrowUpRight className="h-5 w-5 text-slate-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand-600 motion-reduce:transform-none" />
                   </div>
 
                   {/* BOTTOM BORDER */}
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red-600 to-orange-400 transition-all duration-500 group-hover:w-full" />
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-500 group-hover:w-full" />
                 </article>
               )
             )}
           </div>
 
           {/* IMPORTANT NOTE */}
-          <div className="mt-10 flex items-start gap-4 rounded-[24px] border border-red-100 bg-white p-6 shadow-sm sm:p-7">
-            <ShieldCheck className="mt-1 h-6 w-6 shrink-0 text-red-600" />
+          <div className="mt-10 flex items-start gap-4 rounded-[24px] border border-brand-100 bg-white p-6 shadow-sm sm:p-7">
+            <ShieldCheck className="mt-1 h-6 w-6 shrink-0 text-brand-600" />
 
             <div>
               <h3 className="text-lg font-black text-slate-950">
@@ -235,9 +235,9 @@ export default function TurnkeyProjectsPage() {
           </div>
 
           {/* CTA */}
-          <div className="mt-12 flex flex-col items-start justify-between gap-6 rounded-[28px] bg-[#08111f] p-7 text-white shadow-xl sm:flex-row sm:items-center sm:p-9">
+          <div className="mt-12 flex flex-col items-start justify-between gap-6 rounded-[28px] bg-[#0b1820] p-7 text-white shadow-xl sm:flex-row sm:items-center sm:p-9">
             <div className="flex items-start gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-red-600 text-white">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-600 text-white">
                 <ClipboardCheck className="h-7 w-7" />
               </div>
 
@@ -255,7 +255,7 @@ export default function TurnkeyProjectsPage() {
 
             <Link
               href="/get-quote"
-              className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-3 rounded-2xl bg-red-600 px-6 py-3 font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-red-700 hover:shadow-[0_12px_35px_rgba(220,38,38,0.35)] motion-reduce:transform-none"
+              className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-3 rounded-2xl bg-brand-600 px-6 py-3 font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-700 hover:shadow-[0_12px_35px_rgba(184,134,50,0.35)] motion-reduce:transform-none"
             >
               Request a Quote
 
