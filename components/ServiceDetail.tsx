@@ -22,11 +22,13 @@ import { getSiteContent } from "@/lib/site-content-server";
 type ServiceDetailProps = {
   service: (typeof services)[number];
   embedded?: boolean;
+  children?: React.ReactNode;
 };
 
 export default async function ServiceDetail({
   service,
   embedded = false,
+  children,
 }: ServiceDetailProps) {
   const content = await getSiteContent();
   const Container = embedded ? "div" : "main";
@@ -53,6 +55,8 @@ export default async function ServiceDetail({
         title={service.title}
         text={service.text}
       />
+
+      {children}
 
       {/* ===================================== */}
       {/* SCOPE OF WORK */}

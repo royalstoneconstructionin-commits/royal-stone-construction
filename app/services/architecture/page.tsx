@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 import ServiceDetail from "@/components/ServiceDetail";
+import ArchitecturePlanGallery from "@/components/ArchitecturePlanGallery";
 import { services } from "@/lib/site-data";
 
 export const metadata: Metadata = metadataForRoute("/services/architecture");
@@ -214,7 +215,9 @@ export default function ArchitecturePage() {
           EXISTING SERVICE DETAILS
       ===================================== */}
 
-      <ServiceDetail service={service} embedded />
+      <ServiceDetail service={service} embedded>
+        <ArchitecturePlanGallery />
+      </ServiceDetail>
 
       {/* =====================================
           ARCHITECTURE SERVICES GRID

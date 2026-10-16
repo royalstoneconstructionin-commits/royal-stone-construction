@@ -14,7 +14,7 @@ mkdirSync(qaRoot, { recursive: true });
 const compiled = mkdtempSync(path.join(qaRoot, "estimate-check-"));
 
 try {
-  for (const name of ["design-packages", "design-estimate", "lead-submission"]) {
+  for (const name of ["design-packages", "design-estimate", "floor-plans", "lead-submission"]) {
     const source = readFileSync(path.join(root, "lib", `${name}.ts`), "utf8");
     writeFileSync(path.join(compiled, `${name}.js`), ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText);
   }

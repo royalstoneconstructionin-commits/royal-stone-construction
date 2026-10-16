@@ -1,4 +1,5 @@
 import { calculateDesignEstimate, estimateDescription, getDesignPackage } from "./design-estimate";
+import { floorPlans } from "./floor-plans";
 
 const purposes = ["Architecture", "Construction with Material", "Interior Design", "Turnkey Project", "Other"];
 
@@ -8,6 +9,21 @@ export function prepareLeadSubmission(input: unknown) {
   const body = input as Record<string, unknown>;
   const name = typeof body.name === "string" ? body.name.trim() : "";
   const mobile = typeof body.mobile === "string" ? body.mobile.trim() : "";
+  if (body.floorPlan !== undefined) {
+    const plan = floorPlans.find(item => item.image === body.floorPlan);
+    const address = typeof body.address === "string" ? body.address.trim() : "";
+    if (!plan) throw new Error("Please select a valid floor plan.");
+    if (!name || name.length > 200) throw new Error("Please enter your full name (up to 200 characters).");
+    if (!/^[0-9]{10}$/.test(mobile)) throw new Error("Please enter a valid 10 digit mobile number.");
+    if (!address || address.length > 500) throw new Error("Please enter your address (up to 500 characters).");
+    // Keep download enquiries compatible with the existing lead table and admin export.
+    return {
+      name,
+      mobile,
+      city: "Not specified",
+      purpose: `Architecture | Floor plan download: ${plan.title} (${plan.image}) | Address: ${address.replace(/[\r\n]+/g, " ")}`,
+    };
+  }
   const city = typeof body.city === "string" ? body.city.trim() : "";
   const purpose = typeof body.purpose === "string" ? body.purpose : "";
   if (!name || !city || !purposes.includes(purpose) || name.length > 200 || city.length > 200) throw new Error("Please fill all fields with valid details.");
