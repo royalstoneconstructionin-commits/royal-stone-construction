@@ -214,10 +214,10 @@ export default function Footer() {
                 </div>
 
                 <a
-                  href="mailto:royalstoneconstruction.in@gmail.com"
+                  href={`mailto:${businessContact.email}`}
                   className="break-all pt-2 transition-colors hover:text-white"
                 >
-                  royalstoneconstruction.in@gmail.com
+                  {businessContact.email}
                 </a>
               </div>
             </div>
