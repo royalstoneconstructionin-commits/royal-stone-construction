@@ -11,6 +11,7 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import ProjectCard from "@/components/ProjectCard";
 import Testimonials from "@/components/Testimonials";
 import DesignPackagesSection from "@/components/DesignPackagesSection";
+import ConstructionPackages from "@/components/ConstructionPackages";
 import HomeFAQ from "@/components/HomeFAQ";
 import { services } from "@/lib/site-data";
 import { getSiteContent } from "@/lib/site-content-server";
@@ -45,6 +46,7 @@ export default async function HomePage() {
         <Link href="/services" className={`mt-6 ${homeButton}`}>View Services <ArrowRight className="h-4 w-4" /></Link>
       </div>
     </section>
+    <ConstructionPackages />
     <DesignPackagesSection reference pricingDetails={content.pricingDetails} />
     <section id="why-us" className="scroll-mt-24 bg-[#faf9f7] py-12 sm:py-16">
       <div className="site-container">

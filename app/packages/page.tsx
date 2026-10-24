@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import DesignPackagesSection from "@/components/DesignPackagesSection";
+import ConstructionPackages from "@/components/ConstructionPackages";
 import { getSiteContent } from "@/lib/site-content-server";
 import { metadataForRoute } from "@/lib/seo";
 
@@ -19,14 +20,15 @@ export default async function PackagesPage() {
             <span aria-current="page" className="text-slate-900">Packages</span>
           </nav>
           <p className="text-xs font-bold tracking-[0.18em] text-brand-600">PLAN YOUR SPACE</p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">Find Your Design Package</h1>
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">Find Your Package</h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            Compare Silver, Gold and Platinum packages for Patna and Noida.
-            Explore the drawings and design services included, then enquire
-            with your preferred city and package.
+            Compare our Silver, Gold and Platinum construction packages, then
+            explore architectural design packages for Patna and Noida.
+            Review specifications, inclusions and pricing, then enquire with your preferred package.
           </p>
         </div>
       </section>
+      <ConstructionPackages />
       <DesignPackagesSection reference pricingDetails={content.pricingDetails} />
     </main>
   );

@@ -1,5 +1,6 @@
 import { calculateDesignEstimate, estimateDescription, getDesignPackage } from "./design-estimate";
 import { floorPlans } from "./floor-plans";
+import { constructionPackages } from "./construction-packages";
 
 const purposes = ["Architecture", "Construction with Material", "Interior Design", "Turnkey Project", "Other"];
 
@@ -38,6 +39,10 @@ export function prepareLeadSubmission(input: unknown) {
   } else if (packageName && purpose === "Architecture") {
     if (!getDesignPackage(city, packageName)) throw new Error("Please select a valid city and package.");
     requirement = `${purpose} / ${packageName} (${city})`;
+  } else if (packageName && purpose === "Construction with Material") {
+    const constructionPackage = constructionPackages.find(pkg => pkg.name === packageName);
+    if (!constructionPackage) throw new Error("Please select a valid construction package.");
+    requirement = `${purpose} / ${constructionPackage.name} (${constructionPackage.rate})`;
   }
   for (const [key, label] of [["projectType", "Project type"], ["projectArea", "Plot / design area"], ["preferredStart", "Preferred start"], ["budget", "Approximate budget"]]) {
     const value = body[key];

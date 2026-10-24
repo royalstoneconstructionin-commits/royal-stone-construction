@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useId, useRef, useState } from "react";
 import { packageData } from "@/lib/design-packages";
+import { constructionPackages } from "@/lib/construction-packages";
 import { calculateDesignEstimate, designEstimateNote, formatArea, formatMoney, type DesignEstimate } from "@/lib/design-estimate";
 import {
   ArrowRight,
@@ -53,6 +54,10 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
     if (["Architecture", "Construction with Material", "Interior Design", "Turnkey Project", "Other"].includes(initialPurpose ?? "")) setForm(prev => ({ ...prev, purpose: initialPurpose! }));
     selectPackage(params.get("city") ?? "", params.get("package") ?? "");
     setSelectedEstimate(calculateDesignEstimate(params.get("city") ?? "", params.get("package") ?? "", params.get("area")));
+    if (initialPurpose === "Construction with Material" && constructionPackages.some(pkg => pkg.name === params.get("package"))) {
+      setSelectedPackage(params.get("package")!);
+      setSelectedEstimate(null);
+    }
     const onPackage = (event: Event) => {
       const detail = (event as CustomEvent<{ city: string; name: string }>).detail;
       if (detail) selectPackage(detail.city, detail.name);
@@ -163,9 +168,9 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
         </div>
 
         <form onSubmit={handleSubmit} aria-describedby={message ? messageId : undefined} className={compact ? "space-y-2.5" : "space-y-4"}>
-          {selectedPackage && form.purpose === "Architecture" && (
+          {selectedPackage && (form.purpose === "Architecture" || form.purpose === "Construction with Material") && (
             <div className="flex items-center justify-between gap-3 rounded-lg border border-brand-100 bg-brand-50 px-3 py-2 text-sm text-brand-700">
-              <span>Selected: {selectedPackage} · {form.city}</span>
+              <span>Selected: {selectedPackage} · {form.purpose === "Architecture" ? form.city : "Construction"}</span>
               <button type="button" onClick={() => { setSelectedPackage(""); setSelectedEstimate(null); }} className="min-h-11 font-semibold underline">Clear</button>
             </div>
           )}
@@ -236,7 +241,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
               value={form.city}
               onChange={(e) => {
                 setSelectedEstimate(null);
-                setSelectedPackage("");
+                if (form.purpose !== "Construction with Material") setSelectedPackage("");
                 setForm((prev) => ({
                   ...prev,
                   city: e.target.value,
@@ -261,6 +266,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
               value={form.purpose}
               onChange={(e) => {
                 setSelectedEstimate(null);
+                setSelectedPackage("");
                 setForm((prev) => ({
                   ...prev,
                   purpose: e.target.value,
