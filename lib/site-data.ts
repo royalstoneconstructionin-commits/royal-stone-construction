@@ -1,10 +1,11 @@
-import { Building2, DraftingCompass, Hammer, PaintBucket, Ruler, Layers, ShieldCheck, RefreshCw } from "lucide-react";
+import { Building2, Compass, DraftingCompass, Hammer, PaintBucket, Ruler, Layers, ShieldCheck, RefreshCw } from "lucide-react";
 
 export const serviceLinks = [
   ["Architecture", "/services/architecture"],
   ["Construction With Material", "/services/construction"],
   ["Interior Design", "/services/interior-design"],
   ["Turnkey Projects", "/services/turnkey-projects"],
+  ["Vastu Shastra", "/services/vastu"],
 ] as const;
 
 export const services = [
@@ -16,6 +17,7 @@ export const services = [
   { slug: "elevation", title: "2D/3D Elevation", icon: Layers, text: "Explore proportions, finishes and the character of your building before execution.", items: ["2D elevation drawings", "3D front elevation", "Facade proportions", "Exterior finishes", "Colour studies", "Design coordination"], benefit: "See how your exterior comes together and compare finishes before committing to site work.", steps: ["Review the approved floor plan", "Develop elevation options", "Review materials and colours", "Coordinate the final design"] },
   { slug: "structural-planning", title: "Structural Planning", icon: ShieldCheck, text: "Coordinated structural drawings that support practical and considered construction.", items: ["Column layout", "Foundation planning", "Beam and slab details", "Reinforcement drawings", "Staircase details", "Architectural coordination"], benefit: "Structural planning connects the architectural layout with detailed engineering and site execution. Final design depends on site conditions and engineering review.", steps: ["Review site information and architectural plans", "Coordinate structural requirements", "Prepare engineering details", "Support site clarification"] },
   { slug: "renovation", title: "Renovation", icon: RefreshCw, text: "Refresh existing spaces with a clear scope, coordinated work and thoughtful finishes.", items: ["Existing-space assessment", "Layout improvements", "Electrical and plumbing upgrades", "Flooring", "Painting", "Interior refresh"], benefit: "A planned renovation improves everyday comfort while taking the condition of your existing property into account.", steps: ["Inspect the existing space", "Agree priorities, scope and budget", "Plan work and minimise disruption", "Execute, inspect and hand over"] },
+  { slug: "vastu", title: "Vastu Shastra", icon: Compass, text: "Traditional Vastu principles integrated with modern architectural planning.", items: ["Residential consultation", "Vastu-based house planning", "Commercial spaces", "Plot direction review", "Room placement guidance", "Existing-home review", "2D floor plan integration"], benefit: "Bring your traditional Vastu preferences into a practical architectural plan that considers your plot, everyday needs and building requirements.", steps: ["Share your plot details", "Discuss your requirements", "Review plot direction and layout", "Prepare Vastu-informed design suggestions", "Finalise the design after consultation"] },
 ];
 
 export const reasons = [

@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useId, useRef, useState } from "react";
 import { packageData } from "@/lib/design-packages";
 import { constructionPackages } from "@/lib/construction-packages";
+import { vastuDirections, vastuRequirements } from "@/lib/vastu";
 import { calculateDesignEstimate, designEstimateNote, formatArea, formatMoney, type DesignEstimate } from "@/lib/design-estimate";
 import {
   ArrowRight,
@@ -28,10 +29,14 @@ const emptyForm: LeadFormState = {
   purpose: "",
 };
 
-export default function LeadForm({ compact = false }: { compact?: boolean }) {
+export default function LeadForm({ compact = false, variant = "general" }: { compact?: boolean; variant?: "general" | "vastu" }) {
   const messageId = useId();
+  const fieldId = useId();
   const [optional, setOptional] = useState({ projectType: "", projectArea: "", preferredStart: "", budget: "" });
-  const [form, setForm] = useState<LeadFormState>(emptyForm);
+  const [form, setForm] = useState<LeadFormState>({ ...emptyForm, purpose: variant === "vastu" ? "Vastu Shastra" : "" });
+  const [vastu, setVastu] = useState({ plotSize: "", plotFacing: "", serviceRequirement: "", additionalMessage: "" });
+  const isVastu = form.purpose === "Vastu Shastra";
+  const Heading = variant === "vastu" ? "h3" : "h2";
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
@@ -51,20 +56,20 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
     const initialCity = params.get("city");
     const initialPurpose = params.get("purpose");
     if (initialCity === "Patna" || initialCity === "Noida") setForm(prev => ({ ...prev, city: initialCity }));
-    if (["Architecture", "Construction with Material", "Interior Design", "Turnkey Project", "Other"].includes(initialPurpose ?? "")) setForm(prev => ({ ...prev, purpose: initialPurpose! }));
-    selectPackage(params.get("city") ?? "", params.get("package") ?? "");
-    setSelectedEstimate(calculateDesignEstimate(params.get("city") ?? "", params.get("package") ?? "", params.get("area")));
-    if (initialPurpose === "Construction with Material" && constructionPackages.some(pkg => pkg.name === params.get("package"))) {
+    if (variant === "general" && ["Architecture", "Construction with Material", "Interior Design", "Turnkey Project", "Vastu Shastra", "Other"].includes(initialPurpose ?? "")) setForm(prev => ({ ...prev, purpose: initialPurpose! }));
+    if (variant === "general") selectPackage(params.get("city") ?? "", params.get("package") ?? "");
+    if (variant === "general") setSelectedEstimate(calculateDesignEstimate(params.get("city") ?? "", params.get("package") ?? "", params.get("area")));
+    if (variant === "general" && initialPurpose === "Construction with Material" && constructionPackages.some(pkg => pkg.name === params.get("package"))) {
       setSelectedPackage(params.get("package")!);
       setSelectedEstimate(null);
     }
     const onPackage = (event: Event) => {
       const detail = (event as CustomEvent<{ city: string; name: string }>).detail;
-      if (detail) selectPackage(detail.city, detail.name);
+      if (variant === "general" && detail) selectPackage(detail.city, detail.name);
     };
     window.addEventListener("royal-stone-package", onPackage);
     return () => window.removeEventListener("royal-stone-package", onPackage);
-  }, []);
+  }, [variant]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -98,6 +103,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
         body: JSON.stringify({
           ...form,
           ...optional,
+          ...(isVastu ? vastu : {}),
           packageName: selectedPackage,
           estimateArea: selectedEstimate?.area,
         }),
@@ -112,7 +118,8 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
       setMessage(
         "Thank you! Your enquiry has been submitted successfully."
       );
-      setForm(emptyForm);
+      setForm({ ...emptyForm, purpose: variant === "vastu" ? "Vastu Shastra" : "" });
+      setVastu({ plotSize: "", plotFacing: "", serviceRequirement: "", additionalMessage: "" });
       setOptional({ projectType: "", projectArea: "", preferredStart: "", budget: "" });
       setSelectedPackage("");
       setSelectedEstimate(null);
@@ -128,6 +135,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
   const fieldClass = compact
     ? "h-11 w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10"
     : "h-14 w-full rounded-2xl border border-slate-200 bg-slate-50/70 pl-12 pr-4 font-medium text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10";
+  const detailFieldClass = fieldClass.replace("pl-12", "pl-4");
 
   return (
     <div
@@ -157,9 +165,9 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
           </div>
           )}
 
-          <h2 className={compact ? "text-xl font-bold tracking-tight text-slate-950 sm:text-2xl" : "bg-gradient-to-r from-slate-950 via-slate-800 to-brand-600 bg-clip-text text-3xl font-black tracking-tight text-transparent sm:text-4xl"}>
-            Talk to Our Experts
-          </h2>
+          <Heading className={compact ? "text-xl font-bold tracking-tight text-slate-950 sm:text-2xl" : "bg-gradient-to-r from-slate-950 via-slate-800 to-brand-600 bg-clip-text text-3xl font-black tracking-tight text-transparent sm:text-4xl"}>
+            {variant === "vastu" ? "Discuss Your Vastu Requirements" : "Talk to Our Experts"}
+          </Heading>
 
           <p className={`mx-auto max-w-md text-sm text-slate-500 ${compact ? "mt-2 leading-5 text-slate-600" : "mt-3 leading-6 sm:text-base"}`}>
             Tell us about your project and our construction experts will contact
@@ -257,7 +265,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
           </div>
 
           {/* Purpose */}
-          <div className="group/input relative">
+          {variant === "vastu" ? <p className="rounded-lg border border-brand-100 bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700">Selected service: Vastu Shastra</p> : <div className="group/input relative">
             {!compact && (<Building2 className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-slate-400 transition group-focus-within/input:text-brand-500" />)}
 
             <select
@@ -283,6 +291,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
               </option>
               <option value="Interior Design">Interior Design</option>
               <option value="Turnkey Project">Turnkey Project</option>
+              <option value="Vastu Shastra">Vastu Shastra</option>
               <option value="Other">Other</option>
             </select>
 
@@ -291,10 +300,33 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
               ▼
             </div>
             )}
-          </div>
+          </div>}
+
+          {isVastu && <fieldset className="space-y-4">
+            <legend className="mb-3 text-sm font-bold text-slate-900">Your plot & consultation</legend>
+            <label htmlFor={`${fieldId}-size`} className="block text-sm font-semibold text-slate-700">Plot Size <span className="font-normal">(optional)</span>
+              <input id={`${fieldId}-size`} value={vastu.plotSize} onChange={event => setVastu(prev => ({ ...prev, plotSize: event.target.value }))} maxLength={200} placeholder="e.g. 30 × 40 ft or 1,200 sqft" className={`${detailFieldClass} mt-2`} />
+            </label>
+            <label htmlFor={`${fieldId}-facing`} className="block text-sm font-semibold text-slate-700">Plot Facing Direction <span className="font-normal">(optional)</span>
+              <select id={`${fieldId}-facing`} value={vastu.plotFacing} onChange={event => setVastu(prev => ({ ...prev, plotFacing: event.target.value }))} className={`${detailFieldClass} mt-2`}>
+                <option value="">Select direction</option>
+                {vastuDirections.map(direction => <option key={direction}>{direction}</option>)}
+                <option>Not sure</option>
+              </select>
+            </label>
+            <label htmlFor={`${fieldId}-requirement`} className="block text-sm font-semibold text-slate-700">Service Requirement
+              <select id={`${fieldId}-requirement`} required value={vastu.serviceRequirement} onChange={event => setVastu(prev => ({ ...prev, serviceRequirement: event.target.value }))} className={`${detailFieldClass} mt-2`}>
+                <option value="">Select consultation type</option>
+                {vastuRequirements.map(requirement => <option key={requirement}>{requirement}</option>)}
+              </select>
+            </label>
+            <label htmlFor={`${fieldId}-message`} className="block text-sm font-semibold text-slate-700">Additional Message <span className="font-normal">(optional)</span>
+              <textarea id={`${fieldId}-message`} value={vastu.additionalMessage} onChange={event => setVastu(prev => ({ ...prev, additionalMessage: event.target.value }))} maxLength={2000} rows={4} placeholder="Tell us about your rooms, existing plan or design preferences." className={`${detailFieldClass.replace(/h-(11|14)/, "h-auto")} mt-2 min-h-28 py-3`} />
+            </label>
+          </fieldset>}
 
           {/* Submit Button */}
-          <details className="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700">
+          {variant !== "vastu" && <details className="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700">
             <summary className="min-h-11 cursor-pointer content-center font-semibold">Additional project details (optional)</summary>
             <div className="mt-3 space-y-3 pb-2">{([
               ["projectType", "Project type", "e.g. Home or commercial space"],
@@ -302,7 +334,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
               ["preferredStart", "Preferred start time", "e.g. Next month"],
               ["budget", "Approximate budget", "Include currency, if known"],
             ] as const).map(([key, label, placeholder]) => <label key={key} className="block font-medium">{label}<input value={optional[key]} onChange={event => setOptional(prev => ({ ...prev, [key]: event.target.value }))} maxLength={200} placeholder={placeholder} className="mt-2 min-h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-base text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" /></label>)}</div>
-          </details>
+          </details>}
           <button
             type="submit"
             disabled={loading}

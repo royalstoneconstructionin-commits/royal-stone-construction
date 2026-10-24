@@ -1,8 +1,9 @@
 import { calculateDesignEstimate, estimateDescription, getDesignPackage } from "./design-estimate";
 import { floorPlans } from "./floor-plans";
 import { constructionPackages } from "./construction-packages";
+import { vastuDirections, vastuRequirements } from "./vastu";
 
-const purposes = ["Architecture", "Construction with Material", "Interior Design", "Turnkey Project", "Other"];
+const purposes = ["Architecture", "Construction with Material", "Interior Design", "Turnkey Project", "Vastu Shastra", "Other"];
 
 // Both ordinary enquiries and calculator enquiries use this server-side validation.
 export function prepareLeadSubmission(input: unknown) {
@@ -31,6 +32,18 @@ export function prepareLeadSubmission(input: unknown) {
   if (!/^[0-9]{10}$/.test(mobile)) throw new Error("Please enter a valid 10 digit mobile number.");
   const packageName = typeof body.packageName === "string" ? body.packageName : "";
   let requirement = purpose;
+  if (purpose === "Vastu Shastra") {
+    const facing = body.plotFacing;
+    const serviceRequirement = body.serviceRequirement;
+    if (facing !== undefined && facing !== "" && ![...vastuDirections, "Not sure"].some(direction => direction === facing)) throw new Error("Please select a valid plot facing direction.");
+    if (serviceRequirement !== undefined && serviceRequirement !== "" && !vastuRequirements.some(service => service === serviceRequirement)) throw new Error("Please select a valid Vastu service requirement.");
+    for (const [key, label, limit] of [["plotSize", "Plot size", 200], ["plotFacing", "Plot facing", 200], ["serviceRequirement", "Service requirement", 200], ["additionalMessage", "Additional message", 2000]] as const) {
+      const value = body[key];
+      if (value === undefined || value === "") continue;
+      if (typeof value !== "string" || value.trim().length > limit) throw new Error(`Please keep ${label.toLowerCase()} within ${limit} characters.`);
+      if (value.trim()) requirement += ` | ${label}: ${value.trim().replace(/[\r\n]+/g, " ")}`;
+    }
+  }
   if (body.estimateArea !== undefined && body.estimateArea !== null) {
     const estimate = calculateDesignEstimate(city, packageName, body.estimateArea);
     if (purpose !== "Architecture" || !estimate) throw new Error("Please return to the calculator and select a valid estimate.");

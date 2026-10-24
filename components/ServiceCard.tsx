@@ -31,10 +31,11 @@ export default function ServiceCard({
       elevation: "/2d3d.png",
       "structural-planning": "/st.png",
       renovation: "/renovation.png",
+      vastu: "/vastu-planning.svg",
     };
     return <article className="group flex min-w-0 flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md">
       <Link href={`/services/${service.slug}`} aria-label={`Explore ${service.title}`} className="relative block aspect-[1.9/1] overflow-hidden bg-slate-100">
-        <Image src={images[service.slug] ?? "/projects/home.png"} alt={`${service.title} design illustration`} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none" />
+        <Image src={images[service.slug] ?? "/projects/home.png"} alt={service.slug === "vastu" ? "Architectural floor plan with a north compass and room layout for Vastu consultation" : `${service.title} design illustration`} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none" />
         <span className="absolute bottom-2 left-3 rounded bg-white/90 px-2 py-1 text-[10px] text-slate-600">Design Concept</span>
       </Link>
       <div className="flex flex-1 flex-col p-5">
@@ -42,7 +43,7 @@ export default function ServiceCard({
         <h3 className="text-lg font-bold text-slate-950">{service.title}</h3>
         <p className="mt-2 flex-1 text-sm leading-6 text-slate-500">{service.text}</p>
         <p className="mt-3 text-xs text-slate-500">Explore service details</p>
-        <Link href={`/services/${service.slug}`} className="mt-2 flex min-h-11 items-center justify-between gap-3 text-sm font-semibold text-brand-600 hover:underline">Learn More<span className="sr-only"> about {service.title}</span><ArrowRight className="h-4 w-4" /></Link>
+        <Link href={`/services/${service.slug}`} className="mt-2 flex min-h-11 items-center justify-between gap-3 text-sm font-semibold text-brand-600 hover:underline">{service.slug === "vastu" ? "Explore Service" : "Learn More"}<span className="sr-only"> about {service.title}</span><ArrowRight className="h-4 w-4" /></Link>
       </div>
     </article>;
   }
@@ -289,7 +290,7 @@ export default function ServiceCard({
         <span className="relative z-10 flex items-center gap-2">
           <Sparkles className="h-4 w-4" />
 
-          Learn More
+          {service.slug === "vastu" ? "Explore Service" : "Learn More"}
 
           <span className="sr-only">
             about {service.title}

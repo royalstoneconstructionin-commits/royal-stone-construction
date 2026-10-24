@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" fill="none">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#dfba71" stroke-opacity=".15"/></pattern>
+    <linearGradient id="paper" x2="960" y2="720" gradientUnits="userSpaceOnUse"><stop stop-color="#fcf8ef"/><stop offset="1" stop-color="#f6ebd2"/></linearGradient>
+  </defs>
+  <rect width="960" height="720" fill="url(#paper)"/>
+  <rect width="960" height="720" fill="url(#grid)"/>
+  <circle cx="480" cy="360" r="286" stroke="#93651f" stroke-opacity=".22"/>
+  <circle cx="480" cy="360" r="266" stroke="#93651f" stroke-opacity=".15" stroke-dasharray="3 9"/>
+  <path d="M480 45V675M165 360H795M258 138L702 582M258 582L702 138" stroke="#93651f" stroke-opacity=".25" stroke-dasharray="5 7"/>
+  <g fill="#62421b" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">
+    <text x="480" y="37">N</text><text x="480" y="705">S</text><text x="142" y="367">W</text><text x="820" y="367">E</text>
+    <text x="245" y="132">NW</text><text x="718" y="132">NE</text><text x="245" y="610">SW</text><text x="718" y="610">SE</text>
+  </g>
+  <rect x="285" y="165" width="390" height="390" rx="2" fill="#fff" stroke="#203541" stroke-width="7"/>
+  <path d="M285 325H675M435 165V325M555 165V325M285 415H415M415 325V555M535 415H675M535 415V555" stroke="#203541" stroke-width="5"/>
+  <path d="M585 165H630M285 235V280M355 555H395M675 235V280M585 555H630" stroke="#b88632" stroke-width="9"/>
+  <path d="M435 285V325H475M415 375V415H455M535 455V415H575M495 165V205H535" stroke="#fff" stroke-width="8"/>
+  <path d="M435 285A40 40 0 0 1 475 325M415 375A40 40 0 0 1 455 415M535 455A40 40 0 0 0 575 415" stroke="#82959f" stroke-width="1.5"/>
+  <rect x="305" y="447" width="85" height="86" rx="3" fill="#fcf8ef" stroke="#b88632" stroke-width="2"/>
+  <rect x="312" y="454" width="30" height="17" rx="3" stroke="#b88632"/><rect x="351" y="454" width="30" height="17" rx="3" stroke="#b88632"/>
+  <path d="M312 477H383" stroke="#b88632"/>
+  <path d="M554 455H653V534H625V480H554Z" fill="#fcf8ef" stroke="#b88632" stroke-width="2"/>
+  <circle cx="641" cy="507" r="7" stroke="#b88632"/><circle cx="641" cy="526" r="4" stroke="#b88632"/>
+  <rect x="324" y="198" width="70" height="35" rx="6" fill="#fcf8ef" stroke="#b88632" stroke-width="2"/>
+  <rect x="580" y="204" width="48" height="48" rx="4" fill="#f6ebd2" stroke="#b88632" stroke-width="2"/>
+  <path d="M591 234L604 218L617 234M597 234V242H611V234" stroke="#93651f" stroke-width="2"/>
+  <g font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#455c69" text-anchor="middle" letter-spacing="1">
+    <text x="360" y="267">LIVING</text><text x="495" y="252">ENTRY</text><text x="612" y="282">POOJA</text>
+    <text x="347" y="397">BEDROOM</text><text x="606" y="507" transform="rotate(-90 606 507)">KITCHEN</text><text x="480" y="378">OPEN SPACE</text>
+  </g>
+  <path d="M455 530L480 508L505 530M480 509V575" stroke="#93651f" stroke-width="2"/>
+  <g fill="#62421b" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="480" y="640" font-size="13" letter-spacing="3">DIRECTION. SPACE. BALANCE.</text>
+    <text x="480" y="663" font-size="11">Illustrative planning concept · Not a construction drawing</text>
+  </g>
+</svg>
