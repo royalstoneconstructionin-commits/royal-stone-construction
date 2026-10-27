@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import { serviceLinks } from "@/lib/site-data";
@@ -18,7 +17,7 @@ export default function Footer() {
     <footer
       id="contact"
       className="relative overflow-hidden bg-[#0b1820] text-white"
-    >
+   >
       {/* Background Glow */}
       <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-brand-600/10 blur-[120px]" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-brand-500/10 blur-[140px]" />
@@ -48,7 +47,7 @@ export default function Footer() {
                 sm:text-3xl
               "
             >
-              Royal Stone Construction
+              Royal Stone Construction 
 
               <span
                 className="
@@ -162,22 +161,20 @@ export default function Footer() {
 
             <div className="mt-6 space-y-5 text-slate-400">
               <div className="group/contact flex gap-3">
-                <div
-                  className="
-                    flex h-10 w-10 shrink-0 items-center justify-center
-                    rounded-xl bg-brand-500/10
-                    transition-all duration-300
-                    group-hover/contact:bg-brand-500
-                    group-hover/contact:shadow-[0_0_25px_rgba(212,165,75,.35)]
-                  "
-                >
-                  <MapPin className="h-5 w-5 text-brand-500 transition-colors group-hover/contact:text-white" />
-                </div>
+  <div
+    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/10 transition-all duration-300 group-hover/contact:bg-brand-500 group-hover/contact:shadow-[0_0_25px_rgba(212,165,75,.35)]"
+  >
+    <MapPin className="h-5 w-5 text-brand-500 transition-colors group-hover/contact:text-white" />
+  </div>
 
-                <span className="pt-2 transition-colors group-hover/contact:text-white">
-                  Patna, Bihar, India
-                </span>
-              </div>
+  <span className="pt-2 transition-colors group-hover/contact:text-white">
+    1) House No-216, MIG, Near Malahi Pakri Chowk,
+    Kankarbagh, Patna-800020, Bihar
+    <br />
+    2) Near Gaya College Khel Parisar, Gaya,
+    Bihar 823001, India
+  </span>
+</div>
 
               <div className="group/contact flex gap-3">
                 <div

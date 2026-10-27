@@ -10,7 +10,6 @@ const locations = {
   noida: { name: "Noida", title: "Architecture design packages for Noida", intro: "Explore the existing Silver, Gold and Platinum architecture design packages for Noida. Each package lists its drawings and design inclusions so you can compare the scope before requesting a quotation.", details: "Silver includes floor planning, plumbing, electric design and 3D front elevation. Gold adds the listed structural details; Platinum also includes 3D interior design. Use your design area to estimate the fee, then confirm the billing area and deliverables with the team.", services: [["Architecture package scope", "/services/architecture?city=Noida#packages"], ["Floor planning", "/services/floor-planning"], ["Building elevation design", "/services/elevation"]] },
 } as const;
 export const revalidate = 30;
-
 type Props = { params: Promise<{ city: string }> };
 export function generateStaticParams() { return Object.keys(locations).map(city => ({ city })); }
 export async function generateMetadata({ params }: Props) {
