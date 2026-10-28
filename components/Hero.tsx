@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -13,15 +14,15 @@ import LeadForm from "@/components/LeadForm";
 
 const slides = [
   {
-    image: "/hero-background.jpeg",
+    image: "/hero-background.jpg",
     label: "Architecture & Planning",
   },
   {
-    image: "/background1.png",
+    image: "/background1.jpg",
     label: "Interior Design",
   },
   {
-    image: "/background2.png",
+    image: "/background2.jpg",
     label: "Construction with Material",
   },
 ];
@@ -32,7 +33,9 @@ export default function Hero() {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const media = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
 
     const update = () => setReducedMotion(media.matches);
     update();
@@ -50,7 +53,7 @@ export default function Hero() {
     }, 5000);
 
     return () => window.clearInterval(timer);
-  }, [paused, reducedMotion, active]);
+  }, [paused, reducedMotion]);
 
   const moveSlide = (direction: number) => {
     setActive(
@@ -79,11 +82,16 @@ export default function Hero() {
             }`}
           />
         ))}
-
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="grid items-center gap-10 py-10 sm:py-14 lg:min-h-[560px] lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-16 lg:py-12">
+      {/* Dark overlay for readable text */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#08151c]/95 via-[#08151c]/45 to-[#08151c]/15"
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="grid items-center gap-8 py-8 sm:gap-10 sm:py-12 lg:min-h-[560px] lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-16 lg:py-12">
           {/* Main content */}
           <div className="hero-left-copy max-w-2xl">
             <div className="flex items-center gap-4">
@@ -97,10 +105,7 @@ export default function Hero() {
             <h1 className="mt-6 text-[clamp(2.75rem,4.8vw,4.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-white">
               From vision
               <br />
-              to{" "}
-              <span className="text-white">
-                structure.
-              </span>
+              to <span className="text-white">structure.</span>
             </h1>
 
             <p className="mt-6 max-w-md text-sm leading-7 text-white sm:text-base sm:leading-8">
@@ -231,22 +236,48 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
       <style jsx>{`
         .hero-left-copy > * {
           animation: hero-copy-enter 700ms ease-out both;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
         }
-        .hero-left-copy > a { text-shadow: none; }
-        .hero-left-copy > :nth-child(2) { animation-delay: 100ms; }
-        .hero-left-copy > :nth-child(3) { animation-delay: 200ms; }
-        .hero-left-copy > :nth-child(4) { animation-delay: 300ms; }
-        .hero-left-copy > :nth-child(5) { animation-delay: 400ms; }
-        @keyframes hero-copy-enter {
-          from { opacity: 0; transform: translateY(16px); }
-          to { opacity: 1; transform: translateY(0); }
+
+        .hero-left-copy > a {
+          text-shadow: none;
         }
+
+        .hero-left-copy > :nth-child(2) {
+          animation-delay: 100ms;
+        }
+
+        .hero-left-copy > :nth-child(3) {
+          animation-delay: 200ms;
+        }
+
+        .hero-left-copy > :nth-child(4) {
+          animation-delay: 300ms;
+        }
+
+        .hero-left-copy > :nth-child(5) {
+          animation-delay: 400ms;
+        }
+
+        @keyframes hero-copy-enter {
+          from {
+            opacity: 0;
+            transform: translateY(16px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
-          .hero-left-copy > * { animation: none; }
+          .hero-left-copy > * {
+            animation: none;
+          }
         }
       `}</style>
     </section>
