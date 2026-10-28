@@ -77,8 +77,9 @@ export default function Hero() {
             fill
             sizes="100vw"
             priority={index === 0}
-            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1200ms] motion-reduce:transition-none ${
-              active === index ? "opacity-100" : "opacity-0"
+           className={`absolute inset-0 h-full w-full object-contain sm:object-cover transition-opacity duration-[1200ms] motion-reduce:transition-none ${
+  active === index ? "opacity-100" : "opacity-0"
+}
             }`}
           />
         ))}
@@ -87,7 +88,7 @@ export default function Hero() {
       {/* Dark overlay for readable text */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#08151c]/95 via-[#08151c]/45 to-[#08151c]/15"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#08151c]/95 via-[#08151c]/45 to-[#08151c]/1n5"
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-10">
