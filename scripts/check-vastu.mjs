@@ -118,7 +118,7 @@ try {
   const [desktop, mobile] = ["Main navigation", "Mobile navigation"].map(label => html.match(new RegExp(`<nav aria-label="${label}"[^>]*>([\\s\\S]*?)<\\/nav>`))[1]);
   for (const navigation of [desktop, mobile]) assert.match(navigation, /href="\/services\/vastu"/);
   assert.match(html.match(/<footer[\s\S]*?<\/footer>/)[0], /href="\/services\/vastu"/);
-  assert.equal((await fetch(`${base}/vastu-planning.svg`)).status, 200);
+  assert.equal((await fetch(`${base}/vastu-planning.jpeg`)).status, 200);
   assert.ok((await (await fetch(`${base}/sitemap.xml`)).text()).includes("https://www.royalstoneconstruction.in/services/vastu"));
   for (const route of ["/", "/services", "/packages", "/services/architecture", "/services/construction", "/services/interior-design", "/services/turnkey-projects", "/services/floor-planning", "/services/elevation", "/services/structural-planning", "/services/renovation", "/contact", "/get-quote", "/about", "/process", "/why-us", "/projects"]) {
     const response = await fetch(base + route);
