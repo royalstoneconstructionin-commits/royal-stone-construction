@@ -31,7 +31,7 @@ export default function ServiceCard({
       elevation: "/2d3d.png",
       "structural-planning": "/st.png",
       renovation: "/renovation.png",
-      vastu: "/vastu-planning.svg",
+      vastu: "/vastu-planning.jpg",
     };
     return <article className="group flex min-w-0 flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md">
       <Link href={`/services/${service.slug}`} aria-label={`Explore ${service.title}`} className="relative block aspect-[1.9/1] overflow-hidden bg-slate-100">

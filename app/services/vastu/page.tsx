@@ -108,7 +108,7 @@ export default function VastuPage() {
             <p className="mt-5 flex items-center gap-2 text-sm font-semibold text-slate-600"><MapPin aria-hidden="true" className="h-4 w-4 text-brand-600" />Vastu Shastra Consultation in Patna</p>
           </div>
           <figure className="overflow-hidden rounded-[30px] border border-brand-200 bg-white shadow-[0_20px_65px_rgba(11,24,32,0.08)]">
-            <Image src="/vastu-planning.svg" alt="Illustrative architectural floor plan showing a north compass, room relationships and an open central space" width={960} height={720} priority sizes="(max-width: 1023px) 100vw, 45vw" className="h-auto w-full" />
+             <Image src="/vastu-shastra.jpg" alt="Vastu Shastra Planning Guide" width={960} height={720} priority sizes="(max-width: 1023px) 100vw, 45vw" className="h-auto w-full" />
             <figcaption className="border-t border-brand-100 px-5 py-4 text-sm text-slate-600">Traditional preferences. Thoughtful layouts. Designed around you.</figcaption>
           </figure>
         </div>
