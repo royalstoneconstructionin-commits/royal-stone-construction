@@ -71,6 +71,16 @@ export default async function HomePage() {
         <Link href="/projects" className={`mt-6 ${homeButton}`}>View Projects <ArrowRight className="h-4 w-4" /></Link>
       </div>
     </section>
+    {/* Our Trusted Brands Image */}
+<section className="w-full bg-gray-100 py-8 sm:py-12">
+  <div className="mx-auto w-full max-w-7xl px-4">
+    <img
+      src="/trusted-brands.png.jpeg"
+      alt="Our Trusted Brands"
+      className="block h-auto w-full rounded-lg"
+    />
+  </div>
+</section>
     <Testimonials testimonials={content.testimonials} />
     <HomeFAQ />
     <CTASection />
