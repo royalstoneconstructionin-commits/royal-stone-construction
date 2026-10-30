@@ -1,8 +1,10 @@
+
 import Link from "next/link";
 import Image from "next/image";
 import { serviceLinks } from "@/lib/site-data";
 import { businessContact } from "@/lib/business-contact";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+
 import {
   Instagram,
   Linkedin,
@@ -17,7 +19,7 @@ export default function Footer() {
     <footer
       id="contact"
       className="relative overflow-hidden bg-[#0b1820] text-white"
-   >
+    >
       {/* Background Glow */}
       <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-brand-600/10 blur-[120px]" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-brand-500/10 blur-[140px]" />
@@ -27,6 +29,7 @@ export default function Footer() {
 
       <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+
           {/* Brand */}
           <div className="group">
             <Image
@@ -36,27 +39,11 @@ export default function Footer() {
               height={96}
               className="mb-5 rounded-full border border-brand-300 bg-white object-contain"
             />
-            <h2
-              className="
-                relative inline-block
-                text-2xl font-black tracking-tight
-                text-white
-                transition-all duration-500
-                group-hover:text-brand-400
-                group-hover:[text-shadow:0_0_8px_rgba(212,165,75,.9),0_0_20px_rgba(212,165,75,.55),0_0_35px_rgba(212,165,75,.35)]
-                sm:text-3xl
-              "
-            >
-              Royal Stone Construction 
 
-              <span
-                className="
-                  absolute -bottom-2 left-0 h-[2px] w-0
-                  bg-gradient-to-r from-brand-500 via-brand-400 to-brand-500
-                  transition-all duration-500
-                  group-hover:w-full
-                "
-              />
+            <h2 className="relative inline-block text-2xl font-black tracking-tight text-white transition-all duration-500 group-hover:text-brand-400 sm:text-3xl">
+              Royal Stone Construction
+
+              <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-gradient-to-r from-brand-500 via-brand-400 to-brand-500 transition-all duration-500 group-hover:w-full" />
             </h2>
 
             <p className="mt-7 max-w-sm leading-7 text-slate-400 transition-colors duration-300 group-hover:text-slate-300">
@@ -66,18 +53,7 @@ export default function Footer() {
 
             <Link
               href="/get-quote"
-              className="
-                mt-6 inline-flex items-center gap-2
-                rounded-full border border-brand-500/30
-                bg-brand-500/10 px-5 py-2.5
-                text-sm font-semibold text-brand-300
-                transition-all duration-300
-                hover:-translate-y-1
-                hover:border-brand-400
-                hover:bg-brand-500
-                hover:text-white
-                hover:shadow-[0_10px_30px_rgba(212,165,75,.25)]
-              "
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 py-2.5 text-sm font-semibold text-brand-300 transition-all duration-300 hover:-translate-y-1 hover:border-brand-400 hover:bg-brand-500 hover:text-white hover:shadow-[0_10px_30px_rgba(212,165,75,.25)]"
             >
               Get Free Quote
               <ArrowUpRight className="h-4 w-4" />
@@ -101,24 +77,10 @@ export default function Footer() {
                 <Link
                   key={label}
                   href={href}
-                  className="
-                    group/link relative w-fit
-                    text-slate-400
-                    transition-all duration-300
-                    hover:translate-x-1
-                    hover:text-white
-                  "
+                  className="group/link relative w-fit text-slate-400 transition-all duration-300 hover:translate-x-1 hover:text-white"
                 >
                   {label}
-
-                  <span
-                    className="
-                      absolute -bottom-1 left-0 h-px w-0
-                      bg-brand-500
-                      transition-all duration-300
-                      group-hover/link:w-full
-                    "
-                  />
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-brand-500 transition-all duration-300 group-hover/link:w-full" />
                 </Link>
               ))}
             </div>
@@ -133,22 +95,9 @@ export default function Footer() {
                 <Link
                   key={service}
                   href={href}
-                  className="
-                    group/service flex cursor-default items-center gap-2
-                    transition-all duration-300
-                    hover:translate-x-1
-                    hover:text-white
-                  "
+                  className="group/service flex cursor-default items-center gap-2 transition-all duration-300 hover:translate-x-1 hover:text-white"
                 >
-                  <span
-                    className="
-                      h-1.5 w-1.5 rounded-full bg-brand-500
-                      transition-all duration-300
-                      group-hover/service:scale-150
-                      group-hover/service:shadow-[0_0_12px_rgba(212,165,75,.9)]
-                    "
-                  />
-
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand-500 transition-all duration-300 group-hover/service:scale-150 group-hover/service:shadow-[0_0_12px_rgba(212,165,75,.9)]" />
                   <span>{service}</span>
                 </Link>
               ))}
@@ -159,55 +108,86 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold text-white">Contact</h3>
 
-            <div className="mt-6 space-y-5 text-slate-400">
-              <div className="group/contact flex gap-3">
-  <div
-    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/10 transition-all duration-300 group-hover/contact:bg-brand-500 group-hover/contact:shadow-[0_0_25px_rgba(212,165,75,.35)]"
-  >
-    <MapPin className="h-5 w-5 text-brand-500 transition-colors group-hover/contact:text-white" />
-  </div>
+            <div className="mt-6 space-y-6 text-slate-400">
 
-  <span className="pt-2 transition-colors group-hover/contact:text-white">
-    1) House No-216, MIG, Near Malahi Pakri Chowk,
-    Kankarbagh, Patna-800020, Bihar
-    <br />
-    2) Near Gaya College Khel Parisar, Gaya,
-    Bihar 823001, India
-  </span>
-</div>
+              {/* Patna Office */}
+              <div className="flex gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                  <MapPin className="h-5 w-5 text-brand-500" />
+                </div>
 
-              <div className="group/contact flex gap-3">
-                <div
-                  className="
-                    flex h-10 w-10 shrink-0 items-center justify-center
-                    rounded-xl bg-brand-500/10
-                    transition-all duration-300
-                    group-hover/contact:bg-brand-500
-                    group-hover/contact:shadow-[0_0_25px_rgba(212,165,75,.35)]
-                  "
-                >
-                  <Phone className="h-5 w-5 text-brand-500 transition-colors group-hover/contact:text-white" />
+                <div className="space-y-1">
+                  <h4 className="font-semibold text-white">
+                    PATNA (HEAD OFFICE)
+                  </h4>
+                  <p>
+                    House No-216, MIG, Near Malahi Pakri Chowk,
+                    Kankarbagh, Patna-800020, Bihar
+                  </p>
+                  <p className="mt-2 text-brand-500">
+                    +91 91625 31390
+                  </p>
+                </div>
+              </div>
+
+              {/* Gaya Office */}
+              <div className="flex gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                  <MapPin className="h-5 w-5 text-brand-500" />
+                </div>
+
+                <div className="space-y-1">
+                  <h4 className="font-semibold text-white">
+                    GAYA BRANCH
+                  </h4>
+                  <p>
+                    Near Gaya College Khel Parisar, Gaya,
+                    Bihar 823001, India
+                  </p>
+                  <p className="mt-2 text-brand-500">
+                    +91 91625 31390
+                  </p>
+                </div>
+              </div>
+
+              {/* Noida Office */}
+              <div className="flex gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                  <MapPin className="h-5 w-5 text-brand-500" />
+                </div>
+
+                <div className="space-y-1">
+                  <h4 className="font-semibold text-white">
+                    NOIDA OFFICE
+                  </h4>
+                  <p>
+                    H-207, H-Block, Sector-63,
+                    Noida, Uttar Pradesh - 201301, India
+                  </p>
+                  <p className="mt-2 text-brand-500">
+                    +91 91625 31390
+                  </p>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="flex gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                  <Phone className="h-5 w-5 text-brand-500" />
                 </div>
 
                 <a
                   href={businessContact.phoneHref}
-                  className="pt-2 transition-colors hover:text-white"
+                  className="break-all pt-2 transition-colors hover:text-white"
                 >
                   {businessContact.phoneDisplay}
                 </a>
               </div>
 
-              <div className="group/contact flex gap-3">
-                <div
-                  className="
-                    flex h-10 w-10 shrink-0 items-center justify-center
-                    rounded-xl bg-brand-500/10
-                    transition-all duration-300
-                    group-hover/contact:bg-brand-500
-                    group-hover/contact:shadow-[0_0_25px_rgba(212,165,75,.35)]
-                  "
-                >
-                  <Mail className="h-5 w-5 text-brand-500 transition-colors group-hover/contact:text-white" />
+              {/* Email */}
+              <div className="flex gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                  <Mail className="h-5 w-5 text-brand-500" />
                 </div>
 
                 <a
@@ -222,7 +202,11 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="mt-7 flex flex-wrap gap-3">
               {[
-                { Icon: Instagram, label: "Instagram", href: businessContact.instagramHref },
+                {
+                  Icon: Instagram,
+                  label: "Instagram",
+                  href: businessContact.instagramHref,
+                },
                 {
                   Icon: Linkedin,
                   label: "LinkedIn",
@@ -236,25 +220,9 @@ export default function Footer() {
                   rel={href !== "#" ? "noopener noreferrer" : undefined}
                   scroll={false}
                   aria-label={label}
-                  className="
-                    group/social flex h-11 w-11 items-center justify-center
-                    rounded-full border border-white/10
-                    bg-white/5
-                    transition-all duration-300
-                    hover:-translate-y-1
-                    hover:scale-110
-                    hover:border-brand-500
-                    hover:bg-brand-600
-                    hover:shadow-[0_8px_25px_rgba(212,165,75,.35)]
-                  "
+                  className="group/social flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-brand-500 hover:bg-brand-600 hover:shadow-[0_8px_25px_rgba(212,165,75,.35)]"
                 >
-                  <Icon
-                    className="
-                      h-5 w-5
-                      transition-transform duration-300
-                      group-hover/social:scale-110
-                    "
-                  />
+                  <Icon className="h-5 w-5 transition-transform duration-300 group-hover/social:scale-110" />
                 </Link>
               ))}
             </div>
@@ -297,17 +265,7 @@ export default function Footer() {
       <a
         href={businessContact.phoneHref}
         aria-label="Call Royal Stone Construction"
-        className="
-          group fixed bottom-[172px] right-5 z-50
-          flex h-16 w-16 items-center justify-center
-          rounded-full bg-brand-600 text-white
-          shadow-[0_8px_24px_rgba(0,0,0,.12)]
-          transition-all duration-300
-          hover:-translate-y-1 hover:scale-110
-          hover:shadow-[0_12px_40px_rgba(184,134,50,.55)]
-          focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-300 focus-visible:ring-offset-2
-          motion-reduce:transform-none motion-reduce:transition-none
-        "
+        className="group fixed bottom-[172px] right-5 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-brand-600 text-white shadow-[0_8px_24px_rgba(0,0,0,.12)] transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-[0_12px_40px_rgba(184,134,50,.55)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-300 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
       >
         <Phone className="h-8 w-8" />
       </a>
@@ -318,17 +276,7 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Royal Stone Construction on LinkedIn"
-        className="
-          group fixed bottom-[96px] right-5 z-50
-          flex h-16 w-16 items-center justify-center
-          rounded-full bg-[#0A66C2] text-white
-          shadow-[0_8px_24px_rgba(0,0,0,.12)]
-          transition-all duration-300
-          hover:-translate-y-1 hover:scale-110
-          hover:shadow-[0_12px_40px_rgba(10,102,194,.55)]
-          focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300 focus-visible:ring-offset-2
-          motion-reduce:transform-none motion-reduce:transition-none
-        "
+        className="group fixed bottom-[96px] right-5 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#0A66C2] text-white shadow-[0_8px_24px_rgba(0,0,0,.12)] transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-[0_12px_40px_rgba(10,102,194,.55)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
       >
         <Linkedin className="h-8 w-8" />
       </a>
@@ -339,19 +287,7 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Royal Stone Construction on WhatsApp"
-        className="
-          group fixed bottom-5 right-5 z-50
-          flex h-16 w-16 items-center justify-center
-          rounded-full bg-[#25D366]
-          text-white
-          shadow-[0_8px_24px_rgba(0,0,0,.12)]
-          transition-all duration-300
-          hover:-translate-y-1
-          hover:scale-110
-          hover:shadow-[0_12px_40px_rgba(37,211,102,.55)]
-          focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-300 focus-visible:ring-offset-2
-          motion-reduce:transform-none motion-reduce:transition-none
-        "
+        className="group fixed bottom-5 right-5 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(0,0,0,.12)] transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-[0_12px_40px_rgba(37,211,102,.55)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-300 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
       >
         <WhatsAppIcon className="h-8 w-8" />
       </a>
