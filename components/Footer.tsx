@@ -319,7 +319,7 @@ export default function Footer() {
           <div className="mt-10 flex flex-col items-center justify-center gap-4 rounded-xl bg-gradient-to-r from-brand-500/10 via-brand-500/5 to-brand-500/10 px-5 py-7 text-center sm:flex-row sm:justify-between sm:px-8">
             <div>
               <h3 className="text-lg font-bold text-white">
-                Let's Build Something Great Together!
+                Let&apos;s Build Something Great Together!
               </h3>
               <p className="mt-1 text-sm text-slate-400">
                 Have a project in mind? Connect with our team today.
