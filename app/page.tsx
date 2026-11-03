@@ -238,7 +238,7 @@ export default async function HomePage() {
       <section className="w-full bg-gray-100 py-8 sm:py-12">
         <div className="mx-auto w-full max-w-7xl px-4">
           <ProtectedImage
-            src="/trusted-brands-one.jpeg"
+            src="/trusted-brands.png.jpeg"
             alt="Our Trusted Brands"
             width={1600}
             height={400}
